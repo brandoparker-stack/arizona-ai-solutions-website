@@ -236,7 +236,7 @@
       <p>Your personalized numbers, 3-year projection, industry benchmarks, and a short recovery checklist.</p>
       <div class="email-row">
         <input type="email" id="email" placeholder="your@email.com">
-        <button onclick="captureEmail()">Unlock</button>
+        <button onclick="captureEmail()">Send My Breakdown</button>
       </div>
       <div class="checklist-items">
         <span class="checklist-item">3-year revenue loss projection</span>
@@ -364,10 +364,41 @@ function captureEmail() {
   const email = document.getElementById('email').value;
   if (!email || !email.includes('@')) return;
   const btn = document.querySelector('.lead-capture button');
-  btn.textContent = 'Unlocked ✓';
-  btn.style.background = '#22C55E';
+  btn.textContent = 'Sending...';
   btn.disabled = true;
-  showFullBreakdown();
+
+  const missedCalls = parseFloat(document.getElementById('missedCalls').value);
+  const jobValue = parseFloat(document.getElementById('jobValue').value);
+  const closeRateNum = parseFloat(document.getElementById('closeRate').value);
+
+  fetch('https://arizona-ai-solutions-api.vercel.app/api/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      email: email,
+      missedCalls: missedCalls,
+      jobValue: '$' + jobValue.toLocaleString('en-US'),
+      closeRate: closeRateNum,
+      annualLost: document.getElementById('resultAmount').textContent,
+      jobsPerYear: Math.round(missedCalls * (closeRateNum / 100) * 52)
+    })
+  })
+  .then(res => {
+    if (res.ok) {
+      btn.textContent = 'Sent ✓';
+      btn.style.background = '#22C55E';
+      showFullBreakdown();
+    } else {
+      btn.textContent = 'Error — retry';
+      btn.style.background = '#EF4444';
+      btn.disabled = false;
+    }
+  })
+  .catch(() => {
+    btn.textContent = 'Error — retry';
+    btn.style.background = '#EF4444';
+    btn.disabled = false;
+  });
 }
 
 document.addEventListener('keydown', function(e) {
