@@ -371,7 +371,7 @@ function captureEmail() {
   const jobValue = parseFloat(document.getElementById('jobValue').value);
   const closeRateNum = parseFloat(document.getElementById('closeRate').value);
 
-  fetch('https://arizona-ai-solutions-api.vercel.app/api/submit', {
+  fetch('https://arizona-ai-calculator-api.vercel.app/api/submit', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
