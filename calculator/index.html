@@ -107,9 +107,9 @@
   }
   .lead-capture h3 { font-size: 16px; font-weight: 800; color: #F8FAFC; margin-bottom: 6px; }
   .lead-capture p { font-size: 14px; color: #94A3B8; margin-bottom: 16px; line-height: 1.5; }
-  .lead-capture .email-row { display: flex; gap: 8px; }
+  .lead-capture .email-row { display: flex; gap: 8px; flex-wrap: wrap; }
   .lead-capture input[type="email"] {
-    flex: 1; background: #1E293B; border: 1px solid #334155;
+    flex: 1; min-width: 0; background: #1E293B; border: 1px solid #334155;
     border-radius: 6px; padding: 11px 14px; font-size: 14px;
     color: #F8FAFC; font-family: 'Inter', sans-serif; outline: none;
     transition: border-color 0.2s;
@@ -121,8 +121,13 @@
     font-size: 14px; font-weight: 700; font-family: 'Inter', sans-serif;
     border: none; border-radius: 6px; cursor: pointer;
     white-space: nowrap; transition: background 0.2s;
+    flex-shrink: 0;
   }
   .lead-capture button:hover { background: #EA580C; }
+  @media (max-width: 480px) {
+    .lead-capture .email-row { flex-direction: column; }
+    .lead-capture button { width: 100%; }
+  }
   .lead-capture .checklist-items {
     margin-top: 16px; display: flex; flex-direction: column; gap: 6px;
   }
