@@ -6,66 +6,159 @@
     <title>Arizona AI Solutions — AI Phone Answering for Home Service Businesses</title>
     <meta name="description" content="Arizona AI Solutions provides 24/7 AI phone answering, lead qualification, and appointment booking for HVAC, plumbing, electrical, roofing, and pest control businesses in Arizona.">
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 0; background: #0F172A; color: #fff; }
-        .container { max-width: 720px; margin: 0 auto; padding: 60px 20px 40px; }
-        h1 { font-size: 2.5rem; color: #fff; margin-bottom: 16px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0F172A; color: #fff; }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+
+        /* Nav */
+        nav.main-nav { position: sticky; top: 0; z-index: 50; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid #1E293B; }
+        nav.main-nav .nav-inner { max-width: 960px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; }
+        .nav-logo { font-size: 1.1rem; font-weight: 800; color: #F8FAFC; text-decoration: none; }
+        .nav-logo .accent { color: #F97316; }
+        .nav-links-row { display: flex; gap: 24px; align-items: center; }
+        .nav-links-row a { color: #8B9BB5; font-size: 0.9rem; text-decoration: none; transition: color 0.15s; }
+        .nav-links-row a:hover { color: #F8FAFC; }
+        .nav-links-row a:focus-visible { outline: 3px solid #F97316; outline-offset: 2px; }
+        .nav-cta { background: #F97316; color: #0F172A; font-size: 0.85rem; font-weight: 700; padding: 8px 18px; border-radius: 6px; text-decoration: none; transition: background 0.15s; }
+        .nav-cta:hover { background: #ea6c0a; }
+        .nav-cta:focus-visible { outline: 3px solid #F97316; outline-offset: 3px; }
+        .mobile-toggle { display: none; background: none; border: none; color: #F8FAFC; font-size: 1.5rem; cursor: pointer; padding: 4px; }
+        .mobile-toggle:focus-visible { outline: 3px solid #F97316; outline-offset: 2px; }
+        @media (max-width: 640px) {
+            .mobile-toggle { display: block; }
+            .nav-links-row { display: none; flex-direction: column; gap: 12px; position: absolute; top: 100%; left: 0; right: 0; background: rgba(15, 23, 42, 0.97); padding: 20px; border-bottom: 1px solid #1E293B; }
+            .nav-links-row.open { display: flex; }
+            .nav-cta { text-align: center; }
+        }
+
+        /* Skip link */
+        .skip-link { position: absolute; top: -40px; left: 0; background: #F97316; color: #0F172A; padding: 8px 16px; z-index: 100; font-weight: 700; text-decoration: none; border-radius: 0 0 8px 0; }
+        .skip-link:focus { top: 0; outline: 3px solid #fff; }
+
+        /* Hero */
+        .hero { padding: 80px 0 48px; }
+        h1 { font-size: 2.5rem; color: #fff; margin-bottom: 16px; letter-spacing: -0.5px; }
         .accent { color: #F97316; }
-        p { font-size: 1.1rem; color: #94a3b8; line-height: 1.7; }
-        .tagline { font-size: 1.25rem; color: #e2e8f0; margin-bottom: 32px; }
-        .calc-link { margin-bottom: 48px; }
-        .calc-link a { display: inline-block; padding: 14px 28px; background: #F97316; color: #0F172A; font-size: 16px; font-weight: 700; border-radius: 8px; text-decoration: none; transition: background 0.2s; }
-        .calc-link a:hover { background: #ea6c0a; }
-        .calc-link a:focus-visible { outline: 3px solid #F97316; outline-offset: 3px; }
-        .section { margin-bottom: 40px; }
-        .section h2 { font-size: 1.4rem; color: #fff; margin-bottom: 12px; }
+        .tagline { font-size: 1.25rem; color: #e2e8f0; margin-bottom: 32px; line-height: 1.6; }
+        .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+        .btn-primary { display: inline-block; padding: 14px 28px; background: #F97316; color: #0F172A; font-size: 16px; font-weight: 700; border-radius: 8px; text-decoration: none; transition: background 0.2s; }
+        .btn-primary:hover { background: #ea6c0a; }
+        .btn-primary:focus-visible { outline: 3px solid #F97316; outline-offset: 3px; }
+        .btn-secondary { display: inline-block; padding: 14px 28px; background: #1E293B; color: #F8FAFC; font-size: 16px; font-weight: 600; border-radius: 8px; border: 1px solid #334155; text-decoration: none; transition: background 0.2s, border-color 0.2s; }
+        .btn-secondary:hover { background: #334155; border-color: #475569; }
+        .btn-secondary:focus-visible { outline: 3px solid #F97316; outline-offset: 3px; }
+
+        /* Sections */
+        .section { margin-bottom: 48px; }
+        .section h2 { font-size: 1.4rem; color: #fff; margin-bottom: 16px; }
+        p { font-size: 1.05rem; color: #94A3B8; line-height: 1.7; }
         .services { list-style: none; padding: 0; }
-        .services li { font-size: 1rem; color: #94a3b8; padding: 6px 0; padding-left: 20px; position: relative; }
+        .services li { font-size: 1rem; color: #94A3B8; padding: 8px 0 8px 24px; position: relative; line-height: 1.6; }
         .services li::before { content: '→'; position: absolute; left: 0; color: #F97316; }
-        .business-info { background: #1E293B; border-radius: 8px; padding: 20px 24px; margin-bottom: 40px; }
-        .business-info p { margin: 4px 0; }
-/* WCAG contrast fix: #64748B (3.75:1) → #8B9BB5 (4.59:1); #475569 (2.36:1) → #7B8BA3 (4.52:1) */
+
+        /* How it works */
+        .steps { display: flex; flex-direction: column; gap: 24px; }
+        .step { display: flex; gap: 16px; align-items: flex-start; }
+        .step-num { flex-shrink: 0; width: 36px; height: 36px; background: #1E293B; border: 1px solid #334155; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 700; color: #F97316; }
+        .step-content h3 { font-size: 1.05rem; color: #F8FAFC; margin-bottom: 4px; }
+        .step-content p { font-size: 0.95rem; color: #8B9BB5; margin: 0; }
+
+        /* Business info */
+        .business-info { background: #1E293B; border-radius: 8px; padding: 20px 24px; }
+        .business-info p { margin: 4px 0; font-size: 0.95rem; }
         .business-info .label { color: #8B9BB5; font-size: 0.85rem; }
-        .business-info .value { color: #e2e8f0; font-size: 1rem; }
-        .sms-disclosure { background: #1E293B; border-radius: 8px; padding: 20px 24px; margin-bottom: 40px; }
+        .business-info .value { color: #e2e8f0; }
+
+        /* CTA Banner */
+        .cta-banner { background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%); border: 1px solid #334155; border-radius: 12px; padding: 40px 32px; text-align: center; margin-bottom: 48px; }
+        .cta-banner h2 { margin-bottom: 8px; }
+        .cta-banner p { margin-bottom: 24px; }
+        .cta-banner .btn-primary { margin-bottom: 0; }
+
+        /* SMS Disclosure */
+        .sms-disclosure { background: #1E293B; border-radius: 8px; padding: 20px 24px; }
         .sms-disclosure h3 { font-size: 1.1rem; color: #fff; margin: 0 0 10px; }
-        .sms-disclosure p, .sms-disclosure li { font-size: 0.95rem; color: #94a3b8; line-height: 1.6; }
+        .sms-disclosure p, .sms-disclosure li { font-size: 0.95rem; color: #94A3B8; line-height: 1.6; }
         .sms-disclosure ul { padding-left: 20px; }
         .sms-disclosure li { margin-bottom: 4px; }
         .sms-disclosure a { color: #F97316; }
         .sms-disclosure a:focus-visible { outline: 2px solid #F97316; outline-offset: 2px; }
+
+        /* Footer links */
         .links { margin-top: 40px; padding-top: 20px; border-top: 1px solid #1E293B; }
         .links a { color: #8B9BB5; margin: 0 12px; font-size: 14px; text-decoration: underline; text-underline-offset: 2px; }
         .links a:hover { color: #FB923C; }
         .links a:focus-visible { outline: 2px solid #F97316; outline-offset: 2px; color: #F97316; }
         footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #1E293B; color: #7B8BA3; font-size: 0.8rem; text-align: center; }
         footer p { color: #7B8BA3; font-size: 0.8rem; margin-bottom: 0; }
-        /* Skip link - visible on focus only */
-        .skip-link { position: absolute; top: -40px; left: 0; background: #F97316; color: #0F172A; padding: 8px 16px; z-index: 100; font-weight: 700; text-decoration: none; border-radius: 0 0 8px 0; }
-        .skip-link:focus { top: 0; outline: 3px solid #fff; }
+
         /* Focus-visible for all interactive elements */
         a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid #F97316; outline-offset: 2px; }
-        /* 200% zoom support */
+
+        /* Responsive */
         @media (max-width: 480px) {
             h1 { font-size: 1.8rem; }
             .tagline { font-size: 1.05rem; }
+            .hero-ctas { flex-direction: column; }
+            .btn-primary, .btn-secondary { text-align: center; }
         }
     </style>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <div class="container">
-        <h1>Arizona <span class="accent">AI</span> Solutions</h1>
-        <p class="tagline">AI that answers your phone, qualifies leads, books appointments — 24/7. Built for Arizona home service businesses.</p>
 
-        <nav aria-label="Main navigation">
-            <div class="calc-link">
-                <a href="/calculator">See what missed calls cost you →</a>
+    <nav class="main-nav" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">Arizona <span class="accent">AI</span></a>
+            <button class="mobile-toggle" aria-label="Toggle navigation menu" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+            <div class="nav-links-row" id="navLinks">
+                <a href="#how-it-works">How It Works</a>
+                <a href="/calculator">Calculator</a>
+                <a href="mailto:brandon@arizona-ai-solutions.com" class="nav-cta">Book a Demo</a>
             </div>
-        </nav>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="hero">
+            <h1>Arizona <span class="accent">AI</span> Solutions</h1>
+            <p class="tagline">AI that answers your phone, qualifies leads, and books appointments — 24/7. Built for Arizona home service businesses.</p>
+            <div class="hero-ctas">
+                <a href="mailto:brandon@arizona-ai-solutions.com?subject=Demo%20Request%20-%20Arizona%20AI" class="btn-primary">Book a Free Demo</a>
+                <a href="/calculator" class="btn-secondary">Calculate Your Lost Revenue</a>
+            </div>
+        </div>
 
         <main id="main-content">
+            <div class="section" id="how-it-works">
+                <h2>How It Works</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <h3>We set up your number</h3>
+                            <p>You get a dedicated local number. Your private instance — your data stays yours.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <h3>AI answers every call</h3>
+                            <p>24/7. Qualifies the lead, books appointments via Calendly, routes emergencies to you in real time.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <h3>You see everything</h3>
+                            <p>Live dashboard with transcripts, bookings, and SMS activity. No call missed, no lead lost.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="section">
-                <h2>What We Do</h2>
+                <h2>What We Handle</h2>
                 <ul class="services">
                     <li>Answer every inbound call with a trained AI voice agent</li>
                     <li>Qualify leads and book appointments via Calendly integration</li>
@@ -78,6 +171,12 @@
             <div class="section">
                 <h2>Who We Serve</h2>
                 <p>Arizona home service businesses — HVAC, plumbing, electrical, roofing, and pest control companies across the Phoenix metro area, Tucson, and statewide.</p>
+            </div>
+
+            <div class="cta-banner">
+                <h2>Stop losing leads to voicemail</h2>
+                <p>Every missed call is a customer who calls your competitor next.</p>
+                <a href="mailto:brandon@arizona-ai-solutions.com?subject=Demo%20Request%20-%20Arizona%20AI" class="btn-primary">Book a Free Demo</a>
             </div>
 
             <div class="section">
@@ -122,5 +221,14 @@
             <p>&copy; 2026 Arizona AI Solutions. Tucson, Arizona.</p>
         </footer>
     </div>
+
+    <script>
+        // Close mobile nav when a link is clicked
+        document.querySelectorAll('#navLinks a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.getElementById('navLinks').classList.remove('open');
+            });
+        });
+    </script>
 </body>
 </html>
