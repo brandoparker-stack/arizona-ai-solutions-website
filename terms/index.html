@@ -19,9 +19,26 @@
         strong { color: #F8FAFC; }
         em { color: #CBD5E1; }
         hr { border: none; border-top: 1px solid #334155; margin: 32px 0; }
-        .back-link { margin-bottom: 32px; }
-        .back-link a { display: inline-block; padding: 10px 20px; background: #1E293B; color: #e2e8f0; border-radius: 6px; font-size: 14px; text-decoration: none; }
-        .back-link a:hover { background: #334155; }
+        /* Nav */
+        nav.main-nav { position: sticky; top: 0; z-index: 50; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid #1E293B; width: 100%; }
+        nav.main-nav .nav-inner { max-width: 960px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; }
+        .nav-logo { font-size: 1.1rem; font-weight: 800; color: #F8FAFC; text-decoration: none; }
+        .nav-logo .accent { color: #F97316; }
+        .nav-links-row { display: flex; gap: 24px; align-items: center; }
+        .nav-links-row a { color: #8B9BB5; font-size: 0.9rem; text-decoration: none; transition: color 0.15s; }
+        .nav-links-row a:hover { color: #F8FAFC; }
+        .nav-links-row a:focus-visible { outline: 3px solid #F97316; outline-offset: 2px; }
+        .nav-cta { background: #F97316; color: #0F172A; font-size: 0.85rem; font-weight: 700; padding: 8px 18px; border-radius: 6px; text-decoration: none; transition: background 0.15s; }
+        .nav-cta:hover { background: #ea6c0a; }
+        .nav-cta:focus-visible { outline: 3px solid #F97316; outline-offset: 3px; }
+        .mobile-toggle { display: none; background: none; border: none; color: #F8FAFC; font-size: 1.5rem; cursor: pointer; padding: 4px; }
+        .mobile-toggle:focus-visible { outline: 3px solid #F97316; outline-offset: 2px; }
+        @media (max-width: 640px) {
+            .mobile-toggle { display: block; }
+            .nav-links-row { display: none; flex-direction: column; gap: 12px; position: absolute; top: 100%; left: 0; right: 0; background: rgba(15, 23, 42, 0.97); padding: 20px; border-bottom: 1px solid #1E293B; }
+            .nav-links-row.open { display: flex; }
+            .nav-cta { text-align: center; }
+        }
         .nav-links { margin-top: 32px; padding-top: 16px; }
         .nav-links a { color: #8B9BB5; margin-right: 16px; font-size: 14px; text-decoration: underline; text-underline-offset: 2px; }
         .nav-links a:hover { color: #FB923C; }
@@ -35,8 +52,20 @@
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="main-nav" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">Arizona <span class="accent">AI</span></a>
+            <button class="mobile-toggle" aria-label="Toggle navigation menu" onclick="document.getElementById('navLinks').classList.toggle('open')">&#9776;</button>
+            <div class="nav-links-row" id="navLinks">
+                <a href="/">Home</a>
+                <a href="/calculator">Calculator</a>
+                <a href="mailto:brandon@arizona-ai-solutions.com?subject=Demo%20Request%20-%20Arizona%20AI" class="nav-cta">Book a Demo</a>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
-        <div class="back-link"><a href="/">← Back to Arizona AI Solutions</a></div>
         <main id="main-content">
             <h1>Terms & Conditions</h1>
             <p><strong>Last Updated:</strong> May 21, 2026<br>
@@ -224,5 +253,14 @@
             <p>&copy; 2026 Arizona AI Solutions. Tucson, Arizona.</p>
         </footer>
     </div>
+
+    <script>
+        // Close mobile nav when a link is clicked
+        document.querySelectorAll('#navLinks a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.getElementById('navLinks').classList.remove('open');
+            });
+        });
+    </script>
 </body>
 </html>
