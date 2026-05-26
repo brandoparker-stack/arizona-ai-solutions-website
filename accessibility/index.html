@@ -11,15 +11,18 @@
         h1 { font-size: 2rem; color: #fff; margin-bottom: 24px; }
         h2 { font-size: 1.3rem; color: #fff; margin-top: 32px; margin-bottom: 12px; }
         p { font-size: 1.05rem; color: #94a3b8; margin-bottom: 16px; }
-        a { color: #F97316; text-decoration: none; }
-        a:hover { text-decoration: underline; }
+        a { color: #F97316; text-decoration: underline; text-underline-offset: 2px; }
+        a:hover { color: #FB923C; }
         a:focus-visible { outline: 3px solid #F97316; outline-offset: 2px; }
-        ul { color: #94a3b8; padding-left: 24px; margin-bottom: 16px; }
+        ul { color: #CBD5E1; padding-left: 24px; margin-bottom: 16px; }
         li { margin-bottom: 8px; }
+        strong { color: #F8FAFC; }
         .back-link { margin-bottom: 32px; }
-        .back-link a { display: inline-block; padding: 10px 20px; background: #1E293B; color: #e2e8f0; border-radius: 6px; font-size: 14px; }
+        .back-link a { display: inline-block; padding: 10px 20px; background: #1E293B; color: #e2e8f0; border-radius: 6px; font-size: 14px; text-decoration: none; }
         .back-link a:hover { background: #334155; }
-        footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #1E293B; color: #475569; font-size: 0.8rem; text-align: center; }
+        .nav-links { margin-top: 32px; padding-top: 16px; }
+        .nav-links a { color: #8B9BB5; margin-right: 16px; font-size: 14px; }
+        footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #1E293B; color: #7B8BA3; font-size: 0.8rem; text-align: center; }
         .skip-link { position: absolute; top: -40px; left: 0; background: #F97316; color: #0F172A; padding: 8px 16px; z-index: 100; font-weight: 700; text-decoration: none; border-radius: 0 0 8px 0; }
         .skip-link:focus { top: 0; outline: 3px solid #fff; }
     </style>
@@ -68,13 +71,11 @@
             <p>Last reviewed: May 2026</p>
         </main>
 
-        <nav aria-label="Legal links">
-            <div style="margin-top: 32px; padding-top: 20px; border-top: 1px solid #1E293B;">
-                <a href="/privacy" style="color: #64748b; margin-right: 16px; font-size: 14px;">Privacy Policy</a>
-                <a href="/terms" style="color: #64748b; margin-right: 16px; font-size: 14px;">Terms &amp; Conditions</a>
-                <a href="/sms" style="color: #64748b; margin-right: 16px; font-size: 14px;">SMS Terms &amp; Opt-In</a>
-            </div>
-        </nav>
+        <div class="nav-links">
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms &amp; Conditions</a>
+            <a href="/sms">SMS Terms &amp; Opt-In</a>
+        </div>
 
         <footer>
             <p>&copy; 2026 Arizona AI Solutions. Tucson, Arizona.</p>
