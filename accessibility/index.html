@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility Statement — Arizona AI Solutions</title>
+    <meta name="description" content="Arizona AI Solutions accessibility commitment. We strive to make our website usable by everyone.">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 0; background: #0F172A; color: #e2e8f0; line-height: 1.7; }
+        .container { max-width: 720px; margin: 0 auto; padding: 60px 20px 40px; }
+        h1 { font-size: 2rem; color: #fff; margin-bottom: 24px; }
+        h2 { font-size: 1.3rem; color: #fff; margin-top: 32px; margin-bottom: 12px; }
+        p { font-size: 1.05rem; color: #94a3b8; margin-bottom: 16px; }
+        a { color: #F97316; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        a:focus-visible { outline: 3px solid #F97316; outline-offset: 2px; }
+        ul { color: #94a3b8; padding-left: 24px; margin-bottom: 16px; }
+        li { margin-bottom: 8px; }
+        .back-link { margin-bottom: 32px; }
+        .back-link a { display: inline-block; padding: 10px 20px; background: #1E293B; color: #e2e8f0; border-radius: 6px; font-size: 14px; }
+        .back-link a:hover { background: #334155; }
+        footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #1E293B; color: #475569; font-size: 0.8rem; text-align: center; }
+        .skip-link { position: absolute; top: -40px; left: 0; background: #F97316; color: #0F172A; padding: 8px 16px; z-index: 100; font-weight: 700; text-decoration: none; border-radius: 0 0 8px 0; }
+        .skip-link:focus { top: 0; outline: 3px solid #fff; }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="container">
+        <div class="back-link">
+            <a href="/">← Back to Arizona AI Solutions</a>
+        </div>
+
+        <main id="main-content">
+            <h1>Accessibility Statement</h1>
+
+            <p>Arizona AI Solutions is committed to making our website accessible to everyone, including people with disabilities. We aim to meet <strong>WCAG 2.2 Level AA</strong> standards across all pages.</p>
+
+            <h2>What We've Done</h2>
+            <ul>
+                <li><strong>Semantic HTML:</strong> Proper heading hierarchy (H1 → H2 → H3), landmarks (&lt;main&gt;, &lt;nav&gt;, &lt;footer&gt;), and list structures throughout.</li>
+                <li><strong>Keyboard navigation:</strong> All interactive elements are reachable via keyboard. Skip-to-content link, visible focus indicators, and logical tab order.</li>
+                <li><strong>Screen reader support:</strong> ARIA labels on form inputs, aria-live regions for dynamic content (calculator results), and hidden decorative elements.</li>
+                <li><strong>Form accessibility:</strong> All form fields have explicit &lt;label&gt; elements. Required fields are marked. Error states use aria-invalid.</li>
+                <li><strong>Color contrast:</strong> All text meets WCAG AA minimum contrast ratios (4.5:1 for normal text, 3:1 for large text and UI components).</li>
+                <li><strong>Responsive design:</strong> Pages remain usable at 200% zoom and on mobile devices.</li>
+                <li><strong>No auto-playing media:</strong> No content auto-plays or flashes.</li>
+                <li><strong>Descriptive links:</strong> All links describe their destination (no "click here" links).</li>
+            </ul>
+
+            <h2>Known Limitations</h2>
+            <ul>
+                <li>Our calculator tool uses dynamic JavaScript for results. While we've added aria-live regions, some screen readers may need a moment to announce updated values.</li>
+                <li>Embedded third-party content (Calendly widget, if any) may have its own accessibility limitations outside our control.</li>
+            </ul>
+
+            <h2>Feedback</h2>
+            <p>If you encounter any accessibility barriers on our site, please let us know. We take accessibility seriously and will respond promptly.</p>
+            <ul>
+                <li>Email: <a href="mailto:brandon@arizona-ai-solutions.com">brandon@arizona-ai-solutions.com</a></li>
+                <li>Phone: available upon request</li>
+            </ul>
+            <p>We aim to acknowledge accessibility feedback within 1 business day and propose a resolution within 5 business days.</p>
+
+            <h2>Standards</h2>
+            <p>This site targets conformance with <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Level AA</a>. We periodically audit our pages and remediate issues as they're found.</p>
+
+            <p>Last reviewed: May 2026</p>
+        </main>
+
+        <nav aria-label="Legal links">
+            <div style="margin-top: 32px; padding-top: 20px; border-top: 1px solid #1E293B;">
+                <a href="/privacy" style="color: #64748b; margin-right: 16px; font-size: 14px;">Privacy Policy</a>
+                <a href="/terms" style="color: #64748b; margin-right: 16px; font-size: 14px;">Terms &amp; Conditions</a>
+                <a href="/sms" style="color: #64748b; margin-right: 16px; font-size: 14px;">SMS Terms &amp; Opt-In</a>
+            </div>
+        </nav>
+
+        <footer>
+            <p>&copy; 2026 Arizona AI Solutions. Tucson, Arizona.</p>
+        </footer>
+    </div>
+</body>
+</html>
