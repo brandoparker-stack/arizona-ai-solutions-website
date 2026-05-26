@@ -65,11 +65,14 @@
         .step-content h3 { font-size: 1.05rem; color: #F8FAFC; margin-bottom: 4px; }
         .step-content p { font-size: 0.95rem; color: #8B9BB5; margin: 0; }
 
-        /* Business info */
-        .business-info { background: #1E293B; border-radius: 8px; padding: 20px 24px; }
-        .business-info p { margin: 4px 0; font-size: 0.95rem; }
-        .business-info .label { color: #8B9BB5; font-size: 0.85rem; }
-        .business-info .value { color: #e2e8f0; }
+        /* Contact section */
+        .contact-section { margin-bottom: 48px; }
+        .contact-grid { display: flex; flex-direction: column; gap: 16px; }
+        .contact-item { display: flex; flex-direction: column; gap: 4px; }
+        .contact-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: #8B9BB5; }
+        .contact-value { font-size: 1.05rem; color: #CBD5E1; }
+        .contact-link { color: #F97316; text-decoration: underline; text-underline-offset: 2px; }
+        .contact-link:hover { color: #FB923C; }
 
         /* CTA Banner */
         .cta-banner { background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%); border: 1px solid #334155; border-radius: 12px; padding: 40px 32px; text-align: center; margin-bottom: 48px; }
@@ -179,13 +182,21 @@
                 <a href="mailto:brandon@arizona-ai-solutions.com?subject=Demo%20Request%20-%20Arizona%20AI" class="btn-primary">Book a Free Demo</a>
             </div>
 
-            <div class="section">
-                <h2>Business Information</h2>
-                <div class="business-info">
-                    <p><span class="label">Business:</span> <span class="value">Arizona AI Solutions</span></p>
-                    <p><span class="label">Address:</span> <span class="value">Tucson, Arizona</span></p>
-                    <p><span class="label">Email:</span> <span class="value"><a href="mailto:brandon@arizona-ai-solutions.com" style="color: #e2e8f0; text-decoration: underline;">brandon@arizona-ai-solutions.com</a></span></p>
-                    <p><span class="label">Service Area:</span> <span class="value">State of Arizona</span></p>
+            <div class="section contact-section">
+                <h2>Get in Touch</h2>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <span class="contact-label">Email</span>
+                        <a href="mailto:brandon@arizona-ai-solutions.com?subject=Demo%20Request%20-%20Arizona%20AI" class="contact-value contact-link">brandon@arizona-ai-solutions.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Service Area</span>
+                        <span class="contact-value">State of Arizona</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Location</span>
+                        <span class="contact-value">Tucson, Arizona</span>
+                    </div>
                 </div>
             </div>
 
