@@ -54,6 +54,7 @@
         .privacy-trust { margin-top: 20px; font-size: 0.9rem; color: #8B9BB5; line-height: 1.6; border-top: 1px solid #1E293B; padding-top: 16px; }
         html { scroll-behavior: smooth; }
         #how-it-works { scroll-margin-top: 72px; }
+        #pricing { scroll-margin-top: 72px; }
         .section h2 { font-size: 1.4rem; color: #fff; margin-bottom: 16px; }
         p { font-size: 1.05rem; color: #94A3B8; line-height: 1.7; }
         .services { list-style: none; padding: 0; }
@@ -81,6 +82,26 @@
         .cta-banner h2 { margin-bottom: 8px; }
         .cta-banner p { margin-bottom: 24px; }
         .cta-banner .btn-primary { margin-bottom: 0; }
+
+        /* Pricing Card */
+        .pricing-card { background: #1E293B; border: 1px solid #334155; border-radius: 12px; padding: 36px 32px; margin-top: 20px; }
+        .pricing-plan-name { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: #F97316; font-weight: 700; margin-bottom: 12px; }
+        .pricing-price-row { display: flex; align-items: baseline; gap: 4px; margin-bottom: 4px; }
+        .pricing-amount { font-size: 3rem; font-weight: 800; color: #fff; line-height: 1; }
+        .pricing-period { font-size: 1.1rem; color: #94A3B8; font-weight: 500; }
+        .pricing-annual { font-size: 0.95rem; color: #CBD5E1; margin-bottom: 6px; }
+        .pricing-annual strong { color: #F97316; }
+        .pricing-calls { font-size: 0.95rem; color: #94A3B8; margin-bottom: 4px; }
+        .pricing-onboarding { font-size: 0.9rem; color: #8B9BB5; margin-bottom: 20px; }
+        .pricing-features { list-style: none; padding: 0; margin: 0 0 24px 0; }
+        .pricing-features li { font-size: 0.95rem; color: #CBD5E1; padding: 7px 0 7px 24px; position: relative; line-height: 1.5; }
+        .pricing-features li::before { content: '✓'; position: absolute; left: 0; color: #F97316; font-weight: 700; }
+        .pricing-launch-special { background: rgba(249, 115, 22, 0.08); border: 1px solid rgba(249, 115, 22, 0.25); border-radius: 8px; padding: 14px 18px; margin-bottom: 20px; }
+        .launch-badge { display: inline-block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; color: #F97316; background: rgba(249, 115, 22, 0.12); padding: 3px 8px; border-radius: 4px; margin-bottom: 6px; }
+        .pricing-launch-special p { font-size: 0.95rem; color: #CBD5E1; margin: 6px 0 0 0; line-height: 1.5; }
+        .pricing-launch-special strong { color: #F97316; }
+        .pricing-cta { display: block; text-align: center; margin-top: 4px; }
+        .pricing-note { font-size: 0.8rem; color: #8B9BB5; text-align: center; margin-top: 16px; line-height: 1.5; }
 
         /* Footer links */
         .links { margin-top: 40px; padding-top: 20px; border-top: 1px solid #1E293B; }
@@ -112,6 +133,7 @@
             <button class="mobile-toggle" aria-label="Toggle navigation menu" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
             <div class="nav-links-row" id="navLinks">
                 <a href="#how-it-works">How It Works</a>
+                <a href="#pricing">Pricing</a>
                 <a href="/calculator">Calculator</a>
                 <a href="https://calendly.com/arizonaaisolutions/15-min-discovery-call" class="nav-cta" target="_blank" rel="noopener">Book a Demo</a>
             </div>
@@ -180,6 +202,38 @@
             <div class="section">
                 <h2>Who We Serve</h2>
                 <p>Arizona home service businesses — HVAC, plumbing, electrical, solar, roofing, pest control, landscaping, and more — across the Phoenix metro area, Tucson, and statewide.</p>
+            </div>
+
+            <div class="section" id="pricing">
+                <h2>Simple Pricing</h2>
+                <div class="pricing-card">
+                    <div class="pricing-plan-name">AI Phone Agent</div>
+                    <div class="pricing-price-row">
+                        <span class="pricing-amount">$347</span><span class="pricing-period">/mo</span>
+                    </div>
+                    <p class="pricing-annual">$297/mo billed annually — <strong>save $600/year</strong></p>
+                    <p class="pricing-calls">Up to 300 calls/mo — enough for most 1–3 truck shops</p>
+                    <p class="pricing-onboarding">+ $297 one-time onboarding</p>
+                    <ul class="pricing-features">
+                        <li>24/7 AI phone answering — every call, day or night</li>
+                        <li>Intelligent call qualification — real leads, not solicitors</li>
+                        <li>Emergency &amp; urgency detection — routed to you instantly</li>
+                        <li>Appointment booking — integrated with your calendar</li>
+                        <li>SMS confirmations &amp; follow-up reminders</li>
+                        <li>Post-appointment review requests — drives Google reviews</li>
+                        <li>Vertical playbook — tailored to your trade</li>
+                        <li>Bilingual — English + Spanish, 100+ languages</li>
+                        <li>Branded call dashboard — live transcripts, bookings, SMS</li>
+                        <li>Weekly call summary report — we review and optimize</li>
+                        <li>Privacy-first infrastructure — your data, never shared with other clients</li>
+                    </ul>
+                    <div class="pricing-launch-special">
+                        <span class="launch-badge">Launch Special</span>
+                        <p>$297 onboarding + <strong>first month free</strong>. Then just $347/mo starting month 2.</p>
+                    </div>
+                    <a href="https://calendly.com/arizonaaisolutions/15-min-discovery-call" class="btn-primary pricing-cta" target="_blank" rel="noopener">Book a Free Demo</a>
+                    <p class="pricing-note">No long-term contract. Month-to-month. Additional usage billed at $0.12/min after 300 calls.</p>
+                </div>
             </div>
 
             <div class="cta-banner">
