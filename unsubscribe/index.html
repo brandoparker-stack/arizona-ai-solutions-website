@@ -26,28 +26,54 @@
         .error { color: #F87171; }
         .back-link { display: inline-block; margin-top: 32px; color: #8B9BB5; font-size: 0.85rem; text-decoration: none; }
         .back-link:hover { color: #F8FAFC; }
+        .hidden { display: none; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>You've been unsubscribed.</h1>
-        <p>You will no longer receive emails from Arizona AI Solutions.</p>
-        <p class="resubscribe">If you unsubscribed by mistake, you can re-subscribe by replying to any of our previous emails with "UNSTOP".</p>
+        <!-- Confirm state: shows after one-click or manual form submit -->
+        <div id="confirmState" class="hidden">
+            <h1>You've been unsubscribed.</h1>
+            <p>You will no longer receive emails from Arizona AI Solutions.</p>
+            <p class="resubscribe">If you unsubscribed by mistake, you can re-subscribe by replying to any of our previous emails with "UNSTOP".</p>
+        </div>
 
-        <div class="form-section">
-            <label for="unsub-email">Unsubscribe a different email address:</label>
-            <form id="unsubForm" class="form-row" onsubmit="return handleSubmit(event)">
-                <input type="email" id="unsub-email" name="email" placeholder="name@company.com" required autocomplete="email">
-                <button type="submit">Unsubscribe</button>
-            </form>
-            <div class="message success" id="successMsg">✓ That email has been unsubscribed.</div>
-            <div class="message error" id="errorMsg">Something went wrong. Please email unsubscribe@arizona-ai-solutions.com directly.</div>
+        <!-- Form state: default view for manual visits -->
+        <div id="formState">
+            <h1>Unsubscribe</h1>
+            <p>Enter your email address to stop receiving emails from Arizona AI Solutions.</p>
+            <div class="form-section" style="border-top: none; padding-top: 0; margin-top: 20px;">
+                <form id="unsubForm" class="form-row" onsubmit="return handleSubmit(event)">
+                    <input type="email" id="unsub-email" name="email" placeholder="name@company.com" required autocomplete="email">
+                    <button type="submit">Unsubscribe</button>
+                </form>
+                <div class="message success" id="successMsg">✓ You've been unsubscribed. You will no longer receive emails from Arizona AI Solutions.</div>
+                <div class="message error" id="errorMsg">Something went wrong. Please email unsubscribe@arizona-ai-solutions.com directly.</div>
+            </div>
+            <p class="resubscribe">If you unsubscribed by mistake, you can re-subscribe by replying to any of our previous emails with "UNSTOP".</p>
         </div>
 
         <a href="/" class="back-link">← Back to Arizona AI Solutions</a>
     </div>
 
     <script>
+        // Gmail one-click unsubscribe sends a POST with List-Unsubscribe=One-Click in the body
+        // If this page receives a POST, it's a one-click unsubscribe — confirm immediately
+        (function() {
+            // Check if this is a one-click POST (Gmail sends POST with form-urlencoded)
+            if (window.location.search.includes('unsubscribe=1') || document.referrer.includes('mail.google.com')) {
+                // Likely came from email — show confirmed state
+                document.getElementById('formState').classList.add('hidden');
+                document.getElementById('confirmState').classList.remove('hidden');
+                // Fire off a Formspree submission so we know they unsubscribed
+                fetch('https://formspree.io/f/xdajjaew', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({ action: 'one-click-unsubscribe', source: 'List-Unsubscribe header', timestamp: new Date().toISOString() })
+                });
+            }
+        })();
+
         async function handleSubmit(e) {
             e.preventDefault();
             var email = document.getElementById('unsub-email').value;
@@ -60,11 +86,11 @@
                 var response = await fetch('https://formspree.io/f/xdajjaew', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                    body: JSON.stringify({ email: email, action: 'unsubscribe', source: 'List-Unsubscribe header' })
+                    body: JSON.stringify({ email: email, action: 'unsubscribe', source: 'List-Unsubscribe page' })
                 });
                 if (response.ok) {
-                    successEl.style.display = 'block';
-                    document.getElementById('unsub-email').value = '';
+                    document.getElementById('formState').classList.add('hidden');
+                    document.getElementById('confirmState').classList.remove('hidden');
                 } else {
                     errorEl.style.display = 'block';
                 }
