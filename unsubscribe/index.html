@@ -27,26 +27,25 @@
             .nav-cta { text-align: center; }
         }
 
+        /* Content */
         .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
-        .content { min-height: 60vh; display: flex; align-items: center; justify-content: center; padding: 80px 0 48px; }
-        .inner { max-width: 520px; text-align: center; }
-        h1 { font-size: 1.5rem; color: #fff; margin-bottom: 16px; }
-        p { font-size: 1rem; color: #94A3B8; line-height: 1.7; margin-bottom: 12px; }
-        .resubscribe { font-size: 0.9rem; color: #8B9BB5; line-height: 1.6; margin-top: 24px; padding-top: 20px; border-top: 1px solid #1E293B; }
-        .form-section { margin-top: 24px; padding-top: 20px; border-top: 1px solid #1E293B; }
-        .form-section label { display: block; font-size: 0.85rem; color: #8B9BB5; margin-bottom: 8px; }
-        .form-row { display: flex; gap: 8px; }
-        input[type="email"] { flex: 1; padding: 10px 14px; background: #1E293B; border: 1px solid #334155; border-radius: 6px; color: #F8FAFC; font-size: 0.95rem; outline: none; }
+        .content { min-height: 60vh; display: flex; align-items: center; justify-content: center; padding: 80px 0 32px; }
+        .inner { max-width: 420px; text-align: center; }
+        h1 { font-size: 1.5rem; color: #fff; margin-bottom: 12px; }
+        p { font-size: 1rem; color: #94A3B8; line-height: 1.6; margin-bottom: 8px; }
+        .resubscribe { font-size: 0.85rem; color: #8B9BB5; line-height: 1.5; margin-top: 20px; }
+        .form-row { display: flex; gap: 6px; justify-content: center; margin-top: 16px; }
+        input[type="email"] { width: 240px; padding: 8px 12px; background: #1E293B; border: 1px solid #334155; border-radius: 6px; color: #F8FAFC; font-size: 0.9rem; outline: none; }
         input[type="email"]:focus { border-color: #F97316; }
         input[type="email"]::placeholder { color: #64748B; }
-        button { padding: 10px 20px; background: #F97316; color: #0F172A; font-size: 0.9rem; font-weight: 700; border: none; border-radius: 6px; cursor: pointer; transition: background 0.15s; }
-        button:hover { background: #c2590a; color: #fff; }
-        button:focus-visible { outline: 3px solid #F97316; outline-offset: 2px; }
-        .message { display: none; font-size: 0.9rem; margin-top: 12px; }
+        .btn { display: inline-block; padding: 8px 16px; background: #F97316; color: #0F172A; font-size: 0.85rem; font-weight: 700; border: none; border-radius: 6px; cursor: pointer; transition: background 0.15s; text-decoration: none; }
+        .btn:hover { background: #c2590a; color: #fff; }
+        button:focus-visible, input:focus-visible { outline: 3px solid #F97316; outline-offset: 2px; }
+        .message { display: none; font-size: 0.85rem; margin-top: 10px; }
         .success { color: #4ADE80; }
         .error { color: #F87171; }
 
-        /* Footer links */
+        /* Footer */
         .links { margin-top: 40px; padding-top: 20px; border-top: 1px solid #1E293B; }
         .links a { color: #8B9BB5; margin: 0 12px; font-size: 14px; text-decoration: underline; text-underline-offset: 2px; }
         .links a:hover { color: #FB923C; }
@@ -72,26 +71,24 @@
 
     <div class="container">
         <div class="content">
-            <div>
-                <!-- Confirm state: shows after one-click or manual form submit -->
+            <div class="inner">
+                <!-- Confirm state -->
                 <div id="confirmState" class="hidden">
                     <h1>You've been unsubscribed.</h1>
                     <p>You will no longer receive emails from Arizona AI Solutions.</p>
                     <p class="resubscribe">If you unsubscribed by mistake, you can re-subscribe by replying to any of our previous emails with "UNSTOP".</p>
                 </div>
 
-                <!-- Form state: default view for manual visits -->
+                <!-- Form state -->
                 <div id="formState">
                     <h1>Unsubscribe</h1>
                     <p>Enter your email address to stop receiving emails from Arizona AI Solutions.</p>
-                    <div class="form-section" style="border-top: none; padding-top: 0; margin-top: 20px;">
-                        <form id="unsubForm" class="form-row" onsubmit="return handleSubmit(event)">
-                            <input type="email" id="unsub-email" name="email" placeholder="name@company.com" required autocomplete="email">
-                            <button type="submit">Unsubscribe</button>
-                        </form>
-                        <div class="message success" id="successMsg">✓ You've been unsubscribed. You will no longer receive emails from Arizona AI Solutions.</div>
-                        <div class="message error" id="errorMsg">Something went wrong. Please email unsubscribe@arizona-ai-solutions.com directly.</div>
-                    </div>
+                    <form id="unsubForm" class="form-row" onsubmit="return handleSubmit(event)">
+                        <input type="email" id="unsub-email" name="email" placeholder="name@company.com" required autocomplete="email">
+                        <button type="submit" class="btn">Unsubscribe</button>
+                    </form>
+                    <div class="message success" id="successMsg">✓ You've been unsubscribed.</div>
+                    <div class="message error" id="errorMsg">Something went wrong. Please email unsubscribe@arizona-ai-solutions.com directly.</div>
                     <p class="resubscribe">If you unsubscribed by mistake, you can re-subscribe by replying to any of our previous emails with "UNSTOP".</p>
                 </div>
             </div>
@@ -103,17 +100,15 @@
                 <a href="/terms">Terms &amp; Conditions</a>
                 <a href="/sms">SMS Terms &amp; Opt-In</a>
                 <a href="/accessibility">Accessibility</a>
-                <a href="/unsubscribe">Unsubscribe</a>
             </div>
         </nav>
 
         <footer>
-            <p>&copy; 2026 Arizona AI Solutions &middot; <a href="tel:+15206506366" style="color: #7B8BA3; text-decoration: none;">(520) 650-6366</a> &middot; Tucson, Arizona.</p>
+            <p>&copy; 2026 Arizona AI Solutions &middot; <a href="tel:+1520****6366" style="color: #7B8BA3; text-decoration: none;">(520) 650-6366</a> &middot; Tucson, Arizona.</p>
         </footer>
     </div>
 
     <script>
-        // Gmail one-click unsubscribe sends a POST — confirm immediately
         (function() {
             if (window.location.search.includes('unsubscribe=1') || document.referrer.includes('mail.google.com')) {
                 document.getElementById('formState').classList.add('hidden');
@@ -152,7 +147,6 @@
             return false;
         }
 
-        // Close mobile nav when a link is clicked
         document.querySelectorAll('#navLinks a').forEach(function(link) {
             link.addEventListener('click', function() {
                 document.getElementById('navLinks').classList.remove('open');
