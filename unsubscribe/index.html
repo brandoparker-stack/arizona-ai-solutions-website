@@ -12,6 +12,18 @@
         h1 { font-size: 1.5rem; color: #fff; margin-bottom: 16px; }
         p { font-size: 1rem; color: #94A3B8; line-height: 1.7; margin-bottom: 12px; }
         .resubscribe { font-size: 0.9rem; color: #8B9BB5; line-height: 1.6; margin-top: 24px; padding-top: 20px; border-top: 1px solid #1E293B; }
+        .form-section { margin-top: 24px; padding-top: 20px; border-top: 1px solid #1E293B; }
+        .form-section label { display: block; font-size: 0.85rem; color: #8B9BB5; margin-bottom: 8px; }
+        .form-row { display: flex; gap: 8px; }
+        input[type="email"] { flex: 1; padding: 10px 14px; background: #1E293B; border: 1px solid #334155; border-radius: 6px; color: #F8FAFC; font-size: 0.95rem; outline: none; }
+        input[type="email"]:focus { border-color: #F97316; }
+        input[type="email"]::placeholder { color: #64748B; }
+        button { padding: 10px 20px; background: #F97316; color: #0F172A; font-size: 0.9rem; font-weight: 700; border: none; border-radius: 6px; cursor: pointer; transition: background 0.15s; }
+        button:hover { background: #c2590a; color: #fff; }
+        button:focus-visible { outline: 3px solid #F97316; outline-offset: 2px; }
+        .message { display: none; font-size: 0.9rem; margin-top: 12px; }
+        .success { color: #4ADE80; }
+        .error { color: #F87171; }
         .back-link { display: inline-block; margin-top: 32px; color: #8B9BB5; font-size: 0.85rem; text-decoration: none; }
         .back-link:hover { color: #F8FAFC; }
     </style>
@@ -21,7 +33,46 @@
         <h1>You've been unsubscribed.</h1>
         <p>You will no longer receive emails from Arizona AI Solutions.</p>
         <p class="resubscribe">If you unsubscribed by mistake, you can re-subscribe by replying to any of our previous emails with "UNSTOP".</p>
+
+        <div class="form-section">
+            <label for="unsub-email">Unsubscribe a different email address:</label>
+            <form id="unsubForm" class="form-row" onsubmit="return handleSubmit(event)">
+                <input type="email" id="unsub-email" name="email" placeholder="name@company.com" required autocomplete="email">
+                <button type="submit">Unsubscribe</button>
+            </form>
+            <div class="message success" id="successMsg">✓ That email has been unsubscribed.</div>
+            <div class="message error" id="errorMsg">Something went wrong. Please email unsubscribe@arizona-ai-solutions.com directly.</div>
+        </div>
+
         <a href="/" class="back-link">← Back to Arizona AI Solutions</a>
     </div>
+
+    <script>
+        async function handleSubmit(e) {
+            e.preventDefault();
+            var email = document.getElementById('unsub-email').value;
+            var successEl = document.getElementById('successMsg');
+            var errorEl = document.getElementById('errorMsg');
+            successEl.style.display = 'none';
+            errorEl.style.display = 'none';
+
+            try {
+                var response = await fetch('https://formspree.io/f/xdajjaew', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({ email: email, action: 'unsubscribe', source: 'List-Unsubscribe header' })
+                });
+                if (response.ok) {
+                    successEl.style.display = 'block';
+                    document.getElementById('unsub-email').value = '';
+                } else {
+                    errorEl.style.display = 'block';
+                }
+            } catch (err) {
+                errorEl.style.display = 'block';
+            }
+            return false;
+        }
+    </script>
 </body>
 </html>
