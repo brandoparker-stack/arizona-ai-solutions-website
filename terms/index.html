@@ -1,272 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms & Conditions — Arizona AI Solutions</title>
-    <meta name="description" content="Arizona AI Solutions terms and conditions for AI-powered phone answering and SMS services.">
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 0; background: #0F172A; color: #e2e8f0; line-height: 1.7; }
-        .container { max-width: 720px; margin: 0 auto; padding: 60px 20px 40px; }
-        h1 { font-size: 2rem; color: #fff; margin-bottom: 24px; border-bottom: 2px solid #F97316; padding-bottom: 12px; }
-        h2 { font-size: 1.3rem; color: #fff; margin-top: 32px; margin-bottom: 12px; }
-        h3 { font-size: 1.1rem; color: #F8FAFC; margin-top: 24px; margin-bottom: 8px; }
-        p { color: #CBD5E1; margin-bottom: 16px; }
-        ul { color: #CBD5E1; padding-left: 24px; margin-bottom: 16px; }
-        li { margin-bottom: 8px; }
-        a { color: #F97316; text-decoration: underline; text-underline-offset: 2px; }
-        a:hover { color: #FB923C; }
-        strong { color: #F8FAFC; }
-        em { color: #CBD5E1; }
-        hr { border: none; border-top: 1px solid #334155; margin: 32px 0; }
-        /* Nav */
-        nav.main-nav { position: sticky; top: 0; z-index: 50; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid #1E293B; width: 100%; }
-        nav.main-nav .nav-inner { max-width: 960px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; }
-        .nav-logo { font-size: 1.1rem; font-weight: 800; color: #F8FAFC; text-decoration: none; }
-        .nav-logo .accent { color: #F97316; }
-        .nav-links-row { display: flex; gap: 24px; align-items: center; }
-        .nav-links-row a { color: #8B9BB5; font-size: 0.9rem; text-decoration: none; transition: color 0.15s; }
-        .nav-links-row a:hover { color: #F8FAFC; }
-        .nav-links-row a:focus-visible { outline: 3px solid #F97316; outline-offset: 2px; }
-        .nav-cta { background: #F97316; color: #0F172A !important; font-size: 0.85rem; font-weight: 700; padding: 8px 18px; border-radius: 6px; text-decoration: none; transition: background 0.15s; }
-        .nav-cta:hover { background: #c2590a; color: #fff !important; }
-        .nav-cta:focus-visible { outline: 3px solid #F97316; outline-offset: 3px; }
-        .mobile-toggle { display: none; background: none; border: none; color: #F8FAFC; font-size: 1.5rem; cursor: pointer; padding: 4px; }
-        .mobile-toggle:focus-visible { outline: 3px solid #F97316; outline-offset: 2px; }
-        @media (max-width: 640px) {
-            .mobile-toggle { display: block; }
-            .nav-links-row { display: none; flex-direction: column; gap: 12px; position: absolute; top: 100%; left: 0; right: 0; background: rgba(15, 23, 42, 0.97); padding: 20px; border-bottom: 1px solid #1E293B; }
-            .nav-links-row.open { display: flex; }
-            .nav-cta { text-align: center; }
-        }
-        .back-link { margin-bottom: 24px; }
-        .back-link a { display: inline-block; padding: 10px 20px; background: #1E293B; color: #e2e8f0; border-radius: 6px; font-size: 14px; text-decoration: none; }
-        .back-link a:hover { background: #334155; }
-        .back-link a:focus-visible { outline: 3px solid #F97316; outline-offset: 2px; }
-        .nav-links { margin-top: 32px; padding-top: 16px; }
-        .nav-links a { color: #8B9BB5; margin-right: 16px; font-size: 14px; text-decoration: underline; text-underline-offset: 2px; }
-        .nav-links a:hover { color: #FB923C; }
-        footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #1E293B; color: #7B8BA3; font-size: 0.8rem; text-align: center; }
-        footer p { color: #7B8BA3; margin-bottom: 0; }
-        /* Accessibility */
-        .skip-link { position: absolute; top: -40px; left: 0; background: #F97316; color: #0F172A; padding: 8px 16px; z-index: 100; font-weight: 700; text-decoration: none; border-radius: 0 0 8px 0; }
-        .skip-link:focus { top: 0; outline: 3px solid #fff; }
-        a:focus-visible { outline: 3px solid #F97316; outline-offset: 2px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms & Conditions — Arizona AI Solutions</title>
+<meta name="description" content="Arizona AI Solutions terms and conditions for AI-powered phone answering and SMS services.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--background:#0C1322;
+--foreground:#F8FAFC;
+--card:#141E33;
+--card-elevated:#1A2744;
+--surface:#151F36;
+--surface-elevated:#1D2B4A;
+--primary:#F97316;
+--primary-hover:#EA6C0A;
+--primary-foreground:#0C1322;
+--hairline:rgba(255,255,255,0.08);
+--border-strong:#3A4560;
+--muted-foreground:#94A3B8;
+--font-body:'Inter',system-ui,-apple-system,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--background);color:var(--foreground);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+a:focus-visible,button:focus-visible{outline:2px solid #575ECF;outline-offset:2px}
+.nav{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--hairline);background:rgba(12,19,34,0.8);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+.nav-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 24px}
+.nav-logo{font-size:15px;font-weight:600;letter-spacing:-0.01em}
+.nav-logo .accent{color:var(--primary)}
+.accent{color:var(--primary)}
+.nav-links{display:none;gap:32px;align-items:center}
+.nav-links a{font-size:13.5px;color:var(--muted-foreground);transition:color .15s}
+.nav-links a:hover{color:var(--foreground)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-phone{display:none;align-items:center;gap:6px;font-size:13.5px;color:var(--muted-foreground);transition:color .15s;cursor:default}
+.nav-phone:hover{color:var(--foreground)}
+.nav-toggle{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:none;background:none;color:var(--foreground);cursor:pointer;border-radius:6px;transition:background .15s}
+.nav-toggle:hover{background:var(--surface)}
+.nav-toggle svg{width:20px;height:20px;stroke:currentColor}
+@media(min-width:768px){.nav-toggle{display:none}}
+.nav-phone svg{width:14px;height:14px}
+.nav-cta{display:inline-flex;align-items:center;justify-content:center;border-radius:6px;background:var(--primary);padding:8px 14px;font-size:13px;font-weight:500;color:var(--primary-foreground);box-shadow:0 10px 30px -10px rgba(249,115,22,0.5);transition:background .15s}
+.nav-cta:hover{background:var(--primary-hover)}
+@media(min-width:768px){.nav-links{display:flex}.nav-phone{display:inline-flex}}
+@media(max-width:767px){.nav-links.open{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(12,19,34,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--hairline);padding:16px 24px;gap:0}.nav-links.open a{display:block;padding:14px 0;font-size:15px;color:var(--foreground);border-bottom:1px solid var(--hairline)}.nav-links.open a:last-child{border-bottom:none}.nav-links.open a:hover{color:var(--primary)}}
+.footer{background:var(--background);padding:80px 24px}
+.footer-grid{max-width:1160px;margin:0 auto;display:grid;gap:48px}
+@media(min-width:1024px){.footer-grid{grid-template-columns:1.2fr 1fr 1fr 1fr}}
+.footer-logo{display:flex;align-items:center;gap:10px}
+.footer-logo-text{font-size:15px;font-weight:600;letter-spacing:-0.01em}
+.footer-desc{margin-top:16px;font-size:13.5px;line-height:1.625;color:var(--muted-foreground);max-width:384px}
+.footer-col-label{display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.16em;color:var(--muted-foreground)}
+.footer-col-label svg{width:14px;height:14px;color:var(--primary);stroke:var(--primary)}
+.footer-link{display:block;margin-top:12px;font-size:14px;font-weight:500;color:var(--foreground);transition:color .15s}
+.footer-link:hover{color:var(--primary)}
+.footer-subtext{margin-top:4px;font-size:12.5px;color:var(--muted-foreground)}
+.footer-bottom{max-width:1160px;margin:64px auto 0;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:16px;border-top:1px solid var(--hairline);padding-top:32px;font-size:12.5px;color:var(--muted-foreground)}
+@media(min-width:640px){.footer-bottom{flex-direction:row;align-items:center;flex-wrap:wrap}}
+.footer-location{display:flex;align-items:center;gap:8px}
+.footer-location svg{width:14px;height:14px}
+.footer-legal{display:flex;flex-wrap:wrap;gap:8px 16px}
+.footer-legal a{transition:color .15s;text-decoration:none}
+.footer-legal a:hover{color:var(--primary)}
+.container{max-width:720px;margin:0 auto;padding:60px 24px 40px}
+h1{font-size:2rem;color:var(--foreground);margin-bottom:24px;border-bottom:2px solid var(--primary);padding-bottom:12px}
+h2{font-size:1.3rem;color:var(--foreground);margin-top:32px;margin-bottom:12px}
+h3{font-size:1.1rem;color:var(--foreground);margin-top:24px;margin-bottom:8px}
+p{color:var(--muted-foreground);margin-bottom:16px;line-height:1.7}
+ul.content-list{color:var(--muted-foreground);padding-left:24px;margin-bottom:16px;list-style:disc}
+li{margin-bottom:8px}
+a.body-link{color:var(--primary);text-decoration:underline;text-underline-offset:2px}
+a.body-link:hover{color:#FB923C}
+strong{color:var(--foreground)}
+em{color:var(--muted-foreground)}
+hr{border:none;border-top:1px solid var(--hairline);margin:32px 0}
+.back-link{margin-bottom:24px}
+.back-link a{display:inline-block;padding:10px 20px;background:var(--surface);color:var(--muted-foreground);border-radius:6px;font-size:14px;text-decoration:none;transition:background .15s}
+.back-link a:hover{background:var(--surface-elevated);color:var(--foreground)}
+.skip-link{position:absolute;top:-40px;left:0;background:var(--primary);color:var(--primary-foreground);padding:8px 16px;z-index:100;font-weight:700;text-decoration:none;border-radius:0 0 8px 0}
+.skip-link:focus{top:0;outline:3px solid #fff}
+</style>
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <nav class="main-nav" aria-label="Main navigation">
-        <div class="nav-inner">
-            <a href="/" class="nav-logo">Arizona <span class="accent">AI</span> Solutions</a>
-            <button class="mobile-toggle" aria-label="Toggle navigation menu" onclick="document.getElementById('navLinks').classList.toggle('open')">&#9776;</button>
-            <div class="nav-links-row" id="navLinks">
-                <a href="/">Home</a>
-                <a href="/calculator">Calculator</a>
-                <a href="https://calendly.com/brandon-arizona-ai-solutions/15-min-discovery-call" class="nav-cta" target="_blank" rel="noopener">Book a Demo</a>
-            </div>
-        </div>
-    </nav>
+<header class="nav">
+<div class="nav-inner">
+<a href="/" class="nav-logo">Arizona <span class="accent">AI</span> Solutions</a>
+<nav class="nav-links">
+<a href="/index.html#how">How it works</a>
+<a href="/index.html#benefits">What you get</a>
+<a href="/index.html#who">Who we serve</a>
+<a href="/index.html#pricing">Pricing</a>
+<a href="/calculator">Calculator</a>
+</nav>
+<div class="nav-right">
+<button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+</button>
+<a href="tel:+152****6366" class="nav-phone">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
+(520) 650-6366
+</a>
+<a href="https://calendly.com/arizona-ai-solutions/15-min-discovery-call" class="nav-cta">Book a Demo</a>
+</div>
+</div>
+</header>
 
-    <div class="container">
-        <div class="back-link"><a href="/">← Back to Arizona AI Solutions</a></div>
-        <main id="main-content">
-            <h1>Terms & Conditions</h1>
-            <p><strong>Last Updated:</strong> May 21, 2026<br>
-            <strong>Business:</strong> Arizona AI Solutions<br>
-            <strong>Contact:</strong> brandon@arizona-ai-solutions.com</p>
+<div class="container">
+<div class="back-link"><a href="/">← Back to Arizona AI Solutions</a></div>
+<main id="main-content">
+    <h1>Terms & Conditions</h1>
+    <p><strong>Last Updated:</strong> May 21, 2026<br>
+    <strong>Business:</strong> Arizona AI Solutions<br>
+    <strong>Contact:</strong> brandon@arizona-ai-solutions.com</p>
 
-            <p>Arizona AI Solutions<br>
-            Tucson, Arizona</p>
+    <p>Arizona AI Solutions<br>
+    Tucson, Arizona</p>
 
-            <h2>1. Services</h2>
-            <p>Arizona AI Solutions provides an AI-powered phone answering service for businesses. Our services include:</p>
-            <ul>
-                <li>Answering inbound phone calls on behalf of the business using an AI voice agent</li>
-                <li>Qualifying leads, booking appointments, and handling scheduling via Calendly integration</li>
-                <li>Sending SMS booking confirmations, appointment reminders, reschedule links, and post-appointment follow-ups</li>
-                <li>Providing the Arizona AI Call Dashboard for real-time call tracking, booking data, and SMS activity</li>
-                <li>Handling emergency call routing and business owner notifications</li>
+    <h2>1. Services</h2>
+    <p>Arizona AI Solutions provides an AI-powered phone answering service for businesses. Our services include:</p>
+    <ul class="content-list">
+        <li>Answering inbound phone calls on behalf of the business using an AI voice agent</li>
+        <li>Qualifying leads, booking appointments, and handling scheduling via Calendly integration</li>
+        <li>Sending SMS booking confirmations, appointment reminders, reschedule links, and post-appointment follow-ups</li>
+        <li>Providing the Arizona AI Call Dashboard for real-time call tracking, booking data, and SMS activity</li>
+        <li>Handling emergency call routing and business owner notifications</li>
+    </ul>
+
+    <h2>2. AI Agent Disclaimer</h2>
+    <p>Calls are answered by an AI voice agent, not a human. While the AI agent is designed to handle common booking, scheduling, and qualification tasks accurately, it may not understand or respond correctly in every situation. The AI agent may escalate or transfer calls to a human representative when appropriate. By using the service, the Business acknowledges that it is engaging an AI system and accepts the inherent limitations of automated voice interactions. Customers are informed during the call that they are speaking with an AI system. Arizona AI Solutions is not liable for any misunderstanding, incorrect information, or outcome resulting from the AI agent's responses.</p>
+
+    <h2>3. Service Agreement</h2>
+    <p>By subscribing to Arizona AI Solutions, the client ("Business") agrees to these terms. Arizona AI Solutions agrees to provide the services described above for the agreed-upon monthly fee. These terms apply to all services provided unless a separate written agreement specifies otherwise.</p>
+
+    <h2>4. Pricing and Payment</h2>
+    <ul class="content-list">
+        <li><strong>Setup fee:</strong> One-time charge as specified in the client's service agreement</li>
+        <li><strong>Monthly fee:</strong> Recurring charge as specified in the client's service agreement, which includes a base number of call minutes</li>
+        <li><strong>Overage:</strong> Calls exceeding the included minutes are billed at the per-minute rate specified in the service agreement</li>
+        <li><strong>Invoicing:</strong> Monthly invoices are sent via email. Payment is due within 15 days of invoice date.</li>
+        <li><strong>Late payments:</strong> Services may be suspended if payment is more than 30 days overdue</li>
+    </ul>
+
+    <h2>5. Phone Numbers</h2>
+    <ul class="content-list">
+        <li>Each client is assigned a dedicated Twilio phone number for their business</li>
+        <li>The phone number remains active for the duration of the service agreement</li>
+        <li>If the client terminates service, the phone number may be released after a 30-day transition period</li>
+        <li>The client may request number porting subject to Twilio's porting policies and any applicable fees</li>
+    </ul>
+
+    <h2>6. SMS Messaging</h2>
+
+    <h3>6.1 Consent and Opt-In</h3>
+    <ul class="content-list">
+        <li><strong>No cold outreach:</strong> SMS messages are sent <strong>only</strong> in response to a customer's inbound phone call. Arizona AI Solutions does not send unsolicited, promotional, or marketing text messages under any circumstances.</li>
+        <li><strong>Verbal consent required:</strong> During each inbound call, the AI agent asks the customer for clear, affirmative consent before sending any SMS. Example: <em>"Would you like me to send your booking confirmation via text message?"</em> The customer must verbally confirm (e.g., "Yes," "Sure," "Go ahead") before a message is sent. If the customer declines or does not respond, no SMS is sent.</li>
+        <li><strong>Scope of consent:</strong> Consent applies <strong>only</strong> to transactional messages related to the specific service interaction discussed on that call — booking confirmations, appointment reminders, reschedule links, and post-appointment follow-ups confirming service completion. Consent does <strong>not</strong> extend to promotional offers, newsletters, seasonal discounts, marketing campaigns, or any messages unrelated to that appointment. <strong>Consent never authorizes marketing or promotional messages under any circumstances.</strong></li>
+        <li><strong>Per-call consent:</strong> Each new inbound call requires fresh verbal consent before any new SMS messages are sent. Prior consent from a previous call does not carry over to new calls or new appointments.</li>
+        <li><strong>Consent verification:</strong> Arizona AI Solutions maintains a record of each consent event, including the timestamp, call identifier, and message type triggered. This log is available for carrier compliance audits upon request.</li>
+    </ul>
+
+    <h3>6.2 Message Types and Frequency</h3>
+    <ul class="content-list">
+        <li><strong>Booking confirmations</strong> — Sent immediately after an appointment is booked on the call.</li>
+        <li><strong>Appointment reminders</strong> — Sent approximately 24 hours before a scheduled appointment.</li>
+        <li><strong>Reschedule links</strong> — Sent when a customer requests to change an appointment time.</li>
+        <li><strong>Post-appointment follow-ups</strong> — Sent approximately 1 hour after a completed appointment, confirming service completion.</li>
+        <li><strong>Emergency notifications</strong> — Sent to the caller confirming that their emergency request has been received and a technician is being dispatched.</li>
+    </ul>
+    <p>Customers can expect <strong>1 to 3 SMS messages per appointment</strong> (confirmation, reminder, follow-up). This is an event-triggered, transactional message pattern — not recurring or subscription-based messaging.</p>
+
+    <h3>6.3 Opt-Out Mechanics</h3>
+    <ul class="content-list">
+        <li><strong>STOP:</strong> Immediately cancels all future SMS messages. After sending STOP, the customer receives a single confirmation message stating they have been unsubscribed. No further messages will be sent unless the customer re-opts in.</li>
+        <li><strong>UNSTOP:</strong> Restores SMS delivery. The customer receives a confirmation message that messaging has been resumed. Opt-in consent is reaffirmed at this point.</li>
+        <li><strong>HELP:</strong> Replies with a help message containing support contact information and a reminder that the customer can reply STOP to unsubscribe.</li>
+        <li><strong>Processing time:</strong> Opt-out requests are processed immediately upon receipt. There is no delay between receiving a STOP command and halting message delivery.</li>
+        <li><strong>Post opt-out:</strong> After a customer opts out via STOP, no further SMS messages will be sent to that number unless the customer calls the business again and provides fresh verbal consent, or sends UNSTOP to resume.</li>
+    </ul>
+
+    <h3>6.4 Carrier Compliance</h3>
+    <ul class="content-list">
+        <li>Arizona AI Solutions operates under a registered A2P 10DLC brand and campaign with The Campaign Registry (TCR)</li>
+        <li>All SMS messaging complies with Twilio's Acceptable Use Policy, A2P 10DLC requirements, and CTIA Messaging Principles</li>
+        <li>Message content is limited to transactional, event-driven communications as described above</li>
+        <li>Arizona AI Solutions monitors delivery rates, opt-out rates, and spam reports and will suspend or modify messaging practices if carrier thresholds are approached</li>
+    </ul>
+
+    <h3>6.5 Business Responsibility</h3>
+    <p>Arizona AI Solutions provides the technical platform and messaging infrastructure. The Business is the sender of record for all SMS messages sent under its brand. Both parties share responsibility for compliance:</p>
+    <ul class="content-list">
+        <li><strong>Arizona AI Solutions</strong> is responsible for the consent collection mechanism (verbal opt-in prompts during the AI call), opt-out processing (STOP/UNSTOP/HELP), and message delivery infrastructure. Arizona AI Solutions will only send transactional SMS messages after obtaining verbal consent during an inbound call and will honor all opt-out requests immediately.</li>
+        <li><strong>The Business</strong> is responsible for ensuring that its use of the service complies with the Telephone Consumer Protection Act (TCPA), CAN-SPAM Act, FCC regulations, and applicable state laws, as well as any industry-specific regulations that apply to its operations.</li>
+        <li>Maintaining proper consent records and honoring opt-out requests</li>
+        <li>Ensuring that message content and business practices do not violate any applicable laws or third-party rights</li>
+        <li>Complying with any industry-specific regulations that apply to the Business's operations (e.g., licensing requirements for plumbers, electricians, HVAC contractors)</li>
+        <li>Not directing Arizona AI Solutions to send messages that constitute cold outreach, telemarketing, or promotional content beyond the transactional message types described in Section 6.2</li>
+    </ul>
+
+    <h2>7. Prohibited Use</h2>
+    <p>The Business and its customers may not use Arizona AI Solutions' services to:</p>
+    <ul class="content-list">
+        <li>Send unsolicited, cold outreach, or promotional SMS messages to any recipient</li>
+        <li>Send messages containing illegal, fraudulent, deceptive, or misleading content</li>
+        <li>Send messages that constitute harassment, threats, or abuse toward any person</li>
+        <li>Send messages containing adult content, explicit material, or content inappropriate for minors</li>
+        <li>Violate any federal, state, or local law or regulation, including but not limited to the Telephone Consumer Protection Act (TCPA), CAN-SPAM Act, and FCC regulations</li>
+        <li>Impersonate any person or entity, or falsely represent affiliation with any person or entity</li>
+        <li>Attempt to circumvent carrier filtering, opt-out processing, or consent requirements</li>
+        <li>Use the service for any purpose that violates Twilio's Acceptable Use Policy or A2P 10DLC campaign guidelines</li>
+        <li>Send messages related to illegal gambling, controlled substances, weapons, or any unlawful activity</li>
+        <li>Use automated dialing or messaging systems to contact numbers on the National Do Not Call Registry for promotional purposes</li>
+        <li>Operate in high-risk verticals including but not limited to debt collection, payday lending, cryptocurrency schemes, online gambling, or substance abuse treatment marketing, without prior written approval from Arizona AI Solutions</li>
+    </ul>
+    <p>Violation of these prohibitions may result in immediate suspension or termination of service without refund. Arizona AI Solutions reserves the right to investigate and take action on any suspected violation.</p>
+
+    <h2>8. Data Ownership</h2>
+    <ul class="content-list">
+        <li>All call data, customer information, and booking records generated during the service belong to the Business</li>
+        <li>Arizona AI Solutions processes this data solely to deliver the service</li>
+        <li>Data is stored on dedicated infrastructure we control and is never shared with other clients</li>
+        <li>Upon termination, the Business may request a complete data export prior to deletion</li>
+    </ul>
+
+    <h2>9. Privacy</h2>
+    <p>Our collection and use of personal information is described in our <a class="body-link" href="/privacy">Privacy Policy</a>. By using our service, the Business and its customers agree to the practices described therein, including the SMS consent and opt-out procedures described in the Privacy Policy.</p>
+
+    <h2>10. Service Availability</h2>
+    <ul class="content-list">
+        <li>Arizona AI Solutions strives to maintain high availability for phone answering services, including redundant infrastructure and monitoring</li>
+        <li>Scheduled maintenance windows will be communicated at least 24 hours in advance</li>
+        <li>Arizona AI Solutions is not liable for service interruptions caused by third-party providers (Twilio, Calendly, cloud hosting) beyond our control</li>
+    </ul>
+
+    <h2>11. Limitation of Liability</h2>
+    <ul class="content-list">
+        <li><strong>Capped liability:</strong> Arizona AI Solutions' total aggregate liability for any and all claims arising from or related to the service, whether in contract, tort, negligence, strict liability, or any other legal theory, shall not exceed the total fees paid by the Business in the three (3) months preceding the claim.</li>
+        <li><strong>Exclusion of consequential damages:</strong> To the maximum extent permitted by applicable law, neither party shall be liable for any indirect, incidental, special, consequential, punitive, or exemplary damages, including lost profits, lost revenue, lost business opportunities, loss of data, cost of substitute services, or business interruption, even if foreseeable or if either party had been advised of the possibility.</li>
+        <li><strong>Service limitations:</strong> Arizona AI Solutions does not guarantee that the service will be uninterrupted, error-free, or meet the Business's specific requirements. The Business assumes all risk of use.</li>
+        <li><strong>Business responsibility:</strong> The Business is the sender of record for all messages under its brand and is responsible for TCPA/CAN-SPAM/FCC compliance, message content, and any obligations arising from its own industry regulations. Arizona AI Solutions handles the consent collection mechanism, opt-out processing, and message delivery — and only sends transactional SMS after obtaining verbal consent during an inbound call.</li>
+        <li><strong>Third-party dependencies:</strong> Arizona AI Solutions is not liable for outages, failures, or disruptions caused by Twilio, Calendly, xAI, or other third-party service providers.</li>
+    </ul>
+    <p>THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. ARIZONA AI SOLUTIONS DOES NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, ERROR-FREE, OR FREE OF HARMFUL COMPONENTS.</p>
+
+    <h2>12. Indemnification</h2>
+    <p>The Business agrees to indemnify, defend, and hold harmless Arizona AI Solutions, its officers, directors, employees, and agents from and against any and all claims, damages, losses, liabilities, costs, and expenses (including reasonable attorneys' fees) arising from or related to:</p>
+    <ul class="content-list">
+        <li>The Business's breach of these Terms & Conditions</li>
+        <li>The Business's violation of any applicable law or regulation, including TCPA, CAN-SPAM, or FCC rules</li>
+        <li>The Business's use of the service in a manner inconsistent with the permitted message types and prohibited use provisions described herein</li>
+        <li>Any claim that the Business's content, branding, or messaging infringes or violates the rights of any third party</li>
+        <li>Any regulatory action, carrier penalty, or compliance finding resulting from the Business's conduct</li>
+    </ul>
+    <p>This indemnification obligation survives termination of the service agreement.</p>
+
+    <h2>13. Termination</h2>
+    <ul class="content-list">
+        <li>Either party may terminate the service with 30 days' written notice</li>
+        <li>Arizona AI Solutions may suspend or terminate service immediately if the Business violates the Prohibited Use section (Section 7) or any A2P 10DLC compliance requirement</li>
+        <li>Upon termination, Arizona AI Solutions will:
+            <ul class="content-list">
+                <li>Provide a complete data export within 15 days of the termination date</li>
+                <li>Delete client data from servers within 30 days of the termination date</li>
+                <li>Release the assigned phone number after a 30-day transition period (unless porting is requested)</li>
             </ul>
+        </li>
+        <li>Outstanding invoices are due upon termination</li>
+    </ul>
 
-            <h2>2. AI Agent Disclaimer</h2>
-            <p>Calls are answered by an AI voice agent, not a human. While the AI agent is designed to handle common booking, scheduling, and qualification tasks accurately, it may not understand or respond correctly in every situation. The AI agent may escalate or transfer calls to a human representative when appropriate. By using the service, the Business acknowledges that it is engaging an AI system and accepts the inherent limitations of automated voice interactions. Customers are informed during the call that they are speaking with an AI system. Arizona AI Solutions is not liable for any misunderstanding, incorrect information, or outcome resulting from the AI agent's responses.</p>
+    <h2>14. Modifications</h2>
+    <p>Arizona AI Solutions may modify these terms with 30 days' written notice to the Business. Material changes will be communicated via email to the address on file. Continued use of the service after modifications take effect constitutes acceptance. If the Business does not agree with the modifications, it may terminate service per Section 13.</p>
 
-            <h2>3. Service Agreement</h2>
-            <p>By subscribing to Arizona AI Solutions, the client ("Business") agrees to these terms. Arizona AI Solutions agrees to provide the services described above for the agreed-upon monthly fee. These terms apply to all services provided unless a separate written agreement specifies otherwise.</p>
+    <h2>15. Governing Law</h2>
+    <p>These terms are governed by the laws of the State of Arizona. Any disputes shall be resolved in the courts of Maricopa County, Arizona. The Business agrees to submit to the personal jurisdiction of those courts.</p>
 
-            <h2>4. Pricing and Payment</h2>
-            <ul>
-                <li><strong>Setup fee:</strong> One-time charge as specified in the client's service agreement</li>
-                <li><strong>Monthly fee:</strong> Recurring charge as specified in the client's service agreement, which includes a base number of call minutes</li>
-                <li><strong>Overage:</strong> Calls exceeding the included minutes are billed at the per-minute rate specified in the service agreement</li>
-                <li><strong>Invoicing:</strong> Monthly invoices are sent via email. Payment is due within 15 days of invoice date.</li>
-                <li><strong>Late payments:</strong> Services may be suspended if payment is more than 30 days overdue</li>
-            </ul>
+    <h2>16. Severability</h2>
+    <p>If any provision of these terms is found to be unenforceable or invalid, that provision shall be limited or eliminated to the minimum extent necessary so that the remaining provisions remain in full force and effect.</p>
 
-            <h2>5. Phone Numbers</h2>
-            <ul>
-                <li>Each client is assigned a dedicated Twilio phone number for their business</li>
-                <li>The phone number remains active for the duration of the service agreement</li>
-                <li>If the client terminates service, the phone number may be released after a 30-day transition period</li>
-                <li>The client may request number porting subject to Twilio's porting policies and any applicable fees</li>
-            </ul>
+    <h2>17. Entire Agreement</h2>
+    <p>These Terms & Conditions, together with the Privacy Policy and any signed service agreement, constitute the entire agreement between Arizona AI Solutions and the Business regarding the subject matter herein, and supersede all prior or contemporaneous agreements or representations.</p>
 
-            <h2>6. SMS Messaging</h2>
+    <h2>18. Contact</h2>
+    <p>For questions about these terms, contact:</p>
+    <p>Arizona AI Solutions<br>brandon@arizona-ai-solutions.com<br>Tucson, Arizona</p>
+</main>
+</div>
 
-            <h3>6.1 Consent and Opt-In</h3>
-            <ul>
-                <li><strong>No cold outreach:</strong> SMS messages are sent <strong>only</strong> in response to a customer's inbound phone call. Arizona AI Solutions does not send unsolicited, promotional, or marketing text messages under any circumstances.</li>
-                <li><strong>Verbal consent required:</strong> During each inbound call, the AI agent asks the customer for clear, affirmative consent before sending any SMS. Example: <em>"Would you like me to send your booking confirmation via text message?"</em> The customer must verbally confirm (e.g., "Yes," "Sure," "Go ahead") before a message is sent. If the customer declines or does not respond, no SMS is sent.</li>
-                <li><strong>Scope of consent:</strong> Consent applies <strong>only</strong> to transactional messages related to the specific service interaction discussed on that call — booking confirmations, appointment reminders, reschedule links, and post-appointment follow-ups confirming service completion. Consent does <strong>not</strong> extend to promotional offers, newsletters, seasonal discounts, marketing campaigns, or any messages unrelated to that appointment. <strong>Consent never authorizes marketing or promotional messages under any circumstances.</strong></li>
-                <li><strong>Per-call consent:</strong> Each new inbound call requires fresh verbal consent before any new SMS messages are sent. Prior consent from a previous call does not carry over to new calls or new appointments.</li>
-                <li><strong>Consent verification:</strong> Arizona AI Solutions maintains a record of each consent event, including the timestamp, call identifier, and message type triggered. This log is available for carrier compliance audits upon request.</li>
-            </ul>
+<footer class="footer">
+<div class="footer-grid">
+<div>
+<div class="footer-logo">
+<span class="footer-logo-text">Arizona <span class="accent">AI</span> Solutions</span>
+</div>
+<p class="footer-desc">AI phone agents for Arizona home service businesses. Never miss another after-hours call.</p>
+</div>
+<div>
+<div class="footer-col-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>Phone</div>
+<a href="tel:+152****6366" class="footer-link">(520) 650-6366</a>
+<div class="footer-subtext">Mon–Fri · 8a–6p MST</div>
+</div>
+<div>
+<div class="footer-col-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 14v2.2l1.6 1"/><path d="M16 2v4"/><path d="M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5"/><path d="M3 10h5"/><path d="M8 2v4"/><circle cx="16" cy="16" r="6"/></svg>Schedule a call</div>
+<a href="https://calendly.com/arizona-ai-solutions/15-min-discovery-call" class="footer-link">Book a 15-minute call</a>
+<div class="footer-subtext">Discovery &amp; demo</div>
+</div>
+<div>
+<div class="footer-col-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>Email</div>
+<a href="mailto:brandon@arizona-ai-solutions.com" class="footer-link">brandon@arizona-ai-solutions.com</a>
+<div class="footer-subtext">Replies within 1 business day</div>
+</div>
+</div>
+<div class="footer-bottom">
+<div class="footer-location"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> Tucson, Arizona · Serving the State of Arizona</div>
+<div class="footer-legal">
+<a href="/privacy">Privacy Policy</a>
+<a href="/terms">Terms &amp; Conditions</a>
+<a href="/sms">SMS Terms &amp; Opt-In</a>
+<a href="/accessibility">Accessibility</a>
+<a href="/unsubscribe">Unsubscribe</a>
+</div>
+<div>© 2026 Arizona AI Solutions. All rights reserved.</div>
+</div>
+</footer>
 
-            <h3>6.2 Message Types and Frequency</h3>
-            <ul>
-                <li><strong>Booking confirmations</strong> — Sent immediately after an appointment is booked on the call.</li>
-                <li><strong>Appointment reminders</strong> — Sent approximately 24 hours before a scheduled appointment.</li>
-                <li><strong>Reschedule links</strong> — Sent when a customer requests to change an appointment time.</li>
-                <li><strong>Post-appointment follow-ups</strong> — Sent approximately 1 hour after a completed appointment, confirming service completion.</li>
-                <li><strong>Emergency notifications</strong> — Sent to the caller confirming that their emergency request has been received and a technician is being dispatched.</li>
-            </ul>
-            <p>Customers can expect <strong>1 to 3 SMS messages per appointment</strong> (confirmation, reminder, follow-up). This is an event-triggered, transactional message pattern — not recurring or subscription-based messaging.</p>
-
-            <h3>6.3 Opt-Out Mechanics</h3>
-            <ul>
-                <li><strong>STOP:</strong> Immediately cancels all future SMS messages. After sending STOP, the customer receives a single confirmation message stating they have been unsubscribed. No further messages will be sent unless the customer re-opts in.</li>
-                <li><strong>UNSTOP:</strong> Restores SMS delivery. The customer receives a confirmation message that messaging has been resumed. Opt-in consent is reaffirmed at this point.</li>
-                <li><strong>HELP:</strong> Replies with a help message containing support contact information and a reminder that the customer can reply STOP to unsubscribe.</li>
-                <li><strong>Processing time:</strong> Opt-out requests are processed immediately upon receipt. There is no delay between receiving a STOP command and halting message delivery.</li>
-                <li><strong>Post opt-out:</strong> After a customer opts out via STOP, no further SMS messages will be sent to that number unless the customer calls the business again and provides fresh verbal consent, or sends UNSTOP to resume.</li>
-            </ul>
-
-            <h3>6.4 Carrier Compliance</h3>
-            <ul>
-                <li>Arizona AI Solutions operates under a registered A2P 10DLC brand and campaign with The Campaign Registry (TCR)</li>
-                <li>All SMS messaging complies with Twilio's Acceptable Use Policy, A2P 10DLC requirements, and CTIA Messaging Principles</li>
-                <li>Message content is limited to transactional, event-driven communications as described above</li>
-                <li>Arizona AI Solutions monitors delivery rates, opt-out rates, and spam reports and will suspend or modify messaging practices if carrier thresholds are approached</li>
-            </ul>
-
-            <h3>6.5 Business Responsibility</h3>
-            <p>Arizona AI Solutions provides the technical platform and messaging infrastructure. The Business is the sender of record for all SMS messages sent under its brand. Both parties share responsibility for compliance:</p>
-            <ul>
-                <li><strong>Arizona AI Solutions</strong> is responsible for the consent collection mechanism (verbal opt-in prompts during the AI call), opt-out processing (STOP/UNSTOP/HELP), and message delivery infrastructure. Arizona AI Solutions will only send transactional SMS messages after obtaining verbal consent during an inbound call and will honor all opt-out requests immediately.</li>
-                <li><strong>The Business</strong> is responsible for ensuring that its use of the service complies with the Telephone Consumer Protection Act (TCPA), CAN-SPAM Act, FCC regulations, and applicable state laws, as well as any industry-specific regulations that apply to its operations.</li>
-                <li>Maintaining proper consent records and honoring opt-out requests</li>
-                <li>Ensuring that message content and business practices do not violate any applicable laws or third-party rights</li>
-                <li>Complying with any industry-specific regulations that apply to the Business's operations (e.g., licensing requirements for plumbers, electricians, HVAC contractors)</li>
-                <li>Not directing Arizona AI Solutions to send messages that constitute cold outreach, telemarketing, or promotional content beyond the transactional message types described in Section 6.2</li>
-            </ul>
-
-            <h2>7. Prohibited Use</h2>
-            <p>The Business and its customers may not use Arizona AI Solutions' services to:</p>
-            <ul>
-                <li>Send unsolicited, cold outreach, or promotional SMS messages to any recipient</li>
-                <li>Send messages containing illegal, fraudulent, deceptive, or misleading content</li>
-                <li>Send messages that constitute harassment, threats, or abuse toward any person</li>
-                <li>Send messages containing adult content, explicit material, or content inappropriate for minors</li>
-                <li>Violate any federal, state, or local law or regulation, including but not limited to the Telephone Consumer Protection Act (TCPA), CAN-SPAM Act, and FCC regulations</li>
-                <li>Impersonate any person or entity, or falsely represent affiliation with any person or entity</li>
-                <li>Attempt to circumvent carrier filtering, opt-out processing, or consent requirements</li>
-                <li>Use the service for any purpose that violates Twilio's Acceptable Use Policy or A2P 10DLC campaign guidelines</li>
-                <li>Send messages related to illegal gambling, controlled substances, weapons, or any unlawful activity</li>
-                <li>Use automated dialing or messaging systems to contact numbers on the National Do Not Call Registry for promotional purposes</li>
-                <li>Operate in high-risk verticals including but not limited to debt collection, payday lending, cryptocurrency schemes, online gambling, or substance abuse treatment marketing, without prior written approval from Arizona AI Solutions</li>
-            </ul>
-            <p>Violation of these prohibitions may result in immediate suspension or termination of service without refund. Arizona AI Solutions reserves the right to investigate and take action on any suspected violation.</p>
-
-            <h2>8. Data Ownership</h2>
-            <ul>
-                <li>All call data, customer information, and booking records generated during the service belong to the Business</li>
-                <li>Arizona AI Solutions processes this data solely to deliver the service</li>
-                <li>Data is stored on dedicated infrastructure we control and is never shared with other clients</li>
-                <li>Upon termination, the Business may request a complete data export prior to deletion</li>
-            </ul>
-
-            <h2>9. Privacy</h2>
-            <p>Our collection and use of personal information is described in our <a href="/privacy">Privacy Policy</a>. By using our service, the Business and its customers agree to the practices described therein, including the SMS consent and opt-out procedures described in the Privacy Policy.</p>
-
-            <h2>10. Service Availability</h2>
-            <ul>
-                <li>Arizona AI Solutions strives to maintain high availability for phone answering services, including redundant infrastructure and monitoring</li>
-                <li>Scheduled maintenance windows will be communicated at least 24 hours in advance</li>
-                <li>Arizona AI Solutions is not liable for service interruptions caused by third-party providers (Twilio, Calendly, cloud hosting) beyond our control</li>
-            </ul>
-
-            <h2>11. Limitation of Liability</h2>
-            <ul>
-                <li><strong>Capped liability:</strong> Arizona AI Solutions' total aggregate liability for any and all claims arising from or related to the service, whether in contract, tort, negligence, strict liability, or any other legal theory, shall not exceed the total fees paid by the Business in the three (3) months preceding the claim.</li>
-                <li><strong>Exclusion of consequential damages:</strong> To the maximum extent permitted by applicable law, neither party shall be liable for any indirect, incidental, special, consequential, punitive, or exemplary damages, including lost profits, lost revenue, lost business opportunities, loss of data, cost of substitute services, or business interruption, even if foreseeable or if either party had been advised of the possibility.</li>
-                <li><strong>Service limitations:</strong> Arizona AI Solutions does not guarantee that the service will be uninterrupted, error-free, or meet the Business's specific requirements. The Business assumes all risk of use.</li>
-                <li><strong>Business responsibility:</strong> The Business is the sender of record for all messages under its brand and is responsible for TCPA/CAN-SPAM/FCC compliance, message content, and any obligations arising from its own industry regulations. Arizona AI Solutions handles the consent collection mechanism, opt-out processing, and message delivery — and only sends transactional SMS after obtaining verbal consent during an inbound call.</li>
-                <li><strong>Third-party dependencies:</strong> Arizona AI Solutions is not liable for outages, failures, or disruptions caused by Twilio, Calendly, xAI, or other third-party service providers.</li>
-            </ul>
-            <p>THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. ARIZONA AI SOLUTIONS DOES NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, ERROR-FREE, OR FREE OF HARMFUL COMPONENTS.</p>
-
-            <h2>12. Indemnification</h2>
-            <p>The Business agrees to indemnify, defend, and hold harmless Arizona AI Solutions, its officers, directors, employees, and agents from and against any and all claims, damages, losses, liabilities, costs, and expenses (including reasonable attorneys' fees) arising from or related to:</p>
-            <ul>
-                <li>The Business's breach of these Terms & Conditions</li>
-                <li>The Business's violation of any applicable law or regulation, including TCPA, CAN-SPAM, or FCC rules</li>
-                <li>The Business's use of the service in a manner inconsistent with the permitted message types and prohibited use provisions described herein</li>
-                <li>Any claim that the Business's content, branding, or messaging infringes or violates the rights of any third party</li>
-                <li>Any regulatory action, carrier penalty, or compliance finding resulting from the Business's conduct</li>
-            </ul>
-            <p>This indemnification obligation survives termination of the service agreement.</p>
-
-            <h2>13. Termination</h2>
-            <ul>
-                <li>Either party may terminate the service with 30 days' written notice</li>
-                <li>Arizona AI Solutions may suspend or terminate service immediately if the Business violates the Prohibited Use section (Section 7) or any A2P 10DLC compliance requirement</li>
-                <li>Upon termination, Arizona AI Solutions will:
-                    <ul>
-                        <li>Provide a complete data export within 15 days of the termination date</li>
-                        <li>Delete client data from servers within 30 days of the termination date</li>
-                        <li>Release the assigned phone number after a 30-day transition period (unless porting is requested)</li>
-                    </ul>
-                </li>
-                <li>Outstanding invoices are due upon termination</li>
-            </ul>
-
-            <h2>14. Modifications</h2>
-            <p>Arizona AI Solutions may modify these terms with 30 days' written notice to the Business. Material changes will be communicated via email to the address on file. Continued use of the service after modifications take effect constitutes acceptance. If the Business does not agree with the modifications, it may terminate service per Section 13.</p>
-
-            <h2>15. Governing Law</h2>
-            <p>These terms are governed by the laws of the State of Arizona. Any disputes shall be resolved in the courts of Maricopa County, Arizona. The Business agrees to submit to the personal jurisdiction of those courts.</p>
-
-            <h2>16. Severability</h2>
-            <p>If any provision of these terms is found to be unenforceable or invalid, that provision shall be limited or eliminated to the minimum extent necessary so that the remaining provisions remain in full force and effect.</p>
-
-            <h2>17. Entire Agreement</h2>
-            <p>These Terms & Conditions, together with the Privacy Policy and any signed service agreement, constitute the entire agreement between Arizona AI Solutions and the Business regarding the subject matter herein, and supersede all prior or contemporaneous agreements or representations.</p>
-
-            <h2>18. Contact</h2>
-            <p>For questions about these terms, contact:</p>
-            <p>Arizona AI Solutions<br>brandon@arizona-ai-solutions.com<br>Tucson, Arizona</p>
-        </main>
-
-        <hr>
-        <div class="nav-links">
-            <a href="/privacy">Privacy Policy</a>
-            <a href="/sms">SMS Terms &amp; Opt-In</a>
-            <a href="/accessibility">Accessibility</a>
-        </div>
-        <footer>
-            <p>&copy; 2026 Arizona AI Solutions. Tucson, Arizona.</p>
-        </footer>
-    </div>
-
-    <script>
-        // Close mobile nav when a link is clicked
-        document.querySelectorAll('#navLinks a').forEach(function(link) {
-            link.addEventListener('click', function() {
-                document.getElementById('navLinks').classList.remove('open');
-            });
-        });
-    </script>
+<script>
+const toggle=document.querySelector('.nav-toggle'),nav=document.querySelector('.nav-links');
+toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',open)});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle.setAttribute('aria-expanded','false')}));
+</script>
 </body>
 </html>

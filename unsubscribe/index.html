@@ -1,157 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unsubscribe — Arizona AI Solutions</title>
-    <meta name="robots" content="noindex, nofollow">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0F172A; color: #fff; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unsubscribe — Arizona AI Solutions</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--background:#0C1322;
+--foreground:#F8FAFC;
+--card:#141E33;
+--card-elevated:#1A2744;
+--surface:#151F36;
+--surface-elevated:#1D2B4A;
+--primary:#F97316;
+--primary-hover:#EA6C0A;
+--primary-foreground:#0C1322;
+--hairline:rgba(255,255,255,0.08);
+--border-strong:#3A4560;
+--muted-foreground:#94A3B8;
+--font-body:'Inter',system-ui,-apple-system,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--background);color:var(--foreground);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+a:focus-visible,button:focus-visible{outline:2px solid #575ECF;outline-offset:2px}
 
-        /* Nav */
-        nav.main-nav { position: sticky; top: 0; z-index: 50; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid #1E293B; }
-        nav.main-nav .nav-inner { max-width: 960px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; }
-        .nav-logo { font-size: 1.1rem; font-weight: 800; color: #F8FAFC; text-decoration: none; }
-        .nav-logo .accent { color: #F97316; }
-        .nav-links-row { display: flex; gap: 24px; align-items: center; }
-        .nav-links-row a { color: #8B9BB5; font-size: 0.9rem; text-decoration: none; transition: color 0.15s; }
-        .nav-links-row a:hover { color: #F8FAFC; }
-        .nav-cta { background: #F97316; color: #0F172A !important; font-size: 0.85rem; font-weight: 700; padding: 8px 18px; border-radius: 6px; text-decoration: none; transition: background 0.15s; }
-        .nav-cta:hover { background: #c2590a; color: #fff !important; }
-        .mobile-toggle { display: none; background: none; border: none; color: #F8FAFC; font-size: 1.5rem; cursor: pointer; padding: 4px; }
-        @media (max-width: 640px) {
-            .mobile-toggle { display: block; }
-            .nav-links-row { display: none; flex-direction: column; gap: 12px; position: absolute; top: 100%; left: 0; right: 0; background: rgba(15, 23, 42, 0.97); padding: 20px; border-bottom: 1px solid #1E293B; }
-            .nav-links-row.open { display: flex; }
-            .nav-cta { text-align: center; }
-        }
+/* Nav */
+.nav{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--hairline);background:rgba(12,19,34,0.8);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+.nav-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 24px}
+.nav-logo{font-size:15px;font-weight:600;letter-spacing:-0.01em}
+.nav-logo .accent{color:var(--primary)}
+.accent{color:var(--primary)}
+.nav-links{display:none;gap:32px;align-items:center}
+.nav-links a{font-size:13.5px;color:var(--muted-foreground);transition:color .15s}
+.nav-links a:hover{color:var(--foreground)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-phone{display:none;align-items:center;gap:6px;font-size:13.5px;color:var(--muted-foreground);transition:color .15s;cursor:default}
+.nav-phone:hover{color:var(--foreground)}
+.nav-toggle{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:none;background:none;color:var(--foreground);cursor:pointer;border-radius:6px;transition:background .15s}
+.nav-toggle:hover{background:var(--surface)}
+.nav-toggle svg{width:20px;height:20px;stroke:currentColor}
+@media(min-width:768px){.nav-toggle{display:none}}
+.nav-phone svg{width:14px;height:14px}
+.nav-cta{display:inline-flex;align-items:center;justify-content:center;border-radius:6px;background:var(--primary);padding:8px 14px;font-size:13px;font-weight:500;color:var(--primary-foreground);box-shadow:0 10px 30px -10px rgba(249,115,22,0.5);transition:background .15s}
+.nav-cta:hover{background:var(--primary-hover)}
+@media(min-width:768px){.nav-links{display:flex}.nav-phone{display:inline-flex}}
+@media(max-width:767px){.nav-links.open{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(12,19,34,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--hairline);padding:16px 24px;gap:0}.nav-links.open a{display:block;padding:14px 0;font-size:15px;color:var(--foreground);border-bottom:1px solid var(--hairline)}.nav-links.open a:last-child{border-bottom:none}.nav-links.open a:hover{color:var(--primary)}}
 
-        /* Content */
-        .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
-        .content { min-height: 60vh; display: flex; align-items: center; justify-content: center; padding: 80px 0 32px; }
-        .inner { max-width: 420px; text-align: center; }
-        h1 { font-size: 1.5rem; color: #fff; margin-bottom: 12px; }
-        p { font-size: 1rem; color: #94A3B8; line-height: 1.6; margin-bottom: 8px; }
-        .resubscribe { font-size: 0.85rem; color: #8B9BB5; line-height: 1.5; margin-top: 20px; }
-        .form-row { display: flex; gap: 6px; justify-content: center; margin-top: 16px; }
-        input[type="email"] { width: 240px; padding: 8px 12px; background: #1E293B; border: 1px solid #334155; border-radius: 6px; color: #F8FAFC; font-size: 0.9rem; outline: none; }
-        input[type="email"]:focus { border-color: #F97316; }
-        input[type="email"]::placeholder { color: #64748B; }
-        .btn { display: inline-block; padding: 8px 16px; background: #F97316; color: #0F172A; font-size: 0.85rem; font-weight: 700; border: none; border-radius: 6px; cursor: pointer; transition: background 0.15s; text-decoration: none; }
-        .btn:hover { background: #c2590a; color: #fff; }
-        button:focus-visible, input:focus-visible { outline: 3px solid #F97316; outline-offset: 2px; }
-        .message { display: none; font-size: 0.85rem; margin-top: 10px; }
-        .success { color: #4ADE80; }
-        .error { color: #F87171; }
+/* Footer */
+.footer{background:var(--background);padding:80px 24px}
+.footer-grid{max-width:1160px;margin:0 auto;display:grid;gap:48px}
+@media(min-width:1024px){.footer-grid{grid-template-columns:1.2fr 1fr 1fr 1fr}}
+.footer-logo{display:flex;align-items:center;gap:10px}
+.footer-logo-text{font-size:15px;font-weight:600;letter-spacing:-0.01em}
+.footer-desc{margin-top:16px;font-size:13.5px;line-height:1.625;color:var(--muted-foreground);max-width:384px}
+.footer-col-label{display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.16em;color:var(--muted-foreground)}
+.footer-col-label svg{width:14px;height:14px;color:var(--primary);stroke:var(--primary)}
+.footer-link{display:block;margin-top:12px;font-size:14px;font-weight:500;color:var(--foreground);transition:color .15s}
+.footer-link:hover{color:var(--primary)}
+.footer-subtext{margin-top:4px;font-size:12.5px;color:var(--muted-foreground)}
+.footer-bottom{max-width:1160px;margin:64px auto 0;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:16px;border-top:1px solid var(--hairline);padding-top:32px;font-size:12.5px;color:var(--muted-foreground)}
+@media(min-width:640px){.footer-bottom{flex-direction:row;align-items:center;flex-wrap:wrap}}
+.footer-location{display:flex;align-items:center;gap:8px}
+.footer-location svg{width:14px;height:14px}
+.footer-legal{display:flex;flex-wrap:wrap;gap:8px 16px}
+.footer-legal a{transition:color .15s;text-decoration:none}
+.footer-legal a:hover{color:var(--primary)}
 
-        /* Footer */
-        .links { margin-top: 0; margin-bottom: 0; padding-top: 20px; padding-bottom: 20px; border-top: 1px solid #1E293B; text-align: center; }
-        .links a { color: #8B9BB5; margin: 0 12px; font-size: 14px; text-decoration: underline; text-underline-offset: 2px; }
-        .links a:hover { color: #FB923C; }
-        footer { margin-top: 0; padding-top: 20px; border-top: 1px solid #1E293B; color: #7B8BA3; font-size: 0.8rem; text-align: center; }
-        footer p { color: #7B8BA3; font-size: 0.8rem; margin-bottom: 0; }
-
-        .hidden { display: none; }
-    </style>
+/* Unsubscribe page body */
+.container{max-width:720px;margin:0 auto;padding:0 24px}
+.content{min-height:60vh;display:flex;align-items:center;justify-content:center;padding:80px 0 32px}
+.inner{max-width:420px;text-align:center}
+h1{font-size:1.5rem;color:var(--foreground);margin-bottom:12px}
+p{font-size:1rem;color:var(--muted-foreground);line-height:1.6;margin-bottom:8px}
+.resubscribe{font-size:0.85rem;color:var(--muted-foreground);line-height:1.5;margin-top:20px}
+.form-row{display:flex;gap:6px;justify-content:center;margin-top:16px}
+input[type="email"]{width:240px;padding:8px 12px;background:var(--card);border:1px solid var(--border-strong);border-radius:6px;color:var(--foreground);font-size:0.9rem;outline:none;font-family:var(--font-body);transition:border-color 0.2s}
+input[type="email"]:focus{border-color:var(--primary)}
+input[type="email"]::placeholder{color:var(--muted-foreground)}
+.btn{display:inline-block;padding:8px 16px;background:var(--primary);color:var(--primary-foreground);font-size:0.85rem;font-weight:700;border:none;border-radius:6px;cursor:pointer;transition:background 0.15s;text-decoration:none;font-family:var(--font-body)}
+.btn:hover{background:var(--primary-hover)}
+.message{display:none;font-size:0.85rem;margin-top:10px}
+.success{color:#4ADE80}
+.error{color:#F87171}
+.hidden{display:none}
+.skip-link{position:absolute;top:-40px;left:0;background:var(--primary);color:var(--primary-foreground);padding:8px 16px;z-index:100;font-weight:700;text-decoration:none;border-radius:0 0 8px 0}
+.skip-link:focus{top:0;outline:3px solid #fff}
+</style>
 </head>
 <body>
-    <nav class="main-nav" aria-label="Main navigation">
-        <div class="nav-inner">
-            <a href="/" class="nav-logo">Arizona <span class="accent">AI</span> Solutions</a>
-            <button class="mobile-toggle" aria-label="Toggle navigation menu" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
-            <div class="nav-links-row" id="navLinks">
-                <a href="/#how-it-works">How It Works</a>
-                <a href="/#pricing">Pricing</a>
-                <a href="/calculator">Calculator</a>
-                <a href="https://calendly.com/brandon-arizona-ai-solutions/15-min-discovery-call" class="nav-cta" target="_blank" rel="noopener">Book a Demo</a>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="nav">
+<div class="nav-inner">
+<a href="/" class="nav-logo">Arizona <span class="accent">AI</span> Solutions</a>
+<nav class="nav-links">
+<a href="/index.html#how">How it works</a>
+<a href="/index.html#benefits">What you get</a>
+<a href="/index.html#who">Who we serve</a>
+<a href="/index.html#pricing">Pricing</a>
+<a href="/calculator">Calculator</a>
+</nav>
+<div class="nav-right">
+<button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+</button>
+<a href="tel:+152****6366" class="nav-phone">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
+(520) 650-6366
+</a>
+<a href="https://calendly.com/arizona-ai-solutions/15-min-discovery-call" class="nav-cta">Book a Demo</a>
+</div>
+</div>
+</header>
+
+<div class="container">
+    <div class="content">
+        <div class="inner">
+            <!-- Confirm state -->
+            <div id="confirmState" class="hidden">
+                <h1>You've been unsubscribed.</h1>
+                <p>You will no longer receive emails from Arizona AI Solutions.</p>
+                <p class="resubscribe">If you unsubscribed by mistake, you can re-subscribe by replying to any of our previous emails with "UNSTOP".</p>
+            </div>
+
+            <!-- Form state -->
+            <div id="formState">
+                <h1>Unsubscribe</h1>
+                <p>Enter your email address to stop receiving emails from Arizona AI Solutions.</p>
+                <form id="unsubForm" class="form-row" onsubmit="return handleSubmit(event)">
+                    <input type="email" id="unsub-email" name="email" placeholder="name@company.com" required autocomplete="email">
+                    <button type="submit" class="btn">Unsubscribe</button>
+                </form>
+                <div class="message success" id="successMsg">✓ You've been unsubscribed.</div>
+                <div class="message error" id="errorMsg">Something went wrong. Please email unsubscribe@arizona-ai-solutions.com directly.</div>
+                <p class="resubscribe">If you unsubscribed by mistake, you can re-subscribe by replying to any of our previous emails with "UNSTOP".</p>
             </div>
         </div>
-    </nav>
-
-    <div class="container">
-        <div class="content">
-            <div class="inner">
-                <!-- Confirm state -->
-                <div id="confirmState" class="hidden">
-                    <h1>You've been unsubscribed.</h1>
-                    <p>You will no longer receive emails from Arizona AI Solutions.</p>
-                    <p class="resubscribe">If you unsubscribed by mistake, you can re-subscribe by replying to any of our previous emails with "UNSTOP".</p>
-                </div>
-
-                <!-- Form state -->
-                <div id="formState">
-                    <h1>Unsubscribe</h1>
-                    <p>Enter your email address to stop receiving emails from Arizona AI Solutions.</p>
-                    <form id="unsubForm" class="form-row" onsubmit="return handleSubmit(event)">
-                        <input type="email" id="unsub-email" name="email" placeholder="name@company.com" required autocomplete="email">
-                        <button type="submit" class="btn">Unsubscribe</button>
-                    </form>
-                    <div class="message success" id="successMsg">✓ You've been unsubscribed.</div>
-                    <div class="message error" id="errorMsg">Something went wrong. Please email unsubscribe@arizona-ai-solutions.com directly.</div>
-                    <p class="resubscribe">If you unsubscribed by mistake, you can re-subscribe by replying to any of our previous emails with "UNSTOP".</p>
-                </div>
-            </div>
-        </div>
-
-        <nav aria-label="Legal links">
-            <div class="links">
-                <a href="/privacy">Privacy Policy</a>
-                <a href="/terms">Terms &amp; Conditions</a>
-                <a href="/sms">SMS Terms &amp; Opt-In</a>
-                <a href="/accessibility">Accessibility</a>
-            </div>
-        </nav>
-
-        <footer>
-            <p>&copy; 2026 Arizona AI Solutions &middot; <a href="tel:+1520****6366" style="color: #7B8BA3; text-decoration: none;">(520) 650-6366</a> &middot; Tucson, Arizona.</p>
-        </footer>
     </div>
+</div>
 
-    <script>
-        (function() {
-            if (window.location.search.includes('unsubscribe=1') || document.referrer.includes('mail.google.com')) {
-                document.getElementById('formState').classList.add('hidden');
-                document.getElementById('confirmState').classList.remove('hidden');
-                fetch('https://formspree.io/f/xdajjaew', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                    body: JSON.stringify({ action: 'one-click-unsubscribe', source: 'List-Unsubscribe header', timestamp: new Date().toISOString() })
-                });
-            }
-        })();
+<footer class="footer">
+<div class="footer-grid">
+<div>
+<div class="footer-logo">
+<span class="footer-logo-text">Arizona <span class="accent">AI</span> Solutions</span>
+</div>
+<p class="footer-desc">AI phone agents for Arizona home service businesses. Never miss another after-hours call.</p>
+</div>
+<div>
+<div class="footer-col-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>Phone</div>
+<a href="tel:+152****6366" class="footer-link">(520) 650-6366</a>
+<div class="footer-subtext">Mon–Fri · 8a–6p MST</div>
+</div>
+<div>
+<div class="footer-col-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 14v2.2l1.6 1"/><path d="M16 2v4"/><path d="M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5"/><path d="M3 10h5"/><path d="M8 2v4"/><circle cx="16" cy="16" r="6"/></svg>Schedule a call</div>
+<a href="https://calendly.com/arizona-ai-solutions/15-min-discovery-call" class="footer-link">Book a 15-minute call</a>
+<div class="footer-subtext">Discovery &amp; demo</div>
+</div>
+<div>
+<div class="footer-col-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>Email</div>
+<a href="mailto:brandon@arizona-ai-solutions.com" class="footer-link">brandon@arizona-ai-solutions.com</a>
+<div class="footer-subtext">Replies within 1 business day</div>
+</div>
+</div>
+<div class="footer-bottom">
+<div class="footer-location"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> Tucson, Arizona · Serving the State of Arizona</div>
+<div class="footer-legal">
+<a href="/privacy">Privacy Policy</a>
+<a href="/terms">Terms &amp; Conditions</a>
+<a href="/sms">SMS Terms &amp; Opt-In</a>
+<a href="/accessibility">Accessibility</a>
+<a href="/unsubscribe">Unsubscribe</a>
+</div>
+<div>© 2026 Arizona AI Solutions. All rights reserved.</div>
+</div>
+</footer>
 
-        async function handleSubmit(e) {
-            e.preventDefault();
-            var email = document.getElementById('unsub-email').value;
-            var successEl = document.getElementById('successMsg');
-            var errorEl = document.getElementById('errorMsg');
-            successEl.style.display = 'none';
-            errorEl.style.display = 'none';
+<script>
+const toggle=document.querySelector('.nav-toggle'),navLinks=document.querySelector('.nav-links');
+toggle.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');toggle.setAttribute('aria-expanded',open)});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');toggle.setAttribute('aria-expanded','false')}));
 
-            try {
-                var response = await fetch('https://formspree.io/f/xdajjaew', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                    body: JSON.stringify({ email: email, action: 'unsubscribe', source: 'List-Unsubscribe page' })
-                });
-                if (response.ok) {
-                    document.getElementById('formState').classList.add('hidden');
-                    document.getElementById('confirmState').classList.remove('hidden');
-                } else {
-                    errorEl.style.display = 'block';
-                }
-            } catch (err) {
-                errorEl.style.display = 'block';
-            }
-            return false;
-        }
+(function(){if(window.location.search.includes('unsubscribe=1')||document.referrer.includes('mail.google.com')){document.getElementById('formState').classList.add('hidden');document.getElementById('confirmState').classList.remove('hidden');fetch('https://formspree.io/f/xdajjaew',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({action:'one-click-unsubscribe',source:'List-Unsubscribe header',timestamp:new Date().toISOString()})})}})();
 
-        document.querySelectorAll('#navLinks a').forEach(function(link) {
-            link.addEventListener('click', function() {
-                document.getElementById('navLinks').classList.remove('open');
-            });
-        });
-    </script>
+async function handleSubmit(e){e.preventDefault();var email=document.getElementById('unsub-email').value;var successEl=document.getElementById('successMsg');var errorEl=document.getElementById('errorMsg');successEl.style.display='none';errorEl.style.display='none';try{var response=await fetch('https://formspree.io/f/xdajjaew',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({email:email,action:'unsubscribe',source:'List-Unsubscribe page'})});if(response.ok){document.getElementById('formState').classList.add('hidden');document.getElementById('confirmState').classList.remove('hidden')}else{errorEl.style.display='block'}}catch(err){errorEl.style.display='block'}return false}
+</script>
 </body>
 </html>

@@ -4,252 +4,183 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Missed Revenue Calculator — Arizona AI Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: #0F172A;
-    font-family: 'Inter', sans-serif;
-    color: #F8FAFC;
-    min-height: 100vh;
-    padding: 0;
-    margin: 0;
-  }
-  .page-content { max-width: 580px; margin: 0 auto; padding: 40px 20px; }
-  .card {
-    max-width: 580px;
-    width: 100%;
-    background: #1E293B;
-    border-radius: 16px;
-    border: 1px solid #334155;
-    overflow: hidden;
-  }
-  .accent-bar { width: 100%; height: 4px; background: #F97316; }
-  .header { padding: 36px 36px 0; }
-  .header-tag {
-    font-size: 12px; font-weight: 600; color: #F97316;
-    letter-spacing: 4px; text-transform: uppercase; margin-bottom: 12px;
-  }
-  .header h1 {
-    font-size: 28px; font-weight: 900; color: #F8FAFC;
-    letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 8px;
-  }
-  .header p { font-size: 15px; color: #94A3B8; line-height: 1.5; }
-  .form { padding: 28px 36px; }
-  .field { margin-bottom: 20px; }
-  .field:last-of-type { margin-bottom: 0; }
-  .field label {
-    display: block; font-size: 13px; font-weight: 600;
-    color: #CBD5E1; margin-bottom: 6px;
-  }
-  .field .hint { font-weight: 400; color: #8B9BB5; font-size: 12px; }
-  .field .input-prefix {
-    display: flex; align-items: center; background: #0F172A;
-    border: 1px solid #334155; border-radius: 8px; overflow: hidden;
-    transition: border-color 0.2s;
-  }
-  .field .input-prefix:focus-within { border-color: #F97316; }
-  .field .input-prefix span {
-    padding: 12px 0 12px 14px; font-size: 16px; font-weight: 600; color: #8B9BB5;
-  }
-  .field .input-prefix input[type="number"],
-  .field input[type="number"] {
-    width: 100%; background: #0F172A; border: 1px solid #334155;
-    border-radius: 8px; padding: 12px 14px; font-size: 16px; font-weight: 600;
-    color: #F8FAFC; font-family: 'Inter', sans-serif; outline: none;
-    transition: border-color 0.2s;
-  }
-  .field .input-prefix input[type="number"] { border: none; border-radius: 0; }
-  .field input[type="number"]:focus,
-  .field .input-prefix input[type="number"]:focus { border-color: #F97316; }
-  .field input[type="number"]::placeholder { color: #7B8BA3; font-weight: 400; }
-  .calculate-btn {
-    width: 100%; padding: 14px; background: #F97316; color: #0F172A;
-    font-size: 16px; font-weight: 800; font-family: 'Inter', sans-serif;
-    border: none; border-radius: 8px; cursor: pointer;
-    transition: background 0.2s; margin-top: 24px;
-  }
-  .calculate-btn:hover { background: #EA580C; }
-  .calculate-btn:active { background: #C2410C; }
-  .result { display: none; padding: 0 36px 36px; }
-  .result.active { display: block; }
-  .result-divider { width: 100%; height: 1px; background: #334155; margin-bottom: 24px; }
-  .result-label {
-    font-size: 12px; font-weight: 600; color: #8B9BB5;
-    letter-spacing: 3px; text-transform: uppercase; margin-bottom: 6px;
-  }
-  .result-amount {
-    font-size: 52px; font-weight: 900; color: #F97316;
-    letter-spacing: -2px; line-height: 1; margin-bottom: 16px;
-  }
-  .consequence {
-    font-size: 15px; color: #94A3B8; line-height: 1.6;
-    margin-bottom: 16px; padding: 16px; background: #0F172A;
-    border-radius: 8px; border-left: 3px solid #F97316;
-  }
-  .consequence strong { color: #F8FAFC; }
-  .consequence .orange { color: #F97316; font-weight: 700; }
-  .breakdown {
-    background: #0F172A; border-radius: 8px; padding: 16px; margin-bottom: 24px;
-  }
-  .breakdown-row {
-    display: flex; justify-content: space-between;
-    padding: 7px 0; font-size: 14px;
-  }
-  .breakdown-row:not(:last-child) { border-bottom: 1px solid #1E293B; }
-  .breakdown-row .label { color: #94A3B8; }
-  .breakdown-row .value { color: #F8FAFC; font-weight: 600; }
-  .lead-capture {
-    background: #0F172A; border-radius: 8px; padding: 24px;
-    border: 1px solid #334155;
-  }
-  .lead-capture h3 { font-size: 16px; font-weight: 800; color: #F8FAFC; margin-bottom: 6px; }
-  .lead-capture p { font-size: 14px; color: #94A3B8; margin-bottom: 16px; line-height: 1.5; }
-  .lead-capture .email-row { display: flex; gap: 8px; flex-wrap: wrap; }
-  .lead-capture input[type="email"] {
-    flex: 1; min-width: 0; background: #1E293B; border: 1px solid #334155;
-    border-radius: 6px; padding: 11px 14px; font-size: 14px;
-    color: #F8FAFC; font-family: 'Inter', sans-serif; outline: none;
-    transition: border-color 0.2s;
-  }
-  .lead-capture input[type="email"]:focus { border-color: #F97316; }
-  .lead-capture input[type="email"]::placeholder { color: #7B8BA3; }
-  .lead-capture button {
-    padding: 11px 20px; background: #F97316; color: #0F172A;
-    font-size: 14px; font-weight: 700; font-family: 'Inter', sans-serif;
-    border: none; border-radius: 6px; cursor: pointer;
-    white-space: nowrap; transition: background 0.2s;
-    flex-shrink: 0;
-  }
-  .lead-capture button:hover { background: #EA580C; }
-  @media (max-width: 480px) {
-    .lead-capture .email-row { flex-direction: column; }
-    .lead-capture button { width: 100%; }
-  }
-  .lead-capture .checklist-items {
-    margin-top: 16px; display: flex; flex-direction: column; gap: 6px;
-  }
-  .lead-capture .checklist-item {
-    font-size: 13px; color: #8B9BB5; padding-left: 20px; position: relative;
-  }
-  .lead-capture .checklist-item::before {
-    content: "✓"; position: absolute; left: 0; color: #22C55E; font-weight: 700;
-  }
-  .full-breakdown { display: none; margin-top: 24px; }
-  .full-breakdown.active { display: block; }
-  .full-breakdown .section-title {
-    font-size: 12px; font-weight: 700; color: #F97316;
-    letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px;
-  }
-  .full-breakdown .grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;
-  }
-  .full-breakdown .stat-card {
-    background: #0F172A; border-radius: 8px; padding: 14px;
-  }
-  .full-breakdown .stat-card .stat-label {
-    font-size: 11px; font-weight: 600; color: #8B9BB5;
-    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px;
-  }
-  .full-breakdown .stat-card .stat-value {
-    font-size: 22px; font-weight: 900; color: #F8FAFC; letter-spacing: -0.5px;
-  }
-  .full-breakdown .stat-card .stat-value.orange { color: #F97316; }
-  .full-breakdown .stat-card .stat-sub {
-    font-size: 11px; color: #8B9BB5; margin-top: 2px;
-  }
-  .full-breakdown .benchmarks {
-    background: #0F172A; border-radius: 8px; padding: 16px; margin-bottom: 20px;
-  }
-  .full-breakdown .benchmarks h4 {
-    font-size: 12px; font-weight: 700; color: #CBD5E1; margin-bottom: 10px;
-  }
-  .full-breakdown .benchmarks .bm-row {
-    display: flex; justify-content: space-between;
-    padding: 6px 0; font-size: 13px;
-  }
-  .full-breakdown .benchmarks .bm-row:not(:last-child) { border-bottom: 1px solid #1E293B; }
-  .full-breakdown .benchmarks .bm-row .bm-label { color: #94A3B8; }
-  .full-breakdown .benchmarks .bm-row .bm-value { color: #F8FAFC; font-weight: 600; }
-  .full-breakdown .recovery-card {
-    background: #0F172A; border-radius: 8px; padding: 16px;
-    border-left: 3px solid #22C55E; margin-bottom: 20px;
-  }
-  .full-breakdown .recovery-card .recovery-label {
-    font-size: 12px; font-weight: 700; color: #22C55E;
-    letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;
-  }
-  .full-breakdown .recovery-card .recovery-amount {
-    font-size: 32px; font-weight: 900; color: #22C55E;
-    letter-spacing: -1px; margin-bottom: 4px;
-  }
-  .full-breakdown .recovery-card .recovery-sub {
-    font-size: 13px; color: #94A3B8;
-  }
-  .download-link {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 10px 20px; background: #1E293B; border: 1px solid #334155;
-    border-radius: 6px; color: #F8FAFC; font-size: 13px; font-weight: 600;
-    font-family: 'Inter', sans-serif; text-decoration: none;
-    transition: border-color 0.2s; margin-bottom: 24px;
-  }
-  .download-link:hover { border-color: #F97316; }
-  .download-link .dl-icon { color: #F97316; font-weight: 700; }
-  hr { border: none; border-top: 1px solid #334155; margin: 24px 0; }
-  footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #1E293B; color: #7B8BA3; font-size: 0.8rem; text-align: center; }
-  footer p { color: #7B8BA3; }
-  .back-link { margin-bottom: 16px; }
-  .back-link a { display: inline-block; padding: 10px 20px; background: #1E293B; color: #e2e8f0; border-radius: 6px; font-size: 14px; text-decoration: none; }
-  .back-link a:hover { background: #334155; }
-  .back-link a:focus-visible { outline: 3px solid #F97316; outline-offset: 2px; }
-  .nav-links { margin-top: 24px; padding-top: 12px; }
-  .nav-links a { color: #8B9BB5; margin-right: 16px; font-size: 14px; text-decoration: underline; text-underline-offset: 2px; }
-  .nav-links a:hover { color: #FB923C; }
-  /* Nav */
-  nav.main-nav { position: sticky; top: 0; z-index: 50; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid #1E293B; width: 100%; }
-  nav.main-nav .nav-inner { max-width: 960px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; }
-  .nav-logo { font-size: 1.1rem; font-weight: 800; color: #F8FAFC; text-decoration: none; }
-  .nav-logo .accent { color: #F97316; }
-  .nav-links-row { display: flex; gap: 24px; align-items: center; }
-  .nav-links-row a { color: #8B9BB5; font-size: 0.9rem; text-decoration: none; transition: color 0.15s; }
-  .nav-links-row a:hover { color: #F8FAFC; }
-  .nav-links-row a:focus-visible { outline: 3px solid #F97316; outline-offset: 2px; }
-  .nav-cta { background: #F97316; color: #0F172A !important; font-size: 0.85rem; font-weight: 700; padding: 8px 18px; border-radius: 6px; text-decoration: none; transition: background 0.15s; }
-  .nav-cta:hover { background: #c2590a; color: #fff !important; }
-  .nav-cta:focus-visible { outline: 3px solid #F97316; outline-offset: 3px; }
-  .mobile-toggle { display: none; background: none; border: none; color: #F8FAFC; font-size: 1.5rem; cursor: pointer; padding: 4px; }
-  .mobile-toggle:focus-visible { outline: 3px solid #F97316; outline-offset: 2px; }
-  @media (max-width: 640px) {
-      .mobile-toggle { display: block; }
-      .nav-links-row { display: none; flex-direction: column; gap: 12px; position: absolute; top: 100%; left: 0; right: 0; background: rgba(15, 23, 42, 0.97); padding: 20px; border-bottom: 1px solid #1E293B; }
-      .nav-links-row.open { display: flex; }
-      .nav-cta { text-align: center; }
-  }
-  /* Accessibility */
-  .skip-link { position: absolute; top: -40px; left: 0; background: #F97316; color: #0F172A; padding: 8px 16px; z-index: 100; font-weight: 700; text-decoration: none; border-radius: 0 0 8px 0; }
-  .skip-link:focus { top: 0; outline: 3px solid #fff; }
-  a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid #F97316; outline-offset: 2px; }
-  input[aria-invalid="true"] { border-color: #EF4444; }
-  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--background:#0C1322;
+--foreground:#F8FAFC;
+--card:#141E33;
+--card-elevated:#1A2744;
+--surface:#151F36;
+--surface-elevated:#1D2B4A;
+--primary:#F97316;
+--primary-hover:#EA6C0A;
+--primary-foreground:#0C1322;
+--hairline:rgba(255,255,255,0.08);
+--border-strong:#3A4560;
+--muted-foreground:#94A3B8;
+--font-body:'Inter',system-ui,-apple-system,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--background);color:var(--foreground);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+a:focus-visible,button:focus-visible{outline:2px solid #575ECF;outline-offset:2px}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--hairline);background:rgba(12,19,34,0.8);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+.nav-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 24px}
+.nav-logo{font-size:15px;font-weight:600;letter-spacing:-0.01em}
+.nav-logo .accent{color:var(--primary)}
+.accent{color:var(--primary)}
+.nav-links{display:none;gap:32px;align-items:center}
+.nav-links a{font-size:13.5px;color:var(--muted-foreground);transition:color .15s}
+.nav-links a:hover{color:var(--foreground)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-phone{display:none;align-items:center;gap:6px;font-size:13.5px;color:var(--muted-foreground);transition:color .15s;cursor:default}
+.nav-phone:hover{color:var(--foreground)}
+.nav-toggle{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:none;background:none;color:var(--foreground);cursor:pointer;border-radius:6px;transition:background .15s}
+.nav-toggle:hover{background:var(--surface)}
+.nav-toggle svg{width:20px;height:20px;stroke:currentColor}
+@media(min-width:768px){.nav-toggle{display:none}}
+.nav-phone svg{width:14px;height:14px}
+.nav-cta{display:inline-flex;align-items:center;justify-content:center;border-radius:6px;background:var(--primary);padding:8px 14px;font-size:13px;font-weight:500;color:var(--primary-foreground);box-shadow:0 10px 30px -10px rgba(249,115,22,0.5);transition:background .15s}
+.nav-cta:hover{background:var(--primary-hover)}
+@media(min-width:768px){.nav-links{display:flex}.nav-phone{display:inline-flex}}
+@media(max-width:767px){.nav-links.open{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(12,19,34,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--hairline);padding:16px 24px;gap:0}.nav-links.open a{display:block;padding:14px 0;font-size:15px;color:var(--foreground);border-bottom:1px solid var(--hairline)}.nav-links.open a:last-child{border-bottom:none}.nav-links.open a:hover{color:var(--primary)}}
+
+/* Footer */
+.footer{background:var(--background);padding:80px 24px}
+.footer-grid{max-width:1160px;margin:0 auto;display:grid;gap:48px}
+@media(min-width:1024px){.footer-grid{grid-template-columns:1.2fr 1fr 1fr 1fr}}
+.footer-logo{display:flex;align-items:center;gap:10px}
+.footer-logo-text{font-size:15px;font-weight:600;letter-spacing:-0.01em}
+.footer-desc{margin-top:16px;font-size:13.5px;line-height:1.625;color:var(--muted-foreground);max-width:384px}
+.footer-col-label{display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.16em;color:var(--muted-foreground)}
+.footer-col-label svg{width:14px;height:14px;color:var(--primary);stroke:var(--primary)}
+.footer-link{display:block;margin-top:12px;font-size:14px;font-weight:500;color:var(--foreground);transition:color .15s}
+.footer-link:hover{color:var(--primary)}
+.footer-subtext{margin-top:4px;font-size:12.5px;color:var(--muted-foreground)}
+.footer-bottom{max-width:1160px;margin:64px auto 0;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:16px;border-top:1px solid var(--hairline);padding-top:32px;font-size:12.5px;color:var(--muted-foreground)}
+@media(min-width:640px){.footer-bottom{flex-direction:row;align-items:center;flex-wrap:wrap}}
+.footer-location{display:flex;align-items:center;gap:8px}
+.footer-location svg{width:14px;height:14px}
+.footer-legal{display:flex;flex-wrap:wrap;gap:8px 16px}
+.footer-legal a{transition:color .15s;text-decoration:none}
+.footer-legal a:hover{color:var(--primary)}
+
+/* Calculator page styles */
+.page-content{max-width:580px;margin:0 auto;padding:40px 24px}
+.calc-card{max-width:580px;width:100%;background:var(--card);border-radius:16px;border:1px solid var(--border-strong);overflow:hidden}
+.accent-bar{width:100%;height:4px;background:var(--primary)}
+.header{padding:36px 36px 0}
+.header-tag{font-size:12px;font-weight:600;color:var(--primary);letter-spacing:4px;text-transform:uppercase;margin-bottom:12px}
+.header h1{font-size:28px;font-weight:900;color:var(--foreground);letter-spacing:-0.5px;line-height:1.2;margin-bottom:8px}
+.header p{font-size:15px;color:var(--muted-foreground);line-height:1.5}
+.form{padding:28px 36px}
+.field{margin-bottom:20px}
+.field:last-of-type{margin-bottom:0}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--muted-foreground);margin-bottom:6px}
+.field .hint{font-weight:400;color:var(--muted-foreground);font-size:12px}
+.field .input-prefix{display:flex;align-items:center;background:var(--background);border:1px solid var(--border-strong);border-radius:8px;overflow:hidden;transition:border-color 0.2s}
+.field .input-prefix:focus-within{border-color:var(--primary)}
+.field .input-prefix span{padding:12px 0 12px 14px;font-size:16px;font-weight:600;color:var(--muted-foreground)}
+.field .input-prefix input[type="number"],.field input[type="number"]{width:100%;background:var(--background);border:1px solid var(--border-strong);border-radius:8px;padding:12px 14px;font-size:16px;font-weight:600;color:var(--foreground);font-family:var(--font-body);outline:none;transition:border-color 0.2s}
+.field .input-prefix input[type="number"]{border:none;border-radius:0}
+.field input[type="number"]:focus,.field .input-prefix input[type="number"]:focus{border-color:var(--primary)}
+.field input[type="number"]::placeholder{color:var(--muted-foreground);font-weight:400}
+.calculate-btn{width:100%;padding:14px;background:var(--primary);color:var(--primary-foreground);font-size:16px;font-weight:800;font-family:var(--font-body);border:none;border-radius:8px;cursor:pointer;transition:background 0.2s;margin-top:24px}
+.calculate-btn:hover{background:var(--primary-hover)}
+.calculate-btn:active{background:#C2410C}
+.result{display:none;padding:0 36px 36px}
+.result.active{display:block}
+.result-divider{width:100%;height:1px;background:var(--border-strong);margin-bottom:24px}
+.result-label{font-size:12px;font-weight:600;color:var(--muted-foreground);letter-spacing:3px;text-transform:uppercase;margin-bottom:6px}
+.result-amount{font-size:52px;font-weight:900;color:var(--primary);letter-spacing:-2px;line-height:1;margin-bottom:16px}
+.consequence{font-size:15px;color:var(--muted-foreground);line-height:1.6;margin-bottom:16px;padding:16px;background:var(--background);border-radius:8px;border-left:3px solid var(--primary)}
+.consequence strong{color:var(--foreground)}
+.consequence .orange{color:var(--primary);font-weight:700}
+.breakdown{background:var(--background);border-radius:8px;padding:16px;margin-bottom:24px}
+.breakdown-row{display:flex;justify-content:space-between;padding:7px 0;font-size:14px}
+.breakdown-row:not(:last-child){border-bottom:1px solid var(--card)}
+.breakdown-row .label{color:var(--muted-foreground)}
+.breakdown-row .value{color:var(--foreground);font-weight:600}
+.lead-capture{background:var(--background);border-radius:8px;padding:24px;border:1px solid var(--border-strong)}
+.lead-capture h3{font-size:16px;font-weight:800;color:var(--foreground);margin-bottom:6px}
+.lead-capture p{font-size:14px;color:var(--muted-foreground);margin-bottom:16px;line-height:1.5}
+.lead-capture .email-row{display:flex;gap:8px;flex-wrap:wrap}
+.lead-capture input[type="email"]{flex:1;min-width:0;background:var(--card);border:1px solid var(--border-strong);border-radius:6px;padding:11px 14px;font-size:14px;color:var(--foreground);font-family:var(--font-body);outline:none;transition:border-color 0.2s}
+.lead-capture input[type="email"]:focus{border-color:var(--primary)}
+.lead-capture input[type="email"]::placeholder{color:var(--muted-foreground)}
+.lead-capture button{padding:11px 20px;background:var(--primary);color:var(--primary-foreground);font-size:14px;font-weight:700;font-family:var(--font-body);border:none;border-radius:6px;cursor:pointer;white-space:nowrap;transition:background 0.2s;flex-shrink:0}
+.lead-capture button:hover{background:var(--primary-hover)}
+@media(max-width:480px){.lead-capture .email-row{flex-direction:column}.lead-capture button{width:100%}}
+.lead-capture .checklist-items{margin-top:16px;display:flex;flex-direction:column;gap:6px}
+.lead-capture .checklist-item{font-size:13px;color:var(--muted-foreground);padding-left:20px;position:relative}
+.lead-capture .checklist-item::before{content:"✓";position:absolute;left:0;color:#22C55E;font-weight:700}
+.full-breakdown{display:none;margin-top:24px}
+.full-breakdown.active{display:block}
+.full-breakdown .section-title{font-size:12px;font-weight:700;color:var(--primary);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.full-breakdown .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.full-breakdown .stat-card{background:var(--background);border-radius:8px;padding:14px}
+.full-breakdown .stat-card .stat-label{font-size:11px;font-weight:600;color:var(--muted-foreground);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.full-breakdown .stat-card .stat-value{font-size:22px;font-weight:900;color:var(--foreground);letter-spacing:-0.5px}
+.full-breakdown .stat-card .stat-value.orange{color:var(--primary)}
+.full-breakdown .stat-card .stat-sub{font-size:11px;color:var(--muted-foreground);margin-top:2px}
+.full-breakdown .benchmarks{background:var(--background);border-radius:8px;padding:16px;margin-bottom:20px}
+.full-breakdown .benchmarks h4{font-size:12px;font-weight:700;color:var(--muted-foreground);margin-bottom:10px}
+.full-breakdown .benchmarks .bm-row{display:flex;justify-content:space-between;padding:6px 0;font-size:13px}
+.full-breakdown .benchmarks .bm-row:not(:last-child){border-bottom:1px solid var(--card)}
+.full-breakdown .benchmarks .bm-row .bm-label{color:var(--muted-foreground)}
+.full-breakdown .benchmarks .bm-row .bm-value{color:var(--foreground);font-weight:600}
+.full-breakdown .recovery-card{background:var(--background);border-radius:8px;padding:16px;border-left:3px solid #22C55E;margin-bottom:20px}
+.full-breakdown .recovery-card .recovery-label{font-size:12px;font-weight:700;color:#22C55E;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.full-breakdown .recovery-card .recovery-amount{font-size:32px;font-weight:900;color:#22C55E;letter-spacing:-1px;margin-bottom:4px}
+.full-breakdown .recovery-card .recovery-sub{font-size:13px;color:var(--muted-foreground)}
+.download-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:var(--card);border:1px solid var(--border-strong);border-radius:6px;color:var(--foreground);font-size:13px;font-weight:600;font-family:var(--font-body);text-decoration:none;transition:border-color 0.2s;margin-bottom:24px}
+.download-link:hover{border-color:var(--primary)}
+.download-link .dl-icon{color:var(--primary);font-weight:700}
+.back-link{margin-bottom:16px}
+.back-link a{display:inline-block;padding:10px 20px;background:var(--surface);color:var(--muted-foreground);border-radius:6px;font-size:14px;text-decoration:none;transition:background .15s}
+.back-link a:hover{background:var(--surface-elevated);color:var(--foreground)}
+.skip-link{position:absolute;top:-40px;left:0;background:var(--primary);color:var(--primary-foreground);padding:8px 16px;z-index:100;font-weight:700;text-decoration:none;border-radius:0 0 8px 0}
+.skip-link:focus{top:0;outline:3px solid #fff}
+input[aria-invalid="true"]{border-color:#EF4444}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 </style>
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <nav class="main-nav" aria-label="Main navigation">
-        <div class="nav-inner">
-            <a href="/" class="nav-logo">Arizona <span class="accent">AI</span> Solutions</a>
-            <button class="mobile-toggle" aria-label="Toggle navigation menu" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
-            <div class="nav-links-row" id="navLinks">
-                <a href="/">Home</a>
-                <a href="/calculator">Calculator</a>
-                <a href="https://calendly.com/brandon-arizona-ai-solutions/15-min-discovery-call" class="nav-cta" target="_blank" rel="noopener">Book a Demo</a>
-            </div>
-        </div>
-    </nav>
+<header class="nav">
+<div class="nav-inner">
+<a href="/" class="nav-logo">Arizona <span class="accent">AI</span> Solutions</a>
+<nav class="nav-links">
+<a href="/index.html#how">How it works</a>
+<a href="/index.html#benefits">What you get</a>
+<a href="/index.html#who">Who we serve</a>
+<a href="/index.html#pricing">Pricing</a>
+<a href="/calculator">Calculator</a>
+</nav>
+<div class="nav-right">
+<button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+</button>
+<a href="tel:+152****6366" class="nav-phone">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
+(520) 650-6366
+</a>
+<a href="https://calendly.com/arizona-ai-solutions/15-min-discovery-call" class="nav-cta">Book a Demo</a>
+</div>
+</div>
+</header>
+
 <div class="page-content">
 <div class="back-link"><a href="/">← Back to Arizona AI Solutions</a></div>
-<div class="card" role="main" id="main-content">
+<div class="calc-card" role="main" id="main-content">
   <div class="accent-bar"></div>
   <div class="header">
     <p class="header-tag">Diagnostic Tool</p>
@@ -311,169 +242,57 @@
     </div>
   </div>
 </div>
-<hr>
-<div class="nav-links">
-  <a href="/privacy">Privacy Policy</a>
-  <a href="/terms">Terms &amp; Conditions</a>
-  <a href="/sms">SMS Terms &amp; Opt-In</a>
-  <a href="/accessibility">Accessibility</a>
 </div>
-<footer>
-  <p>&copy; 2026 Arizona AI Solutions. Tucson, Arizona.</p>
+
+<footer class="footer">
+<div class="footer-grid">
+<div>
+<div class="footer-logo">
+<span class="footer-logo-text">Arizona <span class="accent">AI</span> Solutions</span>
+</div>
+<p class="footer-desc">AI phone agents for Arizona home service businesses. Never miss another after-hours call.</p>
+</div>
+<div>
+<div class="footer-col-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>Phone</div>
+<a href="tel:+152****6366" class="footer-link">(520) 650-6366</a>
+<div class="footer-subtext">Mon–Fri · 8a–6p MST</div>
+</div>
+<div>
+<div class="footer-col-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 14v2.2l1.6 1"/><path d="M16 2v4"/><path d="M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5"/><path d="M3 10h5"/><path d="M8 2v4"/><circle cx="16" cy="16" r="6"/></svg>Schedule a call</div>
+<a href="https://calendly.com/arizona-ai-solutions/15-min-discovery-call" class="footer-link">Book a 15-minute call</a>
+<div class="footer-subtext">Discovery &amp; demo</div>
+</div>
+<div>
+<div class="footer-col-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>Email</div>
+<a href="mailto:brandon@arizona-ai-solutions.com" class="footer-link">brandon@arizona-ai-solutions.com</a>
+<div class="footer-subtext">Replies within 1 business day</div>
+</div>
+</div>
+<div class="footer-bottom">
+<div class="footer-location"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> Tucson, Arizona · Serving the State of Arizona</div>
+<div class="footer-legal">
+<a href="/privacy">Privacy Policy</a>
+<a href="/terms">Terms &amp; Conditions</a>
+<a href="/sms">SMS Terms &amp; Opt-In</a>
+<a href="/accessibility">Accessibility</a>
+<a href="/unsubscribe">Unsubscribe</a>
+</div>
+<div>© 2026 Arizona AI Solutions. All rights reserved.</div>
+</div>
 </footer>
-</div>
 
 <script>
-function formatCurrency(n) {
-  return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
+const toggle=document.querySelector('.nav-toggle'),navLinks=document.querySelector('.nav-links');
+toggle.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');toggle.setAttribute('aria-expanded',open)});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');toggle.setAttribute('aria-expanded','false')}));
 
-// Industry benchmarks
-const benchmarks = {
-  'HVAC': { avgJob: 650, closeRate: 65 },
-  'Plumbing': { avgJob: 850, closeRate: 60 },
-  'Electrical': { avgJob: 900, closeRate: 55 },
-  'Roofing': { avgJob: 1200, closeRate: 50 },
-  'Landscaping': { avgJob: 450, closeRate: 70 }
-};
-
-let calcData = {};
-
-function calculate() {
-  const missedCalls = parseFloat(document.getElementById('missedCalls').value);
-  const jobValue = parseFloat(document.getElementById('jobValue').value);
-  const closeRate = parseFloat(document.getElementById('closeRate').value) / 100;
-
-  if (!missedCalls || !jobValue || !closeRate) return;
-
-  const jobsLostPerWeek = missedCalls * closeRate;
-  const weeklyLost = jobsLostPerWeek * jobValue;
-  const monthlyLost = weeklyLost * 4.33;
-  const annualLost = weeklyLost * 52;
-  const totalMissedCalls = missedCalls * 52;
-  const jobsPerYear = Math.round(jobsLostPerWeek * 52);
-
-  calcData = { missedCalls, jobValue, closeRate, weeklyLost, monthlyLost, annualLost, jobsPerYear, totalMissedCalls };
-
-  document.getElementById('resultAmount').textContent = formatCurrency(annualLost);
-
-  let consText = `That's <strong>${jobsPerYear} jobs</strong> lost to whoever answered first. <span class="orange">Roughly one tech working half the year for nothing.</span>`;
-  document.getElementById('consequence').innerHTML = consText;
-
-  document.getElementById('breakdown').innerHTML = `
-    <div class="breakdown-row"><span class="label">Missed calls/week</span><span class="value">${missedCalls}</span></div>
-    <div class="breakdown-row"><span class="label">Jobs lost/week</span><span class="value">${jobsLostPerWeek.toFixed(1)}</span></div>
-    <div class="breakdown-row"><span class="label">Revenue lost/month</span><span class="value">${formatCurrency(monthlyLost)}</span></div>
-    <div class="breakdown-row"><span class="label">Revenue lost/year</span><span class="value" style="color:#F97316;font-weight:800">${formatCurrency(annualLost)}</span></div>
-  `;
-
-  document.getElementById('result').classList.add('active');
-  document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
-
-function showFullBreakdown() {
-  const { missedCalls, jobValue, closeRate, weeklyLost, monthlyLost, annualLost, jobsPerYear, totalMissedCalls } = calcData;
-
-  const year2 = annualLost * 1.05; // 5% growth YoY
-  const year3 = year2 * 1.05;
-  const monsoonMonthly = monthlyLost * 1.4;
-  const monsoonAnnual = monsoonMonthly * 4; // 4 monsoon months
-  const monsoonExtra = monsoonAnnual - (monthlyLost * 4);
-  const recover50 = annualLost * 0.5;
-
-  document.getElementById('statGrid').innerHTML = `
-    <div class="stat-card">
-      <div class="stat-label">Year 2 (5% growth)</div>
-      <div class="stat-value orange">${formatCurrency(year2)}</div>
-      <div class="stat-sub">lost if call volume grows</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">Year 3 (5% growth)</div>
-      <div class="stat-value orange">${formatCurrency(year3)}</div>
-      <div class="stat-sub">lost if call volume grows</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">Monsoon spike</div>
-      <div class="stat-value">${formatCurrency(monsoonMonthly)}<span style="font-size:14px;color:#64748B">/mo</span></div>
-      <div class="stat-sub">+40% during Jun–Sep</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">Monsoon extra loss</div>
-      <div class="stat-value">${formatCurrency(monsoonExtra)}</div>
-      <div class="stat-sub">additional during storm season</div>
-    </div>
-  `;
-
-  document.getElementById('benchmarks').innerHTML = `
-    <h4>Industry Benchmarks — Arizona Home Services</h4>
-    ${Object.entries(benchmarks).map(([trade, data]) => {
-      const benchmarkAnnual = missedCalls * (data.closeRate / 100) * data.avgJob * 52;
-      const highlight = data.avgJob === jobValue ? ' style="color:#F97316"' : '';
-      return `<div class="bm-row"${highlight === '' ? '' : highlight}><span class="bm-label">${trade}${highlight ? ' ← your range' : ''}</span><span class="bm-value">${formatCurrency(data.avgJob)} avg job · ${formatCurrency(benchmarkAnnual)}/yr lost</span></div>`;
-    }).join('')}
-  `;
-
-  document.getElementById('recoveryCard').innerHTML = `
-    <div class="recovery-label">If you recovered 50% of missed calls</div>
-    <div class="recovery-amount">${formatCurrency(recover50)}/yr</div>
-    <div class="recovery-sub">${Math.round(jobsPerYear * 0.5)} additional jobs per year at your current close rate</div>
-  `;
-
-  document.getElementById('fullBreakdown').classList.add('active');
-  document.getElementById('fullBreakdown').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
-
-function captureEmail() {
-  const email = document.getElementById('email').value;
-  if (!email || !email.includes('@')) return;
-  const btn = document.querySelector('.lead-capture button');
-  btn.textContent = 'Sending...';
-  btn.disabled = true;
-
-  const missedCalls = parseFloat(document.getElementById('missedCalls').value);
-  const jobValue = parseFloat(document.getElementById('jobValue').value);
-  const closeRateNum = parseFloat(document.getElementById('closeRate').value);
-
-  fetch('https://arizona-ai-calculator-api.vercel.app/api/submit', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      email: email,
-      missedCalls: missedCalls,
-      jobValue: '$' + jobValue.toLocaleString('en-US'),
-      closeRate: closeRateNum,
-      annualLost: document.getElementById('resultAmount').textContent,
-      jobsPerYear: Math.round(missedCalls * (closeRateNum / 100) * 52)
-    })
-  })
-  .then(res => {
-    if (res.ok) {
-      btn.textContent = 'Sent ✓';
-      btn.style.background = '#22C55E';
-      showFullBreakdown();
-    } else {
-      btn.textContent = 'Error — retry';
-      btn.style.background = '#EF4444';
-      btn.disabled = false;
-    }
-  })
-  .catch(() => {
-    btn.textContent = 'Error — retry';
-    btn.style.background = '#EF4444';
-    btn.disabled = false;
-  });
-}
-
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Enter') calculate();
-});
-
-// Close mobile nav when a link is clicked
-document.querySelectorAll('#navLinks a').forEach(function(link) {
-    link.addEventListener('click', function() {
-        document.getElementById('navLinks').classList.remove('open');
-    });
-});
+function formatCurrency(n){return'$'+n.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0})}
+const benchmarks={'HVAC':{avgJob:650,closeRate:65},'Plumbing':{avgJob:850,closeRate:60},'Electrical':{avgJob:900,closeRate:55},'Roofing':{avgJob:1200,closeRate:50},'Landscaping':{avgJob:450,closeRate:70}};
+let calcData={};
+function calculate(){const missedCalls=parseFloat(document.getElementById('missedCalls').value);const jobValue=parseFloat(document.getElementById('jobValue').value);const closeRate=parseFloat(document.getElementById('closeRate').value)/100;if(!missedCalls||!jobValue||!closeRate)return;const jobsLostPerWeek=missedCalls*closeRate;const weeklyLost=jobsLostPerWeek*jobValue;const monthlyLost=weeklyLost*4.33;const annualLost=weeklyLost*52;const totalMissedCalls=missedCalls*52;const jobsPerYear=Math.round(jobsLostPerWeek*52);calcData={missedCalls,jobValue,closeRate,weeklyLost,monthlyLost,annualLost,jobsPerYear,totalMissedCalls};document.getElementById('resultAmount').textContent=formatCurrency(annualLost);let consText=`That's <strong>${jobsPerYear} jobs</strong> lost to whoever answered first. <span class="orange">Roughly one tech working half the year for nothing.</span>`;document.getElementById('consequence').innerHTML=consText;document.getElementById('breakdown').innerHTML=`<div class="breakdown-row"><span class="label">Missed calls/week</span><span class="value">${missedCalls}</span></div><div class="breakdown-row"><span class="label">Jobs lost/week</span><span class="value">${jobsLostPerWeek.toFixed(1)}</span></div><div class="breakdown-row"><span class="label">Revenue lost/month</span><span class="value">${formatCurrency(monthlyLost)}</span></div><div class="breakdown-row"><span class="label">Revenue lost/year</span><span class="value" style="color:var(--primary);font-weight:800">${formatCurrency(annualLost)}</span></div>`;document.getElementById('result').classList.add('active');document.getElementById('result').scrollIntoView({behavior:'smooth',block:'nearest'})}
+function showFullBreakdown(){const{missedCalls,jobValue,closeRate,weeklyLost,monthlyLost,annualLost,jobsPerYear,totalMissedCalls}=calcData;const year2=annualLost*1.05;const year3=year2*1.05;const monsoonMonthly=monthlyLost*1.4;const monsoonAnnual=monsoonMonthly*4;const monsoonExtra=monsoonAnnual-(monthlyLost*4);const recover50=annualLost*0.5;document.getElementById('statGrid').innerHTML=`<div class="stat-card"><div class="stat-label">Year 2 (5% growth)</div><div class="stat-value orange">${formatCurrency(year2)}</div><div class="stat-sub">lost if call volume grows</div></div><div class="stat-card"><div class="stat-label">Year 3 (5% growth)</div><div class="stat-value orange">${formatCurrency(year3)}</div><div class="stat-sub">lost if call volume grows</div></div><div class="stat-card"><div class="stat-label">Monsoon spike</div><div class="stat-value">${formatCurrency(monsoonMonthly)}<span style="font-size:14px;color:var(--muted-foreground)">/mo</span></div><div class="stat-sub">+40% during Jun–Sep</div></div><div class="stat-card"><div class="stat-label">Monsoon extra loss</div><div class="stat-value">${formatCurrency(monsoonExtra)}</div><div class="stat-sub">additional during storm season</div></div>`;document.getElementById('benchmarks').innerHTML=`<h4>Industry Benchmarks — Arizona Home Services</h4>${Object.entries(benchmarks).map(([trade,data])=>{const benchmarkAnnual=missedCalls*(data.closeRate/100)*data.avgJob*52;const highlight=data.avgJob===jobValue?' style="color:var(--primary)"':'';return`<div class="bm-row"${highlight===''?'':highlight}><span class="bm-label">${trade}${highlight?' ← your range':''}</span><span class="bm-value">${formatCurrency(data.avgJob)} avg job · ${formatCurrency(benchmarkAnnual)}/yr lost</span></div>`}).join('')}`;document.getElementById('recoveryCard').innerHTML=`<div class="recovery-label">If you recovered 50% of missed calls</div><div class="recovery-amount">${formatCurrency(recover50)}/yr</div><div class="recovery-sub">${Math.round(jobsPerYear*0.5)} additional jobs per year at your current close rate</div>`;document.getElementById('fullBreakdown').classList.add('active');document.getElementById('fullBreakdown').scrollIntoView({behavior:'smooth',block:'nearest'})}
+function captureEmail(){const email=document.getElementById('email').value;if(!email||!email.includes('@'))return;const btn=document.querySelector('.lead-capture button');btn.textContent='Sending...';btn.disabled=true;const missedCalls=parseFloat(document.getElementById('missedCalls').value);const jobValue=parseFloat(document.getElementById('jobValue').value);const closeRateNum=parseFloat(document.getElementById('closeRate').value);fetch('https://arizona-ai-calculator-api.vercel.app/api/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,missedCalls:missedCalls,jobValue:'$'+jobValue.toLocaleString('en-US'),closeRate:closeRateNum,annualLost:document.getElementById('resultAmount').textContent,jobsPerYear:Math.round(missedCalls*(closeRateNum/100)*52)})}).then(res=>{if(res.ok){btn.textContent='Sent ✓';btn.style.background='#22C55E';showFullBreakdown()}else{btn.textContent='Error — retry';btn.style.background='#EF4444';btn.disabled=false}}).catch(()=>{btn.textContent='Error — retry';btn.style.background='#EF4444';btn.disabled=false})}
+document.addEventListener('keydown',function(e){if(e.key==='Enter')calculate()});
 </script>
 </body>
 </html>

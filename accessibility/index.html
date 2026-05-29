@@ -1,129 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accessibility Statement — Arizona AI Solutions</title>
-    <meta name="description" content="Arizona AI Solutions accessibility commitment. We strive to make our website usable by everyone.">
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 0; background: #0F172A; color: #e2e8f0; line-height: 1.7; }
-        .container { max-width: 720px; margin: 0 auto; padding: 60px 20px 40px; }
-        h1 { font-size: 2rem; color: #fff; margin-bottom: 24px; }
-        h2 { font-size: 1.3rem; color: #fff; margin-top: 32px; margin-bottom: 12px; }
-        p { font-size: 1.05rem; color: #94a3b8; margin-bottom: 16px; }
-        footer p { font-size: 0.8rem; color: #7B8BA3; margin-bottom: 0; }
-        a { color: #F97316; text-decoration: underline; text-underline-offset: 2px; }
-        a:hover { color: #FB923C; }
-        a:focus-visible { outline: 3px solid #F97316; outline-offset: 2px; }
-        ul { color: #CBD5E1; padding-left: 24px; margin-bottom: 16px; }
-        li { margin-bottom: 8px; }
-        strong { color: #F8FAFC; }
-        hr { border: none; border-top: 1px solid #334155; margin: 32px 0; }
-        /* Nav */
-        nav.main-nav { position: sticky; top: 0; z-index: 50; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid #1E293B; width: 100%; }
-        nav.main-nav .nav-inner { max-width: 960px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; }
-        .nav-logo { font-size: 1.1rem; font-weight: 800; color: #F8FAFC; text-decoration: none; }
-        .nav-logo .accent { color: #F97316; }
-        .nav-links-row { display: flex; gap: 24px; align-items: center; }
-        .nav-links-row a { color: #8B9BB5; font-size: 0.9rem; text-decoration: none; transition: color 0.15s; }
-        .nav-links-row a:hover { color: #F8FAFC; }
-        .nav-links-row a:focus-visible { outline: 3px solid #F97316; outline-offset: 2px; }
-        .nav-cta { background: #F97316; color: #0F172A !important; font-size: 0.85rem; font-weight: 700; padding: 8px 18px; border-radius: 6px; text-decoration: none; transition: background 0.15s; }
-        .nav-cta:hover { background: #c2590a; color: #fff !important; }
-        .nav-cta:focus-visible { outline: 3px solid #F97316; outline-offset: 3px; }
-        .mobile-toggle { display: none; background: none; border: none; color: #F8FAFC; font-size: 1.5rem; cursor: pointer; padding: 4px; }
-        .mobile-toggle:focus-visible { outline: 3px solid #F97316; outline-offset: 2px; }
-        @media (max-width: 640px) {
-            .mobile-toggle { display: block; }
-            .nav-links-row { display: none; flex-direction: column; gap: 12px; position: absolute; top: 100%; left: 0; right: 0; background: rgba(15, 23, 42, 0.97); padding: 20px; border-bottom: 1px solid #1E293B; }
-            .nav-links-row.open { display: flex; }
-            .nav-cta { text-align: center; }
-        }
-        .back-link { margin-bottom: 24px; }
-        .back-link a { display: inline-block; padding: 10px 20px; background: #1E293B; color: #e2e8f0; border-radius: 6px; font-size: 14px; text-decoration: none; }
-        .back-link a:hover { background: #334155; }
-        .back-link a:focus-visible { outline: 3px solid #F97316; outline-offset: 2px; }
-        .nav-links { margin-top: 32px; padding-top: 16px; }
-        .nav-links a { color: #8B9BB5; margin-right: 16px; font-size: 14px; text-decoration: underline; text-underline-offset: 2px; }
-        .nav-links a:hover { color: #FB923C; }
-        footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #1E293B; color: #7B8BA3; font-size: 0.8rem; text-align: center; }
-        .skip-link { position: absolute; top: -40px; left: 0; background: #F97316; color: #0F172A; padding: 8px 16px; z-index: 100; font-weight: 700; text-decoration: none; border-radius: 0 0 8px 0; }
-        .skip-link:focus { top: 0; outline: 3px solid #fff; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessibility Statement — Arizona AI Solutions</title>
+<meta name="description" content="Arizona AI Solutions accessibility commitment. We strive to make our website usable by everyone.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--background:#0C1322;
+--foreground:#F8FAFC;
+--card:#141E33;
+--card-elevated:#1A2744;
+--surface:#151F36;
+--surface-elevated:#1D2B4A;
+--primary:#F97316;
+--primary-hover:#EA6C0A;
+--primary-foreground:#0C1322;
+--hairline:rgba(255,255,255,0.08);
+--border-strong:#3A4560;
+--muted-foreground:#94A3B8;
+--font-body:'Inter',system-ui,-apple-system,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--background);color:var(--foreground);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+a:focus-visible,button:focus-visible{outline:2px solid #575ECF;outline-offset:2px}
+.nav{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--hairline);background:rgba(12,19,34,0.8);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+.nav-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 24px}
+.nav-logo{font-size:15px;font-weight:600;letter-spacing:-0.01em}
+.nav-logo .accent{color:var(--primary)}
+.accent{color:var(--primary)}
+.nav-links{display:none;gap:32px;align-items:center}
+.nav-links a{font-size:13.5px;color:var(--muted-foreground);transition:color .15s}
+.nav-links a:hover{color:var(--foreground)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-phone{display:none;align-items:center;gap:6px;font-size:13.5px;color:var(--muted-foreground);transition:color .15s;cursor:default}
+.nav-phone:hover{color:var(--foreground)}
+.nav-toggle{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:none;background:none;color:var(--foreground);cursor:pointer;border-radius:6px;transition:background .15s}
+.nav-toggle:hover{background:var(--surface)}
+.nav-toggle svg{width:20px;height:20px;stroke:currentColor}
+@media(min-width:768px){.nav-toggle{display:none}}
+.nav-phone svg{width:14px;height:14px}
+.nav-cta{display:inline-flex;align-items:center;justify-content:center;border-radius:6px;background:var(--primary);padding:8px 14px;font-size:13px;font-weight:500;color:var(--primary-foreground);box-shadow:0 10px 30px -10px rgba(249,115,22,0.5);transition:background .15s}
+.nav-cta:hover{background:var(--primary-hover)}
+@media(min-width:768px){.nav-links{display:flex}.nav-phone{display:inline-flex}}
+@media(max-width:767px){.nav-links.open{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(12,19,34,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--hairline);padding:16px 24px;gap:0}.nav-links.open a{display:block;padding:14px 0;font-size:15px;color:var(--foreground);border-bottom:1px solid var(--hairline)}.nav-links.open a:last-child{border-bottom:none}.nav-links.open a:hover{color:var(--primary)}}
+.footer{background:var(--background);padding:80px 24px}
+.footer-grid{max-width:1160px;margin:0 auto;display:grid;gap:48px}
+@media(min-width:1024px){.footer-grid{grid-template-columns:1.2fr 1fr 1fr 1fr}}
+.footer-logo{display:flex;align-items:center;gap:10px}
+.footer-logo-text{font-size:15px;font-weight:600;letter-spacing:-0.01em}
+.footer-desc{margin-top:16px;font-size:13.5px;line-height:1.625;color:var(--muted-foreground);max-width:384px}
+.footer-col-label{display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.16em;color:var(--muted-foreground)}
+.footer-col-label svg{width:14px;height:14px;color:var(--primary);stroke:var(--primary)}
+.footer-link{display:block;margin-top:12px;font-size:14px;font-weight:500;color:var(--foreground);transition:color .15s}
+.footer-link:hover{color:var(--primary)}
+.footer-subtext{margin-top:4px;font-size:12.5px;color:var(--muted-foreground)}
+.footer-bottom{max-width:1160px;margin:64px auto 0;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:16px;border-top:1px solid var(--hairline);padding-top:32px;font-size:12.5px;color:var(--muted-foreground)}
+@media(min-width:640px){.footer-bottom{flex-direction:row;align-items:center;flex-wrap:wrap}}
+.footer-location{display:flex;align-items:center;gap:8px}
+.footer-location svg{width:14px;height:14px}
+.footer-legal{display:flex;flex-wrap:wrap;gap:8px 16px}
+.footer-legal a{transition:color .15s;text-decoration:none}
+.footer-legal a:hover{color:var(--primary)}
+.container{max-width:720px;margin:0 auto;padding:60px 24px 40px}
+h1{font-size:2rem;color:var(--foreground);margin-bottom:24px;border-bottom:2px solid var(--primary);padding-bottom:12px}
+h2{font-size:1.3rem;color:var(--foreground);margin-top:32px;margin-bottom:12px}
+p{color:var(--muted-foreground);margin-bottom:16px;line-height:1.7}
+ul.content-list{color:var(--muted-foreground);padding-left:24px;margin-bottom:16px;list-style:disc}
+li{margin-bottom:8px}
+a.body-link{color:var(--primary);text-decoration:underline;text-underline-offset:2px}
+a.body-link:hover{color:#FB923C}
+strong{color:var(--foreground)}
+.back-link{margin-bottom:24px}
+.back-link a{display:inline-block;padding:10px 20px;background:var(--surface);color:var(--muted-foreground);border-radius:6px;font-size:14px;text-decoration:none;transition:background .15s}
+.back-link a:hover{background:var(--surface-elevated);color:var(--foreground)}
+.skip-link{position:absolute;top:-40px;left:0;background:var(--primary);color:var(--primary-foreground);padding:8px 16px;z-index:100;font-weight:700;text-decoration:none;border-radius:0 0 8px 0}
+.skip-link:focus{top:0;outline:3px solid #fff}
+</style>
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <nav class="main-nav" aria-label="Main navigation">
-        <div class="nav-inner">
-            <a href="/" class="nav-logo">Arizona <span class="accent">AI</span> Solutions</a>
-            <button class="mobile-toggle" aria-label="Toggle navigation menu" onclick="document.getElementById('navLinks').classList.toggle('open')">&#9776;</button>
-            <div class="nav-links-row" id="navLinks">
-                <a href="/">Home</a>
-                <a href="/calculator">Calculator</a>
-                <a href="https://calendly.com/brandon-arizona-ai-solutions/15-min-discovery-call" class="nav-cta" target="_blank" rel="noopener">Book a Demo</a>
-            </div>
-        </div>
-    </nav>
+<header class="nav">
+<div class="nav-inner">
+<a href="/" class="nav-logo">Arizona <span class="accent">AI</span> Solutions</a>
+<nav class="nav-links">
+<a href="/index.html#how">How it works</a>
+<a href="/index.html#benefits">What you get</a>
+<a href="/index.html#who">Who we serve</a>
+<a href="/index.html#pricing">Pricing</a>
+<a href="/calculator">Calculator</a>
+</nav>
+<div class="nav-right">
+<button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+</button>
+<a href="tel:+152****6366" class="nav-phone">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
+(520) 650-6366
+</a>
+<a href="https://calendly.com/arizona-ai-solutions/15-min-discovery-call" class="nav-cta">Book a Demo</a>
+</div>
+</div>
+</header>
 
-    <div class="container">
-        <div class="back-link"><a href="/">← Back to Arizona AI Solutions</a></div>
-        <main id="main-content">
-            <h1>Accessibility Statement</h1>
+<div class="container">
+<div class="back-link"><a href="/">← Back to Arizona AI Solutions</a></div>
+<main id="main-content">
+    <h1>Accessibility Statement</h1>
 
-            <p>Arizona AI Solutions is committed to making our website accessible to everyone, including people with disabilities. We aim to meet <strong>WCAG 2.2 Level AA</strong> standards across all pages.</p>
+    <p>Arizona AI Solutions is committed to making our website accessible to everyone, including people with disabilities. We aim to meet <strong>WCAG 2.2 Level AA</strong> standards across all pages.</p>
 
-            <h2>What We've Done</h2>
-            <ul>
-                <li><strong>Semantic HTML:</strong> Proper heading hierarchy (H1 → H2 → H3), landmarks (&lt;main&gt;, &lt;nav&gt;, &lt;footer&gt;), and list structures throughout.</li>
-                <li><strong>Keyboard navigation:</strong> All interactive elements are reachable via keyboard. Skip-to-content link, visible focus indicators, and logical tab order.</li>
-                <li><strong>Screen reader support:</strong> ARIA labels on form inputs, aria-live regions for dynamic content (calculator results), and hidden decorative elements.</li>
-                <li><strong>Form accessibility:</strong> All form fields have explicit &lt;label&gt; elements. Required fields are marked. Error states use aria-invalid.</li>
-                <li><strong>Color contrast:</strong> All text meets WCAG AA minimum contrast ratios (4.5:1 for normal text, 3:1 for large text and UI components).</li>
-                <li><strong>Responsive design:</strong> Pages remain usable at 200% zoom and on mobile devices.</li>
-                <li><strong>No auto-playing media:</strong> No content auto-plays or flashes.</li>
-                <li><strong>Descriptive links:</strong> All links describe their destination (no "click here" links).</li>
-            </ul>
+    <h2>What We've Done</h2>
+    <ul class="content-list">
+        <li><strong>Semantic HTML:</strong> Proper heading hierarchy (H1 → H2 → H3), landmarks (&lt;main&gt;, &lt;nav&gt;, &lt;footer&gt;), and list structures throughout.</li>
+        <li><strong>Keyboard navigation:</strong> All interactive elements are reachable via keyboard. Skip-to-content link, visible focus indicators, and logical tab order.</li>
+        <li><strong>Screen reader support:</strong> ARIA labels on form inputs, aria-live regions for dynamic content (calculator results), and hidden decorative elements.</li>
+        <li><strong>Form accessibility:</strong> All form fields have explicit &lt;label&gt; elements. Required fields are marked. Error states use aria-invalid.</li>
+        <li><strong>Color contrast:</strong> All text meets WCAG AA minimum contrast ratios (4.5:1 for normal text, 3:1 for large text and UI components).</li>
+        <li><strong>Responsive design:</strong> Pages remain usable at 200% zoom and on mobile devices.</li>
+        <li><strong>No auto-playing media:</strong> No content auto-plays or flashes.</li>
+        <li><strong>Descriptive links:</strong> All links describe their destination (no "click here" links).</li>
+    </ul>
 
-            <h2>Known Limitations</h2>
-            <ul>
-                <li>Our calculator tool uses dynamic JavaScript for results. While we've added aria-live regions, some screen readers may need a moment to announce updated values.</li>
-                <li>Embedded third-party content (Calendly widget, if any) may have its own accessibility limitations outside our control.</li>
-            </ul>
+    <h2>Known Limitations</h2>
+    <ul class="content-list">
+        <li>Our calculator tool uses dynamic JavaScript for results. While we've added aria-live regions, some screen readers may need a moment to announce updated values.</li>
+        <li>Embedded third-party content (Calendly widget, if any) may have its own accessibility limitations outside our control.</li>
+    </ul>
 
-            <h2>Feedback</h2>
-            <p>If you encounter any accessibility barriers on our site, please let us know. We take accessibility seriously and will respond promptly.</p>
-            <ul>
-                <li>Email: <a href="mailto:brandon@arizona-ai-solutions.com">brandon@arizona-ai-solutions.com</a></li>
-                <li>Phone: available upon request</li>
-            </ul>
-            <p>We aim to acknowledge accessibility feedback within 1 business day and propose a resolution within 5 business days.</p>
+    <h2>Feedback</h2>
+    <p>If you encounter any accessibility barriers on our site, please let us know. We take accessibility seriously and will respond promptly.</p>
+    <ul class="content-list">
+        <li>Email: <a class="body-link" href="mailto:brandon@arizona-ai-solutions.com">brandon@arizona-ai-solutions.com</a></li>
+        <li>Phone: available upon request</li>
+    </ul>
+    <p>We aim to acknowledge accessibility feedback within 1 business day and propose a resolution within 5 business days.</p>
 
-            <h2>Standards</h2>
-            <p>This site targets conformance with <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Level AA</a>. We periodically audit our pages and remediate issues as they're found.</p>
+    <h2>Standards</h2>
+    <p>This site targets conformance with <a class="body-link" href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Level AA</a>. We periodically audit our pages and remediate issues as they're found.</p>
 
-            <p>Last reviewed: May 2026</p>
-        </main>
+    <p>Last reviewed: May 2026</p>
+</main>
+</div>
 
-        <hr>
-        <div class="nav-links">
-            <a href="/privacy">Privacy Policy</a>
-            <a href="/terms">Terms &amp; Conditions</a>
-            <a href="/sms">SMS Terms &amp; Opt-In</a>
-        </div>
+<footer class="footer">
+<div class="footer-grid">
+<div>
+<div class="footer-logo">
+<span class="footer-logo-text">Arizona <span class="accent">AI</span> Solutions</span>
+</div>
+<p class="footer-desc">AI phone agents for Arizona home service businesses. Never miss another after-hours call.</p>
+</div>
+<div>
+<div class="footer-col-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>Phone</div>
+<a href="tel:+152****6366" class="footer-link">(520) 650-6366</a>
+<div class="footer-subtext">Mon–Fri · 8a–6p MST</div>
+</div>
+<div>
+<div class="footer-col-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 14v2.2l1.6 1"/><path d="M16 2v4"/><path d="M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5"/><path d="M3 10h5"/><path d="M8 2v4"/><circle cx="16" cy="16" r="6"/></svg>Schedule a call</div>
+<a href="https://calendly.com/arizona-ai-solutions/15-min-discovery-call" class="footer-link">Book a 15-minute call</a>
+<div class="footer-subtext">Discovery &amp; demo</div>
+</div>
+<div>
+<div class="footer-col-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>Email</div>
+<a href="mailto:brandon@arizona-ai-solutions.com" class="footer-link">brandon@arizona-ai-solutions.com</a>
+<div class="footer-subtext">Replies within 1 business day</div>
+</div>
+</div>
+<div class="footer-bottom">
+<div class="footer-location"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> Tucson, Arizona · Serving the State of Arizona</div>
+<div class="footer-legal">
+<a href="/privacy">Privacy Policy</a>
+<a href="/terms">Terms &amp; Conditions</a>
+<a href="/sms">SMS Terms &amp; Opt-In</a>
+<a href="/accessibility">Accessibility</a>
+<a href="/unsubscribe">Unsubscribe</a>
+</div>
+<div>© 2026 Arizona AI Solutions. All rights reserved.</div>
+</div>
+</footer>
 
-        <footer>
-            <p>&copy; 2026 Arizona AI Solutions. Tucson, Arizona.</p>
-        </footer>
-    </div>
-
-    <script>
-        // Close mobile nav when a link is clicked
-        document.querySelectorAll('#navLinks a').forEach(function(link) {
-            link.addEventListener('click', function() {
-                document.getElementById('navLinks').classList.remove('open');
-            });
-        });
-    </script>
+<script>
+const toggle=document.querySelector('.nav-toggle'),nav=document.querySelector('.nav-links');
+toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',open)});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle.setAttribute('aria-expanded','false')}));
+</script>
 </body>
 </html>
