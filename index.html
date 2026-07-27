@@ -202,6 +202,16 @@ a:focus-visible,button:focus-visible{outline:2px solid #575ECF;outline-offset:2p
 .pricing-shared .shared-item{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--muted-foreground)}
 .pricing-shared .shared-item svg{width:15px;height:15px;min-width:15px;margin-top:2px;color:var(--primary);stroke:var(--primary)}
 
+/* FAQ */
+.faq-list{margin-top:48px;max-width:768px;margin-left:auto;margin-right:auto}
+.faq-item{border-bottom:1px solid var(--hairline)}
+.faq-question{display:flex;align-items:center;justify-content:space-between;width:100%;padding:24px 0;background:none;border:none;cursor:pointer;font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--foreground);text-align:left;transition:color .15s}
+.faq-question:hover{color:var(--primary)}
+.faq-question .chevron{width:20px;height:20px;min-width:20px;margin-left:16px;color:var(--muted-foreground);transition:transform .2s,color .15s}
+.faq-item.open .faq-question .chevron{transform:rotate(180deg);color:var(--primary)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .25s ease}
+.faq-answer-inner{padding:0 0 24px;font-size:14.5px;line-height:1.7;color:var(--muted-foreground)}
+
 /* CTA section */
 .cta-section{position:relative;overflow:hidden;border-bottom:1px solid var(--hairline);padding:112px 24px}
 .cta-glow{position:absolute;inset:0;background:radial-gradient(80% 50% at 50% 0%,rgba(247,117,36,0.15),transparent 70%)}
@@ -243,6 +253,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #575ECF;outline-offset:2p
 <a href="#benefits">What you get</a>
 <a href="#who">Who we serve</a>
 <a href="#pricing">Pricing</a>
+<a href="#faq">FAQ</a>
 <a href="/calculator">Calculator</a>
 </nav>
 <div class="nav-right">
@@ -474,6 +485,60 @@ AI phone agents for Arizona home services
 </div>
 </section>
 
+<!-- FAQ -->
+<section id="faq" class="section">
+<div class="container">
+<div style="max-width:672px;margin:0 auto;text-align:center">
+<div class="section-label">FAQ</div>
+<h2 class="section-title">Questions, answered.</h2>
+<p class="section-subtitle">Everything a home service owner wants to know before signing up.</p>
+</div>
+<div class="faq-list">
+
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)">Does it sound robotic?<svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+<div class="faq-answer"><div class="faq-answer-inner">No. It speaks naturally with real timing, pauses, and tone — like a dispatcher who's been doing it for years. Call our demo line at (520) 650-6366 to hear it for yourself.</div></div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)">What if the caller wants to talk to a real person?<svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+<div class="faq-answer"><div class="faq-answer-inner">Real emergencies are routed straight to your phone instantly. For non-emergencies where the caller insists on a human, the agent takes a detailed message with their name, callback number, and what they need — so you can call them back on your terms.</div></div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)">Can it handle Spanish calls?<svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+<div class="faq-answer"><div class="faq-answer-inner">Yes. The agent is bilingual — English and Spanish — and supports 100+ languages. It automatically matches the caller's language mid-conversation without missing a beat.</div></div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)">What if it doesn't know the answer?<svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+<div class="faq-answer"><div class="faq-answer-inner">The agent is trained on your business — your services, pricing, hours, service area, and FAQs. If it gets a question it doesn't have an answer for, it takes a message rather than guessing. You can update its knowledge anytime.</div></div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)">How fast can you set it up?<svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+<div class="faq-answer"><div class="faq-answer-inner">Most agents are live within a day or two of our onboarding call. We handle everything — phone number, calendar integration, dashboard. You don't touch any code or install anything.</div></div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)">Do I need any technical skills?<svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+<div class="faq-answer"><div class="faq-answer-inner">No. We host and manage everything. You get a phone number and a dashboard login — that's it. No hardware, no installs, no IT. If you can check your email, you can use this.</div></div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)">What happens to calls I'm already answering?<svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+<div class="faq-answer"><div class="faq-answer-inner">The agent handles overflow and after-hours. During business hours, you pick up first — it catches whatever you miss because you're on another call, on a job, or off the clock. You stay in control of when it's active.</div></div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question" onclick="toggleFaq(this)">Is there a long-term contract?<svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+<div class="faq-answer"><div class="faq-answer-inner">No. Month-to-month, cancel anytime. No annual contract required. One emergency call typically pays for the entire month.</div></div>
+</div>
+
+</div>
+</div>
+</section>
+
 <!-- CTA -->
 <section id="cta" class="cta-section">
 <div class="cta-glow"></div>
@@ -528,6 +593,8 @@ AI phone agents for Arizona home services
 const toggle=document.querySelector('.nav-toggle'),nav=document.querySelector('.nav-links');
 toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',open)});
 nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle.setAttribute('aria-expanded','false')}));
+
+function toggleFaq(btn){const item=btn.parentElement;const answer=item.querySelector('.faq-answer');const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-answer').style.maxHeight='0'});if(!isOpen){item.classList.add('open');answer.style.maxHeight=answer.scrollHeight+'px'}}
 </script>
 </body>
 </html>
