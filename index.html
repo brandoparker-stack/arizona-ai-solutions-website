@@ -589,5 +589,6 @@ nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classLi
 
 function toggleFaq(btn){const item=btn.parentElement;const answer=item.querySelector('.faq-answer');const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-answer').style.maxHeight='0'});if(!isOpen){item.classList.add('open');answer.style.maxHeight=answer.scrollHeight+'px'}}
 </script>
+<script src="https://phone.arizona-ai-solutions.com/voice-widget.js?v=4" data-api-base="https://phone.arizona-ai-solutions.com"></script>
 </body>
 </html>
