@@ -335,8 +335,13 @@ section[id]{scroll-margin-top:84px}
 .hiw-ticks{display:flex;gap:10px;justify-content:center;margin-top:14px}
 .hiw-tick{width:34px;height:3px;border-radius:2px;background:var(--border-strong);transition:background .4s ease}
 .hiw-tick.is-on{background:var(--primary)}
-/* mobile: no connector layer, cards keep the gentle light loop */
-@media (max-width:767px){.hiw-svg,.hiw-status,.hiw-ticks{display:none}}
+/* mobile: keep the connector line + bead so the flow reads section to section
+   (gaps widened so the line/bead show between stacked cards); status caption
+   + progress ticks stay desktop-only */
+@media (max-width:767px){
+  .hiw-status,.hiw-ticks{display:none}
+  .hiw-pipeline{row-gap:38px}
+}
 
 /* ===== One-call fanout section ===== */
 /* ============ One-call fanout (mock-only additions) ============ */
