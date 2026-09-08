@@ -381,16 +381,18 @@ section[id]{scroll-margin-top:84px}
 .ocf-caption .cap-b{opacity:0;visibility:hidden}
 .ocf.scene-b .cap-a{opacity:0;visibility:hidden}
 .ocf.scene-b .cap-b{opacity:1;visibility:visible}
-/* mobile */
+/* mobile — connected compact fan (same mechanism as desktop, smaller) */
 @media(max-width:899px){
-  .ocf-chips{grid-template-columns:1fr;position:relative;gap:12px}
-  .ocf-chips::before{content:"";position:absolute;left:29px;top:-24px;bottom:-12px;border-left:2px dashed rgba(148,163,184,.25)}
-  .ocf-chip{position:relative;text-align:left;display:block;padding:14px 16px 14px 58px}
-  .ocf-chip::before{display:flex;align-items:center;justify-content:center;left:16px;top:50%;transform:translateY(-50%);width:26px;height:26px;border-radius:9999px;border:1px solid var(--hairline);background:var(--card);font-size:12.5px;font-weight:600;color:var(--muted-foreground);z-index:1}
+  .ocf-fan{height:54px}
+  .ocf-fan svg{overflow:visible}
+  .ocf-chips{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;position:relative}
+  .ocf-chip{grid-column:span 2;position:relative;z-index:1;text-align:center;padding:10px 6px 12px;font-size:12.5px}
+  .ocf-chip:nth-child(4){grid-column:2 / span 2}
+  .ocf-chip:nth-child(5){grid-column:4 / span 2}
+  .ocf-chip .ocf-chip-sub{margin-top:3px;font-size:10.5px}
+  .ocf-chip::before{position:static;display:flex;align-items:center;justify-content:center;width:22px;height:22px;margin:0 auto 7px;border-radius:9999px;border:1px solid var(--hairline);background:var(--card);font-size:11.5px;font-weight:600;color:var(--muted-foreground)}
   .ocf-chip.is-lit::before{border-color:rgba(249,115,22,.55);color:var(--primary);background:rgba(249,115,22,.10)}
   .ocf-chip.is-urgent::before{border-color:rgba(253,186,116,.85);color:#FDBA74;background:rgba(253,186,116,.10)}
-  .ocf-fan{display:none}
-  .ocf-agent{margin-top:18px}
 }
 </style>
 </head>
@@ -1142,7 +1144,7 @@ function toggleFaq(btn){const item=btn.parentElement;const answer=item.querySele
     if(isReduced){
       document.querySelectorAll('.ocf-fan').forEach(function(f){ f.style.display='none'; });
       agent.classList.add('is-lit');
-      [0,1,2,4].forEach(function(i){ chips[i].classList.add('is-lit'); });
+      [0,2,3,4].forEach(function(i){ chips[i].classList.add('is-lit'); });
       return;
     }
     requestAnimationFrame(frame);
