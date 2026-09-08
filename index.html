@@ -554,9 +554,9 @@ AI phone agents for Arizona home services
 
   <div class="ocf-chips" style="margin-top:18px">
     <div class="ocf-chip" data-num="1" data-label="Qualifies the job">Qualifies the job<span class="ocf-chip-sub">real job, not a solicitor</span></div>
-    <div class="ocf-chip" data-num="2" data-label="Books the appointment">Books the appointment<span class="ocf-chip-sub">straight to your calendar</span></div>
-    <div class="ocf-chip" data-num="3" data-label="Sends the confirmation text">Sends the confirmation text<span class="ocf-chip-sub">SMS, with caller consent</span></div>
-    <div class="ocf-chip" data-num="4" data-label="Routes emergencies">Routes emergencies<span class="ocf-chip-sub">straight to your phone</span></div>
+    <div class="ocf-chip" data-num="2" data-label="Routes emergencies">Routes emergencies<span class="ocf-chip-sub">straight to your phone</span></div>
+    <div class="ocf-chip" data-num="3" data-label="Books the appointment">Books the appointment<span class="ocf-chip-sub">straight to your calendar</span></div>
+    <div class="ocf-chip" data-num="4" data-label="Sends the confirmation text">Sends the confirmation text<span class="ocf-chip-sub">SMS, with caller consent</span></div>
     <div class="ocf-chip" data-num="5" data-label="Logs the call">Logs everything<span class="ocf-chip-sub">transcript on your dashboard</span></div>
   </div>
 
@@ -1018,11 +1018,11 @@ function toggleFaq(btn){const item=btn.parentElement;const answer=item.querySele
   var fanLower = document.querySelector('.ocf-fan-lower');
   var isReduced = new URLSearchParams(location.search).get('motion') === 'reduced';
 
-  // chip indexes: 0 qualify, 1 book, 2 sms, 3 emergency, 4 log
+  // chip indexes: 0 qualify, 1 emergency, 2 book, 3 sms, 4 log
   // client-line flow: qualify (triage) -> routes (ALONE beat: the owner's phone buzzes) -> books/sms/log cascade
   var SCENES = [
-    { beads: [0, 1, 2, 4],    urgent: -1, delays: [0, 95, 190, 285] },              // routine: even stagger
-    { beads: [0, 3, 1, 2, 4], urgent: 3,  delays: [0, 1100, 1800, 1895, 1990] }     // emergency: qualify -> routes alone -> cascade
+    { beads: [0, 2, 3, 4],    urgent: -1, delays: [0, 95, 190, 285] },              // routine: qualify -> book -> sms -> log
+    { beads: [0, 1, 2, 3, 4], urgent: 1,  delays: [0, 1100, 1800, 1895, 1990] }     // emergency: qualify -> routes alone -> cascade
   ];
 
   var vBead = null, curveBeads = [];
