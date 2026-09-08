@@ -73,6 +73,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #575ECF;outline-offset:2p
 
 /* Sections */
 .section{border-bottom:1px solid var(--hairline);padding:112px 24px}
+section[id]{scroll-margin-top:84px}
 .container{max-width:1160px;margin:0 auto}
 
 /* Hero */
@@ -372,6 +373,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #575ECF;outline-offset:2p
 .ocf-chip .ocf-chip-sub{display:block;margin-top:4px;font-size:11px;color:var(--muted-foreground);opacity:.75;font-weight:400}
 .ocf-chip.is-lit{border-color:rgba(249,115,22,.55);color:var(--foreground);box-shadow:0 0 0 1px rgba(249,115,22,.3),0 10px 32px rgba(249,115,22,.10)}
 .ocf-chip.is-urgent{border-color:rgba(253,186,116,.85);color:#FDBA74;animation:ocfUrgent 1.15s ease-in-out infinite}
+.ocf-chip::before{content:attr(data-num);display:none;position:absolute}
 @keyframes ocfUrgent{0%,100%{box-shadow:0 0 0 1px rgba(253,186,116,.5),0 0 18px rgba(249,115,22,.28)}50%{box-shadow:0 0 0 2px rgba(253,186,116,.8),0 0 34px rgba(249,115,22,.5)}}
 .ocf-caption{position:relative;margin-top:26px;height:44px;text-align:center;font-size:14px;color:var(--muted-foreground)}
 .ocf-caption>p{position:absolute;left:0;right:0;top:0;transition:opacity .45s ease}
@@ -381,8 +383,12 @@ a:focus-visible,button:focus-visible{outline:2px solid #575ECF;outline-offset:2p
 .ocf.scene-b .cap-b{opacity:1;visibility:visible}
 /* mobile */
 @media(max-width:899px){
-  .ocf-chips{grid-template-columns:repeat(2,1fr)}
-  .ocf-chip:last-child{grid-column:1 / -1}
+  .ocf-chips{grid-template-columns:1fr;position:relative;gap:12px}
+  .ocf-chips::before{content:"";position:absolute;left:29px;top:-24px;bottom:-12px;border-left:2px dashed rgba(148,163,184,.25)}
+  .ocf-chip{position:relative;text-align:left;display:block;padding:14px 16px 14px 58px}
+  .ocf-chip::before{display:flex;align-items:center;justify-content:center;left:16px;top:50%;transform:translateY(-50%);width:26px;height:26px;border-radius:9999px;border:1px solid var(--hairline);background:var(--card);font-size:12.5px;font-weight:600;color:var(--muted-foreground);z-index:1}
+  .ocf-chip.is-lit::before{border-color:rgba(249,115,22,.55);color:var(--primary);background:rgba(249,115,22,.10)}
+  .ocf-chip.is-urgent::before{border-color:rgba(253,186,116,.85);color:#FDBA74;background:rgba(253,186,116,.10)}
   .ocf-fan{display:none}
   .ocf-agent{margin-top:18px}
 }
@@ -547,11 +553,11 @@ AI phone agents for Arizona home services
   </div>
 
   <div class="ocf-chips" style="margin-top:18px">
-    <div class="ocf-chip" data-label="Qualifies the job">Qualifies the job<span class="ocf-chip-sub">real job, not a solicitor</span></div>
-    <div class="ocf-chip" data-label="Books the appointment">Books the appointment<span class="ocf-chip-sub">straight to your calendar</span></div>
-    <div class="ocf-chip" data-label="Sends the confirmation text">Sends the confirmation text<span class="ocf-chip-sub">SMS, with caller consent</span></div>
-    <div class="ocf-chip" data-label="Routes emergencies">Routes emergencies<span class="ocf-chip-sub">straight to your phone</span></div>
-    <div class="ocf-chip" data-label="Logs the call">Logs everything<span class="ocf-chip-sub">transcript on your dashboard</span></div>
+    <div class="ocf-chip" data-num="1" data-label="Qualifies the job">Qualifies the job<span class="ocf-chip-sub">real job, not a solicitor</span></div>
+    <div class="ocf-chip" data-num="2" data-label="Books the appointment">Books the appointment<span class="ocf-chip-sub">straight to your calendar</span></div>
+    <div class="ocf-chip" data-num="3" data-label="Sends the confirmation text">Sends the confirmation text<span class="ocf-chip-sub">SMS, with caller consent</span></div>
+    <div class="ocf-chip" data-num="4" data-label="Routes emergencies">Routes emergencies<span class="ocf-chip-sub">straight to your phone</span></div>
+    <div class="ocf-chip" data-num="5" data-label="Logs the call">Logs everything<span class="ocf-chip-sub">transcript on your dashboard</span></div>
   </div>
 
   <div class="ocf-caption">
