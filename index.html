@@ -79,8 +79,8 @@ a:focus-visible,button:focus-visible{outline:2px solid #575ECF;outline-offset:2p
 .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--hairline)}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 60% 50% at 50% 0%,#000,transparent 75%);mask-image:radial-gradient(ellipse 60% 50% at 50% 0%,#000,transparent 75%)}
 .hero-glow{position:absolute;inset:0;background:radial-gradient(80% 50% at 50% 0%,rgba(247,117,36,0.15),transparent 70%)}
-.hero-inner{position:relative;max-width:1160px;margin:0 auto;padding:96px 24px 112px}
-@media(min-width:640px){.hero-inner{padding-top:128px;padding-bottom:144px}}
+.hero-inner{position:relative;max-width:1160px;margin:0 auto;padding:64px 24px 112px}
+@media(min-width:640px){.hero-inner{padding-top:70px;padding-bottom:112px}}
 .hero-center{max-width:720px;margin:0 auto;text-align:center}
 
 .badge{display:inline-flex;align-items:center;gap:8px;border-radius:9999px;border:1px solid var(--hairline);background:rgba(21,31,54,0.6);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:4px 12px;font-size:12px;font-weight:500;color:var(--muted-foreground)}
@@ -240,6 +240,102 @@ a:focus-visible,button:focus-visible{outline:2px solid #575ECF;outline-offset:2p
 .footer-legal{display:flex;flex-wrap:wrap;gap:8px 16px}
 .footer-legal a{transition:color .15s;text-decoration:none}
 .footer-legal a:hover{color:var(--primary)}
+
+/* ===== Hero before/after split ===== */
+/* ============ Hero before/after split (mock-only additions) ============ */
+.hhs{max-width:880px;margin:64px auto 0;position:relative;z-index:1}
+.hhs-caption{text-align:center;font-size:13.5px;color:var(--muted-foreground);letter-spacing:0.02em}
+.hhs-caption .hhs-caption-accent{color:var(--foreground)}
+.hhs-grid{margin-top:20px;display:grid;gap:16px;grid-template-columns:1fr 1fr}
+@media(max-width:767px){.hhs-grid{grid-template-columns:1fr}}
+.hhs-panel{display:flex;flex-direction:column;border-radius:12px;padding:22px 24px;min-height:230px}
+.hhs-before{background:rgba(21,31,54,0.45);border:1px solid var(--hairline)}
+.hhs-after{background:linear-gradient(180deg,rgba(249,115,22,0.07),rgba(21,31,54,0.55));border:1px solid rgba(249,115,22,0.35)}
+.hhs-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.16em;color:var(--muted-foreground);display:flex;align-items:center;gap:8px}
+.hhs-after .hhs-label{color:var(--primary)}
+.hhs-label-dot{width:6px;height:6px;border-radius:9999px;background:var(--border-strong)}
+.hhs-after .hhs-label-dot{background:var(--primary);box-shadow:0 0 8px rgba(249,115,22,.8)}
+.hhs-events{margin-top:18px;display:flex;flex-direction:column;gap:14px;flex:1}
+.hhs-event{display:flex;align-items:baseline;gap:12px;opacity:0}
+.hhs-time{font-variant-numeric:tabular-nums;font-size:12px;font-weight:600;color:var(--muted-foreground);letter-spacing:0.04em;white-space:nowrap}
+.hhs-dot{position:relative;width:7px;height:7px;border-radius:9999px;flex:none;transform:translateY(-1px)}
+.hhs-before .hhs-dot{background:var(--border-strong)}
+.hhs-after .hhs-dot{background:var(--primary);box-shadow:0 0 8px rgba(249,115,22,.7)}
+.hhs-text{font-size:13.5px;line-height:1.55;color:var(--muted-foreground)}
+.hhs-after .hhs-text{color:rgba(248,250,252,0.92)}
+/* outcome chips pinned to panel bottom */
+.hhs-chip{margin-top:18px;align-self:flex-start;border-radius:8px;padding:7px 14px;font-size:11.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;opacity:0}
+.hhs-chip-lost{color:var(--muted-foreground);border:1px solid var(--border-strong);background:rgba(12,19,34,0.5)}
+.hhs-chip-booked{color:#FDBA74;border:1px solid rgba(249,115,22,0.55);background:rgba(249,115,22,0.10)}
+/* ============ shared 9s clock: one keyframe block per appearance beat ============ */
+@keyframes hhsBeatA{0%,4.4%{opacity:0;transform:translateY(6px)}7.5%,86%{opacity:1;transform:none}92%,100%{opacity:0}}
+@keyframes hhsBeatB{0%,17.8%{opacity:0;transform:translateY(6px)}21%,86%{opacity:1;transform:none}92%,100%{opacity:0}}
+@keyframes hhsBeatC{0%,31.1%{opacity:0;transform:translateY(6px)}34.5%,86%{opacity:1;transform:none}92%,100%{opacity:0}}
+@keyframes hhsBeatD{0%,46.7%{opacity:0;transform:translateY(4px)}50%,86%{opacity:1;transform:none}92%,100%{opacity:0}}
+@keyframes hhsBeatE{0%,51.1%{opacity:0;transform:translateY(4px);box-shadow:0 0 0 0 rgba(249,115,22,0.55)}
+  54.5%,86%{opacity:1;transform:none;box-shadow:0 0 0 10px rgba(249,115,22,0)}
+  92%,100%{opacity:0;box-shadow:0 0 0 0 rgba(249,115,22,0)}}
+.hhs-a1{animation:hhsBeatA 9s ease-in-out infinite}
+.hhs-a2{animation:hhsBeatB 9s ease-in-out infinite}
+.hhs-a3{animation:hhsBeatC 9s ease-in-out infinite}
+.hhs-chip-lost{animation:hhsBeatD 9s ease-in-out infinite}
+.hhs-chip-booked{animation:hhsBeatE 9s ease-in-out infinite}
+/* reduced-motion variant: ?motion=reduced shows the final frame, static */
+.hhs-static .hhs-event,.hhs-static .hhs-chip{animation:none;opacity:1;transform:none}
+.hhs-static .hhs-chip-booked{box-shadow:none}
+
+/* ============ COMPACT variant: whole hero + split fits above the fold ============ */
+/* tightened vertical rhythm, same components — only spacing/sizing changes.
+   Must come AFTER the base rules above so these win the cascade. */
+@media(max-width:767px){
+  .hero-inner{padding-top:64px;padding-bottom:112px}
+  .hhs{margin-top:44px}
+}
+@media(min-width:640px){
+  .hero-inner{padding-top:70px;padding-bottom:112px}  /* match .section bottom rhythm */
+  .hero h1{margin-top:17px}
+  .hero .subtitle{margin-top:14px}
+  .hero .body-text{margin-top:14px;max-width:640px}
+  .hero-buttons{margin-top:24px}
+  .hhs{margin-top:30px}
+}
+.hhs-caption{font-size:13px}
+.hhs-grid{margin-top:15px}
+.hhs-panel{padding:21px 23px;min-height:0}
+.hhs-events{margin-top:15px;gap:13px}
+.hhs-event .hhs-text{font-size:13.5px;line-height:1.55}
+.hhs-chip{margin-top:16px;padding:6px 13px}
+
+/* ===== How-it-works animated pipeline ===== */
+/* ============ Animated pipeline (mock-only additions) ============ */
+.hiw-pipeline{position:relative}
+/* connector layer sits BEHIND the cards: the path passes "under" cards and
+   shows only in the grid gaps — the bead reads as traveling through them */
+.hiw-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.hiw-line{stroke:var(--border-strong);stroke-width:2;fill:none}
+.hiw-line-energy{stroke:var(--primary);stroke-width:2;fill:none;opacity:.5;
+  stroke-dasharray:6 10;animation:hiw-dash 1.2s linear infinite}
+@keyframes hiw-dash{to{stroke-dashoffset:-16}}
+.hiw-bead{fill:var(--primary);filter:drop-shadow(0 0 6px rgba(249,115,22,.9))}
+/* cards must sit above the connector layer */
+.hiw-pipeline .card{position:relative;z-index:1}
+.hiw-pipeline .card .step-num{transition:color .45s ease}
+.hiw-pipeline .card,
+.hiw-pipeline .card:hover{transition:border-color .45s ease,box-shadow .45s ease,transform .45s ease,background .45s ease}
+/* visited state: card lights as the bead reaches it, stays lit until loop reset */
+.hiw-pipeline .card.is-lit{border-color:rgba(249,115,22,.55);
+  box-shadow:0 0 0 1px rgba(249,115,22,.35),0 12px 40px rgba(249,115,22,.10)}
+.hiw-pipeline .card.is-lit:hover{transform:translateY(-2px)}
+.hiw-pipeline .card.is-lit .step-num{color:var(--primary)}
+/* status caption under the pipeline */
+.hiw-status{margin-top:22px;text-align:center;color:var(--muted-foreground);font-size:.92rem;min-height:1.4em}
+.hiw-status .hiw-status-accent{color:var(--foreground)}
+/* progress ticks that fill as cards light */
+.hiw-ticks{display:flex;gap:10px;justify-content:center;margin-top:14px}
+.hiw-tick{width:34px;height:3px;border-radius:2px;background:var(--border-strong);transition:background .4s ease}
+.hiw-tick.is-on{background:var(--primary)}
+/* mobile: no connector layer, cards keep the gentle light loop */
+@media (max-width:767px){.hiw-svg,.hiw-status,.hiw-ticks{display:none}}
 </style>
 </head>
 <body>
@@ -288,6 +384,30 @@ AI phone agents for Arizona home services
 </div>
 <p class="hero-subtext">Built specifically for HVAC, plumbing, electrical, solar, roofing, pest control, landscaping, and more across Arizona.</p>
 </div>
+
+<div class="hhs" id="hhs">
+<p class="hhs-caption"><span class="hhs-caption-accent">The same 7:04&nbsp;PM call.</span> Two outcomes.</p>
+<div class="hhs-grid">
+  <div class="hhs-panel hhs-before">
+    <div class="hhs-label"><span class="hhs-label-dot"></span>Without Arizona AI Solutions</div>
+    <div class="hhs-events">
+      <div class="hhs-event hhs-a1"><span class="hhs-time">7:04 PM</span><span class="hhs-dot"></span><span class="hhs-text">Customer calls. Nobody picks up — you're on a job.</span></div>
+      <div class="hhs-event hhs-a2"><span class="hhs-time">7:06 PM</span><span class="hhs-dot"></span><span class="hhs-text">Rings out to voicemail.</span></div>
+      <div class="hhs-event hhs-a3"><span class="hhs-time">7:09 PM</span><span class="hhs-dot"></span><span class="hhs-text">They call the next company on the list.</span></div>
+    </div>
+    <div class="hhs-chip hhs-chip-lost">Lost job</div>
+  </div>
+  <div class="hhs-panel hhs-after">
+    <div class="hhs-label"><span class="hhs-label-dot"></span>With Arizona AI Solutions</div>
+    <div class="hhs-events">
+      <div class="hhs-event hhs-a1"><span class="hhs-time">7:04 PM</span><span class="hhs-dot"></span><span class="hhs-text">Customer calls. The agent answers on the first ring.</span></div>
+      <div class="hhs-event hhs-a2"><span class="hhs-time">7:05 PM</span><span class="hhs-dot"></span><span class="hhs-text">Qualifies the job and books it to your calendar.</span></div>
+      <div class="hhs-event hhs-a3"><span class="hhs-time">7:09 PM</span><span class="hhs-dot"></span><span class="hhs-text">Job confirmed. You never picked up.</span></div>
+    </div>
+    <div class="hhs-chip hhs-chip-booked">Booked job</div>
+  </div>
+</div>
+</div>
 </div>
 </section>
 
@@ -299,28 +419,40 @@ AI phone agents for Arizona home services
 <h2 class="section-title">How it works</h2>
 <p class="section-subtitle">From onboarding to your first booked appointment — usually within a week.</p>
 </div>
-<div class="process-grid">
-<div class="card">
-<div class="step-num">01</div>
-<h3>We learn your business</h3>
-<p>Quick onboarding call — we cover your services, pricing, hours, FAQs, and what counts as an emergency for your trade.</p>
+<div class="process-grid hiw-pipeline" id="hiwPipeline">
+<svg class="hiw-svg" aria-hidden="true">
+    <path class="hiw-line" id="hiwPathBase" d=""/>
+    <path class="hiw-line-energy" id="hiwPathEnergy" d=""/>
+    <circle class="hiw-bead" id="hiwBead" r="5" cx="-20" cy="-20"/>
+  </svg>
+
+<div class="card hiw-card" data-phase="We learn your business">
+    <div class="step-num">01</div>
+    <h3>We learn your business</h3>
+    <p>Quick onboarding call — we cover your services, pricing, hours, FAQs, and what counts as an emergency for your trade.</p>
+  </div>
+  <div class="card hiw-card" data-phase="We configure everything">
+    <div class="step-num">02</div>
+    <h3>We configure everything</h3>
+    <p>AI agent trained on your scripts. Calendly integrated. Dedicated local number. Dashboard set up. You don't touch any code.</p>
+  </div>
+  <div class="card hiw-card" data-phase="AI answers every call">
+    <div class="step-num">03</div>
+    <h3>AI answers every call</h3>
+    <p>24/7. Qualifies the lead, books appointments, sends confirmations via SMS (with verbal consent during the call), and routes emergencies to you in real time.</p>
+  </div>
+  <div class="card hiw-card" data-phase="You see everything">
+    <div class="step-num">04</div>
+    <h3>You see everything</h3>
+    <p>Live dashboard with call transcripts, bookings, and SMS activity. No call missed, no lead lost. We review and optimize regularly.</p>
+  </div>
 </div>
-<div class="card">
-<div class="step-num">02</div>
-<h3>We configure everything</h3>
-<p>AI agent trained on your scripts. Calendly integrated. Dedicated local number. Dashboard set up. You don't touch any code.</p>
 </div>
-<div class="card">
-<div class="step-num">03</div>
-<h3>AI answers every call</h3>
-<p>24/7. Qualifies the lead, books appointments, sends confirmations via SMS (with verbal consent during the call), and routes emergencies to you in real time.</p>
+
+<div class="hiw-ticks" aria-hidden="true">
+  <span class="hiw-tick"></span><span class="hiw-tick"></span><span class="hiw-tick"></span><span class="hiw-tick"></span>
 </div>
-<div class="card">
-<div class="step-num">04</div>
-<h3>You see everything</h3>
-<p>Live dashboard with call transcripts, bookings, and SMS activity. No call missed, no lead lost. We review and optimize regularly.</p>
-</div>
-</div>
+<p class="hiw-status"><span class="hiw-status-accent" id="hiwStatusText">Every call answered. Every job on the books.</span></p>
 </div>
 </section>
 
@@ -590,5 +722,177 @@ nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classLi
 function toggleFaq(btn){const item=btn.parentElement;const answer=item.querySelector('.faq-answer');const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-answer').style.maxHeight='0'});if(!isOpen){item.classList.add('open');answer.style.maxHeight=answer.scrollHeight+'px'}}
 </script>
 <script src="https://phone.arizona-ai-solutions.com/voice-widget.js?v=4" data-api-base="https://phone.arizona-ai-solutions.com"></script>
+<script>
+(function(){
+  var pipeline = document.getElementById('hiwPipeline');
+  var cards = Array.prototype.slice.call(pipeline.querySelectorAll('.hiw-card'));
+  var svg = pipeline.querySelector('.hiw-svg');
+  var base = document.getElementById('hiwPathBase');
+  var energy = document.getElementById('hiwPathEnergy');
+  var bead = document.getElementById('hiwBead');
+  var statusEl = document.getElementById('hiwStatusText');
+  var ticks = Array.prototype.slice.call(document.querySelectorAll('.hiw-tick'));
+  var DEFAULT_STATUS = 'Every call answered. Every job on the books.';
+  var FINAL_STATUS = 'Usually live within a week. ' + DEFAULT_STATUS;
+  // Mock policy: full bead flow by default for everyone. Add ?motion=reduced to preview
+  // the reduced-motion variant (sequential lighting only, no traveling bead).
+  var isReduced = new URLSearchParams(location.search).get('motion') === 'reduced';
+
+  /* ---- geometry: build a continuous path through card centers ---- */
+  var pts = [];        // full polyline: [c0, elbow..., c1, elbow..., c2, ...]
+  var marks = [];      // cumulative path length at each card center (arrival thresholds)
+
+  function measure(){
+    var pr = pipeline.getBoundingClientRect();
+    var g = cards.map(function(c){
+      var r = c.getBoundingClientRect();
+      return { x: r.left-pr.left, y: r.top-pr.top, w: r.width, h: r.height,
+               cx: r.left-pr.left+r.width/2, cy: r.top-pr.top+r.height/2 };
+    });
+    svg.setAttribute('viewBox','0 0 '+pr.width+' '+pr.height);
+    svg.setAttribute('preserveAspectRatio','none');
+
+    var EPS = 6;
+    pts = [{x:g[0].cx, y:g[0].cy}];
+    marks = [0];
+    var total = 0;
+    for(var i=1;i<g.length;i++){
+      var a = g[i-1], b = g[i];
+      var seg;
+      if(Math.abs(a.cy-b.cy) < EPS && Math.abs(a.cx-b.cx) > EPS){
+        seg = [[b.cx, b.cy]];                       // same row: straight through the gap
+      } else if(Math.abs(a.cx-b.cx) < EPS){
+        seg = [[a.cx, b.cy]];                       // stacked: straight down
+      } else {
+        var goingLeft = b.cx < a.cx;                // 2x2 snake: elbow through column channel
+        var x1 = goingLeft ? a.x : a.x + a.w;       // leave from facing edge
+        var x2 = goingLeft ? b.x + b.w : b.x;       // enter from facing edge
+        var ch = (x1 + x2) / 2;
+        seg = [[ch, a.cy],[ch, b.cy],[b.cx, b.cy]];
+      }
+      for(var s=0;s<seg.length;s++){
+        var q = seg[s], prev = pts[pts.length-1];
+        total += Math.abs(q[0]-prev.x) + Math.abs(q[1]-prev.y); // manhattan ok: segments are axis-aligned
+        pts.push({x:q[0], y:q[1]});
+      }
+      marks.push(total);
+    }
+    var d = 'M ' + pts[0].x + ' ' + pts[0].y + ' ' + pts.slice(1).map(function(p){ return 'L ' + p.x + ' ' + p.y; }).join(' ');
+    base.setAttribute('d', d);
+    energy.setAttribute('d', d);
+    return total;
+  }
+
+  function pointAt(dist){
+    // walk axis-aligned polyline to absolute manhattan distance
+    var acc = 0;
+    for(var i=1;i<pts.length;i++){
+      var a = pts[i-1], b = pts[i];
+      var len = Math.abs(b.x-a.x) + Math.abs(b.y-a.y);
+      if(acc + len >= dist){
+        var f = len === 0 ? 0 : (dist - acc) / len;
+        return { x: a.x + (b.x-a.x)*f, y: a.y + (b.y-a.y)*f };
+      }
+      acc += len;
+    }
+    return pts[pts.length-1];
+  }
+
+  /* ---- timeline ---- */
+  var CYCLE = 9000, START_AT = 300, LEG = 1500, DWELL = 500, HOLD = 2500;
+  var legs = [];       // {t0, t1, distEnd, cardIndex}
+  var litCount = -1;
+
+  function buildTimeline(total){
+    legs = [];
+    var t = START_AT, prevDist = 0;
+    for(var i=1;i<cards.length;i++){
+      legs.push({ t0: t, t1: t + LEG, distEnd: marks[i], from: prevDist });
+      t += LEG + DWELL;
+      prevDist = marks[i];
+    }
+  }
+
+  function smoothstep(x){ return x*x*(3-2*x); }
+
+  function setLit(n){
+    if(n === litCount) return;
+    for(var j=0;j<cards.length;j++){
+      cards[j].classList.toggle('is-lit', j < n);
+      ticks[j].classList.toggle('is-on', j < n);
+    }
+    if(n <= 0){ statusEl.textContent = DEFAULT_STATUS; }
+    else if(n < cards.length){ statusEl.textContent = cards[n-1].getAttribute('data-phase') + '…'; }
+    else { statusEl.textContent = FINAL_STATUS; }
+    litCount = n;
+  }
+
+  var t0 = null;
+  function frame(ts){
+    if(t0 === null) t0 = ts;
+    var t = (ts - t0) % CYCLE;
+    var total = marks[marks.length-1];
+    var dist = 0, beadOn = true;
+
+    if(t >= START_AT){
+      var leg = null;
+      for(var i=0;i<legs.length;i++){ if(t >= legs[i].t0) leg = legs[i]; }
+      if(leg){
+        var f = smoothstep(Math.min((t - leg.t0) / (leg.t1 - leg.t0), 1));
+        dist = leg.from + (leg.distEnd - leg.from) * f;
+      }
+      if(t > CYCLE - 350) beadOn = false;              // fade out just before loop reset
+    } else {
+      beadOn = false;                                  // initial beat before first move
+    }
+
+    // light cards whose center the bead has passed
+    var n = 0;
+    for(var k=0;k<marks.length;k++){ if(dist >= marks[k] - 1) n = k + 1; }
+    setLit(n);
+
+    var p = pointAt(dist);
+    bead.setAttribute('cx', p.x);
+    bead.setAttribute('cy', p.y);
+    bead.style.opacity = beadOn ? '1' : '0';
+    requestAnimationFrame(frame);
+  }
+
+  function startSequence(){
+    // reduced-motion variant: no bead travel, no dash crawl — steps still light in order
+    bead.style.display = 'none';
+    energy.style.display = 'none';
+    var step = 0;
+    function tick(){
+      if(step < cards.length){
+        step++;
+        setLit(step);
+        setTimeout(tick, 1600);
+      } else {
+        setTimeout(function(){ setLit(0); step = 0; setTimeout(tick, 800); }, 2600);
+      }
+    }
+    setTimeout(tick, 600);
+  }
+
+  function start(){
+    var total = measure();
+    buildTimeline(total);
+    if(isReduced){
+      startSequence();
+      return;
+    }
+    requestAnimationFrame(frame);
+  }
+
+  var resizeTimer = null;
+  window.addEventListener('resize', function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function(){ var total = measure(); buildTimeline(total); }, 120);
+  });
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(function(){ var total = measure(); buildTimeline(total); }); }
+  start();
+})();
+</script>
 </body>
 </html>
