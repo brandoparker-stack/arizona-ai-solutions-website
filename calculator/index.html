@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Missed Revenue Calculator — Arizona AI Solutions</title>
+<title>ROI Calculator — What missed calls cost your shop — Arizona AI Solutions</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -22,13 +22,13 @@
 --hairline:rgba(255,255,255,0.08);
 --border-strong:#3A4560;
 --muted-foreground:#94A3B8;
+--green:#22C55E;
 --font-body:'Inter',system-ui,-apple-system,sans-serif;
 }
 html{scroll-behavior:smooth}
 body{font-family:var(--font-body);background:var(--background);color:var(--foreground);line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-ul{list-style:none}
-a:focus-visible,button:focus-visible{outline:2px solid #575ECF;outline-offset:2px}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #575ECF;outline-offset:2px}
 
 /* Nav */
 .nav{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--hairline);background:rgba(12,19,34,0.8);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
@@ -72,84 +72,97 @@ a:focus-visible,button:focus-visible{outline:2px solid #575ECF;outline-offset:2p
 .footer-legal a{transition:color .15s;text-decoration:none}
 .footer-legal a:hover{color:var(--primary)}
 
-/* Calculator page styles */
-.page-content{max-width:580px;margin:0 auto;padding:40px 24px}
-.calc-card{max-width:580px;width:100%;background:var(--card);border-radius:16px;border:1px solid var(--border-strong);overflow:hidden}
-.accent-bar{width:100%;height:4px;background:var(--primary)}
-.header{padding:36px 36px 0}
-.header-tag{font-size:12px;font-weight:600;color:var(--primary);letter-spacing:4px;text-transform:uppercase;margin-bottom:12px}
-.header h1{font-size:28px;font-weight:900;color:var(--foreground);letter-spacing:-0.5px;line-height:1.2;margin-bottom:8px}
-.header p{font-size:15px;color:var(--muted-foreground);line-height:1.5}
-.form{padding:28px 36px}
-.field{margin-bottom:20px}
-.field:last-of-type{margin-bottom:0}
-.field label{display:block;font-size:13px;font-weight:600;color:var(--muted-foreground);margin-bottom:6px}
-.field .hint{font-weight:400;color:var(--muted-foreground);font-size:12px}
-.field .input-prefix{display:flex;align-items:center;background:var(--background);border:1px solid var(--border-strong);border-radius:8px;overflow:hidden;transition:border-color 0.2s}
-.field .input-prefix:focus-within{border-color:var(--primary)}
-.field .input-prefix span{padding:12px 0 12px 14px;font-size:16px;font-weight:600;color:var(--muted-foreground)}
-.field .input-prefix input[type="number"],.field input[type="number"]{width:100%;background:var(--background);border:1px solid var(--border-strong);border-radius:8px;padding:12px 14px;font-size:16px;font-weight:600;color:var(--foreground);font-family:var(--font-body);outline:none;transition:border-color 0.2s}
-.field .input-prefix input[type="number"]{border:none;border-radius:0}
-.field input[type="number"]:focus,.field .input-prefix input[type="number"]:focus{border-color:var(--primary)}
-.field input[type="number"]::placeholder{color:var(--muted-foreground);font-weight:400}
-.calculate-btn{width:100%;padding:14px;background:var(--primary);color:var(--primary-foreground);font-size:16px;font-weight:800;font-family:var(--font-body);border:none;border-radius:8px;cursor:pointer;transition:background 0.2s;margin-top:24px}
-.calculate-btn:hover{background:var(--primary-hover)}
-.calculate-btn:active{background:#C2410C}
-.result{display:none;padding:0 36px 36px}
-.result.active{display:block}
-.result-divider{width:100%;height:1px;background:var(--border-strong);margin-bottom:24px}
-.result-label{font-size:12px;font-weight:600;color:var(--muted-foreground);letter-spacing:3px;text-transform:uppercase;margin-bottom:6px}
-.result-amount{font-size:52px;font-weight:900;color:var(--primary);letter-spacing:-2px;line-height:1;margin-bottom:16px}
-.consequence{font-size:15px;color:var(--muted-foreground);line-height:1.6;margin-bottom:16px;padding:16px;background:var(--background);border-radius:8px;border-left:3px solid var(--primary)}
-.consequence strong{color:var(--foreground)}
-.consequence .orange{color:var(--primary);font-weight:700}
-.breakdown{background:var(--background);border-radius:8px;padding:16px;margin-bottom:24px}
-.breakdown-row{display:flex;justify-content:space-between;padding:7px 0;font-size:14px}
-.breakdown-row:not(:last-child){border-bottom:1px solid var(--card)}
-.breakdown-row .label{color:var(--muted-foreground)}
-.breakdown-row .value{color:var(--foreground);font-weight:600}
-.lead-capture{background:var(--background);border-radius:8px;padding:24px;border:1px solid var(--border-strong)}
-.lead-capture h3{font-size:16px;font-weight:800;color:var(--foreground);margin-bottom:6px}
-.lead-capture p{font-size:14px;color:var(--muted-foreground);margin-bottom:16px;line-height:1.5}
-.lead-capture .email-row{display:flex;gap:8px;flex-wrap:wrap}
-.lead-capture input[type="email"]{flex:1;min-width:0;background:var(--card);border:1px solid var(--border-strong);border-radius:6px;padding:11px 14px;font-size:14px;color:var(--foreground);font-family:var(--font-body);outline:none;transition:border-color 0.2s}
-.lead-capture input[type="email"]:focus{border-color:var(--primary)}
-.lead-capture input[type="email"]::placeholder{color:var(--muted-foreground)}
-.lead-capture button{padding:11px 20px;background:var(--primary);color:var(--primary-foreground);font-size:14px;font-weight:700;font-family:var(--font-body);border:none;border-radius:6px;cursor:pointer;white-space:nowrap;transition:background 0.2s;flex-shrink:0}
-.lead-capture button:hover{background:var(--primary-hover)}
-@media(max-width:480px){.lead-capture .email-row{flex-direction:column}.lead-capture button{width:100%}}
-.lead-capture .checklist-items{margin-top:16px;display:flex;flex-direction:column;gap:6px}
-.lead-capture .checklist-item{font-size:13px;color:var(--muted-foreground);padding-left:20px;position:relative}
-.lead-capture .checklist-item::before{content:"✓";position:absolute;left:0;color:#22C55E;font-weight:700}
-.full-breakdown{display:none;margin-top:24px}
-.full-breakdown.active{display:block}
-.full-breakdown .section-title{font-size:12px;font-weight:700;color:var(--primary);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
-.full-breakdown .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
-.full-breakdown .stat-card{background:var(--background);border-radius:8px;padding:14px}
-.full-breakdown .stat-card .stat-label{font-size:11px;font-weight:600;color:var(--muted-foreground);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
-.full-breakdown .stat-card .stat-value{font-size:22px;font-weight:900;color:var(--foreground);letter-spacing:-0.5px}
-.full-breakdown .stat-card .stat-value.orange{color:var(--primary)}
-.full-breakdown .stat-card .stat-sub{font-size:11px;color:var(--muted-foreground);margin-top:2px}
-.full-breakdown .benchmarks{background:var(--background);border-radius:8px;padding:16px;margin-bottom:20px}
-.full-breakdown .benchmarks h4{font-size:12px;font-weight:700;color:var(--muted-foreground);margin-bottom:10px}
-.full-breakdown .benchmarks .bm-row{display:flex;justify-content:space-between;padding:6px 0;font-size:13px}
-.full-breakdown .benchmarks .bm-row:not(:last-child){border-bottom:1px solid var(--card)}
-.full-breakdown .benchmarks .bm-row .bm-label{color:var(--muted-foreground)}
-.full-breakdown .benchmarks .bm-row .bm-value{color:var(--foreground);font-weight:600}
-.full-breakdown .recovery-card{background:var(--background);border-radius:8px;padding:16px;border-left:3px solid #22C55E;margin-bottom:20px}
-.full-breakdown .recovery-card .recovery-label{font-size:12px;font-weight:700;color:#22C55E;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
-.full-breakdown .recovery-card .recovery-amount{font-size:32px;font-weight:900;color:#22C55E;letter-spacing:-1px;margin-bottom:4px}
-.full-breakdown .recovery-card .recovery-sub{font-size:13px;color:var(--muted-foreground)}
-.download-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:var(--card);border:1px solid var(--border-strong);border-radius:6px;color:var(--foreground);font-size:13px;font-weight:600;font-family:var(--font-body);text-decoration:none;transition:border-color 0.2s;margin-bottom:24px}
-.download-link:hover{border-color:var(--primary)}
-.download-link .dl-icon{color:var(--primary);font-weight:700}
-.back-link{margin-bottom:16px}
-.back-link a{display:inline-block;padding:10px 20px;background:var(--surface);color:var(--muted-foreground);border-radius:6px;font-size:14px;text-decoration:none;transition:background .15s}
-.back-link a:hover{background:var(--surface-elevated);color:var(--foreground)}
+/* ===== ROI board ===== */
+.page-head{max-width:1160px;margin:0 auto;padding:64px 24px 4px;text-align:center}
+.page-tag{font-size:12px;font-weight:600;color:var(--primary);letter-spacing:4px;text-transform:uppercase;margin-bottom:14px}
+.page-head h1{font-family:'Instrument Serif','Times New Roman',serif;font-weight:400;font-size:44px;line-height:1.05;letter-spacing:-0.02em}
+@media(min-width:768px){.page-head h1{font-size:4rem}}
+.page-head h1 .gradient{font-style:italic;background:linear-gradient(135deg,#F97316,#FC6B33);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;color:transparent}
+.page-head p{margin:18px auto 0;font-size:16px;color:var(--muted-foreground);line-height:1.6;max-width:560px}
+.board{max-width:1160px;margin:36px auto 0;padding:0 24px 20px;display:grid;gap:20px}
+@media(min-width:900px){.board{grid-template-columns:430px 1fr;align-items:start;gap:24px}}
+.panel{background:var(--card);border:1px solid var(--border-strong);border-radius:16px;overflow:hidden}
+.panel-accent{width:100%;height:4px;background:var(--primary)}
+.panel-inner{padding:26px 28px 28px}
+.panel-label{font-size:11.5px;font-weight:700;color:var(--muted-foreground);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:18px}
+
+/* Sliders */
+.ctl{margin-bottom:22px}
+.section-div{margin-top:28px;padding-top:22px;border-top:1px solid var(--border-strong)}
+.section-div .panel-label{margin-bottom:16px}
+.ctl-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.ctl-head label{font-size:13.5px;font-weight:600;color:var(--foreground)}
+.ctl-head .val{font-size:15px;font-weight:800;color:var(--primary);font-variant-numeric:tabular-nums}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:999px;background:linear-gradient(to right,var(--primary) 0%,var(--primary) var(--fill,40%),var(--surface-elevated) var(--fill,40%),var(--surface-elevated) 100%);outline:none;margin:6px 0 2px;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:20px;height:20px;border-radius:50%;background:var(--foreground);border:3px solid var(--primary);box-shadow:0 2px 10px rgba(0,0,0,.5);cursor:grab}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--foreground);border:3px solid var(--primary);box-shadow:0 2px 10px rgba(0,0,0,.5);cursor:grab}
+.ctl-scale{display:flex;justify-content:space-between;font-size:11px;color:var(--muted-foreground);margin-top:2px}
+
+/* Plan chip under call slider */
+.tier-track{margin:14px 0 2px}
+.tier-bar{position:relative;height:8px;border-radius:999px;background:var(--surface-elevated);overflow:visible;display:block}
+.tier-bar .seg{position:absolute;top:0;height:100%;border-radius:999px;transition:opacity .2s, background .2s;opacity:.35}
+#segStarter{left:0;width:37.5%;background:rgba(249,115,22,.55)}
+#segGrowth{left:37.5%;width:62.5%;background:rgba(249,115,22,.55)}
+.tier-bar .seg.lit{opacity:1;box-shadow:0 0 12px rgba(249,115,22,.5)}
+.tier-bar .marker{position:absolute;top:-5px;width:3px;height:18px;background:var(--foreground);border-radius:2px;transform:translateX(-50%);transition:left .12s;z-index:2}
+.tier-ticks{display:flex;justify-content:space-between;font-size:10.5px;color:var(--muted-foreground);margin-top:4px}
+.plan-chip{margin-top:12px;display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;font-size:12.5px;font-weight:700;background:rgba(249,115,22,0.12);border:1px solid rgba(249,115,22,0.35);color:var(--primary);transition:all .2s}
+.plan-chip b{font-weight:800}
+.plan-chip.growth{background:rgba(249,115,22,0.2);box-shadow:0 0 14px rgba(249,115,22,0.25)}
+.plan-over{display:none;margin-top:8px;font-size:12px;color:var(--muted-foreground)}
+.plan-over.show{display:block}
+
+/* Trade chips */
+.trades{margin-top:20px;padding-top:18px;border-top:1px solid var(--hairline)}
+.trades-label{font-size:11.5px;font-weight:700;color:var(--muted-foreground);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+.trade-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.trade-chips{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.trade-chip{padding:10px 14px;border-radius:8px;border:1px solid var(--border-strong);background:var(--background);font-size:13px;font-weight:600;color:var(--muted-foreground);cursor:pointer;text-align:left;transition:all .15s;display:flex;justify-content:space-between;align-items:center;gap:6px}
+.trade-chip:hover{border-color:var(--primary);color:var(--foreground)}
+.trade-chip .tv{font-weight:800;color:var(--foreground);font-variant-numeric:tabular-nums}
+.trade-chip.active{border-color:var(--primary);background:rgba(249,115,22,0.10);color:var(--foreground)}
+.trade-chip.active .tv{color:var(--primary)}
+.trade-chip.active .tname{color:var(--primary)}
+
+/* Result tiles */
+.tiles{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+@media(max-width:620px){.tiles{grid-template-columns:1fr 1fr}}
+.tile{background:var(--background);border:1px solid var(--hairline);border-radius:10px;padding:14px 16px}
+.tile .t-label{font-size:10.5px;font-weight:600;color:var(--muted-foreground);letter-spacing:1.6px;text-transform:uppercase;margin-bottom:6px}
+.tile .t-value{font-size:22px;font-weight:800;letter-spacing:-0.4px;font-variant-numeric:tabular-nums;line-height:1.1}
+.tile .t-sub{font-size:11px;color:var(--muted-foreground);margin-top:4px}
+.tile.green .t-value{color:var(--green)}
+.hero-tile{background:linear-gradient(135deg,rgba(249,115,22,0.16),rgba(249,115,22,0.04) 60%,rgba(249,115,22,0.02));border:1px solid rgba(249,115,22,0.35);border-radius:12px;padding:26px 28px;margin-bottom:12px}
+.hero-tile .t-label{font-size:11.5px;font-weight:600;color:var(--muted-foreground);letter-spacing:3px;text-transform:uppercase}
+.hero-tile .t-value{margin-top:10px;font-family:'Instrument Serif','Times New Roman',serif;font-weight:400;font-size:64px;line-height:1;letter-spacing:-0.01em;color:var(--primary)}
+@media(min-width:1100px){.hero-tile .t-value{font-size:76px}}
+.hero-tile .t-sub{margin-top:8px;font-size:13px;color:var(--muted-foreground)}
+.hero-tile .t-annual{margin-top:16px;padding-top:14px;border-top:1px solid var(--hairline);display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.hero-tile .t-annual .a-label{font-size:11.5px;font-weight:600;color:var(--muted-foreground);letter-spacing:3px;text-transform:uppercase}
+.hero-tile .t-annual .a-num{font-family:'Instrument Serif','Times New Roman',serif;font-size:24px;color:var(--foreground);font-variant-numeric:tabular-nums}
+.assumption{margin-top:16px;font-size:12px;color:var(--muted-foreground);line-height:1.55;background:var(--background);border-radius:8px;padding:12px 14px;border-left:3px solid var(--border-strong)}
+.assumption b{color:var(--foreground);font-weight:600}
+.net-line{margin-top:16px;padding:14px 18px;border-radius:10px;background:var(--background);border:1px solid var(--hairline)}
+.net-line .nl-text{font-size:14.5px;color:var(--muted-foreground)}
+.net-line .nl-text b{color:var(--foreground);font-weight:700}
+.tel-quiet{font-size:13.5px;color:var(--muted-foreground);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--border-strong);transition:color .15s}
+.tel-quiet:hover{color:var(--foreground)}
+
+/* CTA under board */
+.after-cta{max-width:1160px;margin:26px auto 0;padding:0 24px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:var(--primary-foreground);padding:13px 24px;border-radius:8px;font-size:14.5px;font-weight:700;transition:background .15s}
+.btn-primary:hover{background:var(--primary-hover)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border-strong);color:var(--foreground);padding:12px 20px;border-radius:8px;font-size:14px;font-weight:600;transition:border-color .15s}
+.btn-ghost:hover{border-color:var(--primary)}
+.after-note{font-size:12.5px;color:var(--muted-foreground)}
+
+/* method footnote */
+.method{max-width:1160px;margin:22px auto 0;padding:0 24px;font-size:12px;color:var(--muted-foreground);line-height:1.6}
+.method b{color:var(--foreground);font-weight:600}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .skip-link{position:absolute;top:-40px;left:0;background:var(--primary);color:var(--primary-foreground);padding:8px 16px;z-index:100;font-weight:700;text-decoration:none;border-radius:0 0 8px 0}
 .skip-link:focus{top:0;outline:3px solid #fff}
-input[aria-invalid="true"]{border-color:#EF4444}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 </style>
 </head>
 <body>
@@ -169,7 +182,7 @@ input[aria-invalid="true"]{border-color:#EF4444}
 <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
 </button>
-<a href="tel:+152****6366" class="nav-phone">
+<a href="tel:+15206506366" class="nav-phone">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
 (520) 650-6366
 </a>
@@ -178,71 +191,129 @@ input[aria-invalid="true"]{border-color:#EF4444}
 </div>
 </header>
 
-<div class="page-content">
-<div class="back-link"><a href="/">← Back to Arizona AI Solutions</a></div>
-<div class="calc-card" role="main" id="main-content">
-  <div class="accent-bar"></div>
-  <div class="header">
-    <p class="header-tag">Diagnostic Tool</p>
-    <h1>How much revenue is walking out the door from missed calls?</h1>
-    <p>Most Arizona home service businesses miss 3–5 after-hours calls per week. Here's what that costs.</p>
-  </div>
-  <div class="form">
-    <div class="field">
-      <label for="missedCalls">After-hours calls missed per week <span class="hint">(rings out, voicemail, no answer)</span></label>
-      <input type="number" id="missedCalls" name="missedCalls" placeholder="e.g. 4" min="1" max="50" aria-describedby="missedCalls-hint" autocomplete="off">
-      <span id="missedCalls-hint" class="sr-only">Enter a number between 1 and 50</span>
-    </div>
-    <div class="field">
-      <label for="jobValue">Average job value</label>
-      <div class="input-prefix">
-        <span aria-hidden="true">$</span>
-        <input type="number" id="jobValue" name="jobValue" placeholder="e.g. 850" min="100" max="100000" aria-label="Average job value in dollars" autocomplete="off">
-      </div>
-    </div>
-    <div class="field">
-      <label for="closeRate">Close rate <span class="hint">(% of answered calls that become jobs)</span></label>
-      <div class="input-prefix">
-        <input type="number" id="closeRate" name="closeRate" placeholder="e.g. 60" min="1" max="100" aria-describedby="closeRate-hint" autocomplete="off">
-        <span aria-hidden="true" style="padding:12px 14px 12px 4px">%</span>
-      </div>
-      <span id="closeRate-hint" class="sr-only">Enter a percentage between 1 and 100</span>
-    </div>
-    <button class="calculate-btn" onclick="calculate()">Calculate Missed Revenue</button>
-  </div>
-  <div class="result" id="result" aria-live="polite" aria-atomic="true">
-    <div class="result-divider"></div>
-    <p class="result-label">Annual lost revenue</p>
-    <div class="result-amount" id="resultAmount">$0</div>
-    <div class="consequence" id="consequence"></div>
-    <div class="breakdown" id="breakdown"></div>
-    <div class="lead-capture">
-      <h3>Get the full breakdown + missed call recovery checklist</h3>
-      <p>Your personalized numbers, 3-year projection, industry benchmarks, and a short recovery checklist.</p>
-      <div class="email-row">
-        <label for="email" class="sr-only">Email address</label>
-        <input type="email" id="email" name="email" placeholder="your@email.com" aria-label="Email address for breakdown delivery" autocomplete="email" required>
-        <button onclick="captureEmail()" aria-label="Send breakdown to email">Send My Breakdown</button>
-      </div>
-      <div class="checklist-items">
-        <span class="checklist-item">3-year revenue loss projection</span>
-        <span class="checklist-item">Industry benchmarks by trade</span>
-        <span class="checklist-item">Arizona-specific after-hours call patterns</span>
-        <span class="checklist-item">5-step recovery checklist (PDF)</span>
-      </div>
-    </div>
-    <div class="full-breakdown" id="fullBreakdown">
-      <div class="section-title">Full Breakdown</div>
-      <div class="grid" id="statGrid"></div>
-      <div class="benchmarks" id="benchmarks"></div>
-      <div class="recovery-card" id="recoveryCard"></div>
-      <a href="Missed_Call_Recovery_Checklist.pdf" download class="download-link" aria-label="Download Recovery Checklist PDF">
-        <span class="dl-icon" aria-hidden="true">↓</span> Download Recovery Checklist (PDF)
-      </a>
-    </div>
-  </div>
+<div class="page-head">
+<p class="page-tag">ROI Calculator</p>
+<h1>What are missed calls <span class="gradient">actually</span> costing your shop?</h1>
+<p>Move the sliders. The math updates live — no form, no email. Same math we run with owners on the first call.</p>
+</div>
+
+<div class="board" id="main-content">
+<!-- LEFT: inputs -->
+<div class="panel">
+<div class="panel-accent"></div>
+<div class="panel-inner">
+<p class="panel-label">Your call volume</p>
+
+<div class="ctl">
+<div class="ctl-head">
+<label for="inCalls">Inbound calls per month</label>
+<span class="val"><span id="inCallsVal">180</span> calls</span>
+</div>
+<input type="range" id="inCalls" min="40" max="800" step="10" value="180" aria-label="Inbound calls per month">
+<div class="ctl-scale"><span>40</span><span>800</span></div>
+
+<div class="tier-bar" id="tierBar" aria-hidden="true">
+<div class="seg" id="segStarter"></div>
+<div class="seg" id="segGrowth"></div>
+<div class="marker" id="tierMarker" style="left:18.5%"></div>
+</div>
+<div class="tier-ticks" aria-hidden="true"><span>0</span><span>300 · Starter</span><span>800 · Growth</span></div>
+<div style="margin-top:12px"><span class="plan-chip" id="planChip"><b>Starter</b> · $347/mo</span></div>
+<p class="plan-over" id="planOver">At 800+ calls, talk to us — overage is $0.25/min on every plan.</p>
+</div>
+
+<div class="ctl">
+<div class="ctl-head">
+<label for="missRate">Calls that go unanswered</label>
+<span class="val" id="missRateVal">35%</span>
+</div>
+<input type="range" id="missRate" min="10" max="70" step="1" value="35" aria-label="Percent of calls that go unanswered">
+<div class="ctl-scale"><span>10%</span><span>70%</span></div>
+</div>
+
+<div class="ctl">
+<div class="ctl-head">
+<label for="closeRate">Close rate when someone picks up</label>
+<span class="val" id="closeRateVal">40%</span>
+</div>
+<input type="range" id="closeRate" min="15" max="70" step="1" value="40" aria-label="Close rate on answered calls">
+<div class="ctl-scale"><span>15%</span><span>70%</span></div>
+</div>
+
+<div class="section-div">
+<p class="panel-label">The job you're selling</p>
+<div class="ctl" style="margin-top:0">
+<div class="ctl-head">
+<label for="jobValue">Average job value</label>
+<span class="val" id="jobValueVal">$450</span>
+</div>
+<input type="range" id="jobValue" min="150" max="2000" step="25" value="450" aria-label="Average job value in dollars">
+<div class="ctl-scale"><span>$150</span><span>$2,000</span></div>
+</div>
+
+<div class="trades" style="padding-top:18px;margin-top:14px">
+<p class="trades-label">Common job values</p>
+<div class="trade-chips" id="tradeChips">
+<button type="button" class="trade-chip active" data-value="450" data-name="HVAC"><span class="tname">HVAC</span><span class="tv">· $450</span></button>
+<button type="button" class="trade-chip" data-value="350" data-name="Plumbing"><span class="tname">Plumbing</span><span class="tv">· $350</span></button>
+<button type="button" class="trade-chip" data-value="350" data-name="Electrical"><span class="tname">Electrical</span><span class="tv">· $350</span></button>
+<button type="button" class="trade-chip" data-name="Custom"><span class="tname">Custom</span><span class="tv">· your price</span></button>
 </div>
 </div>
+</div>
+</div>
+</div>
+
+<!-- RIGHT: live results -->
+<div class="panel">
+<div class="panel-accent" style="background:var(--green)"></div>
+<div class="panel-inner">
+<p class="panel-label">What it's costing you</p>
+
+<div class="hero-tile">
+<div class="t-label">Revenue lost · per month</div>
+<div class="t-value" id="tLost">$11,340</div>
+<div class="t-sub" id="tLostSub">What walks out the door while the phone rings.</div>
+<div class="t-annual">
+<span class="a-label">Annualized</span>
+<span class="a-num" id="tLostAnnual">$136,080</span>
+</div>
+</div>
+
+<div class="tiles">
+<div class="tile">
+<div class="t-label">Missed calls</div>
+<div class="t-value" id="tMissed">63</div>
+<div class="t-sub" id="tMissedSub">of 180 inbound</div>
+</div>
+<div class="tile">
+<div class="t-label">Jobs walking out</div>
+<div class="t-value" id="tJobs">25</div>
+<div class="t-sub" id="tJobsSub">missed × close rate</div>
+</div>
+<div class="tile green">
+<div class="t-label">Plan cost vs recovered</div>
+<div class="t-value" id="tNet">+$10,993</div>
+<div class="t-sub" id="tNetSub">Starter · $347/mo</div>
+</div>
+</div>
+
+<div class="net-line">
+<span class="nl-text" id="paybackLine">Casey pays for herself after <b>1 booked job</b> a month.</span>
+</div>
+
+<div class="assumption">
+<b>How the math stays honest:</b> close rate is jobs out of every answered call — including spam and tire-kickers. We apply that same rate to missed calls, so we don't treat every missed ring as a paying job.
+</div>
+</div>
+<!-- end RIGHT panel -->
+</div>
+</div>
+<!-- end board -->
+
+<p class="method" style="text-align:center;margin-top:6px">See a number you like? <a href="https://calendly.com/arizona-ai-solutions/15-min-discovery-call" style="color:var(--primary);font-weight:600;text-decoration:underline;text-underline-offset:3px">Book a 15-min call</a> &nbsp;or&nbsp; call the live agent — <a href="tel:+15206506366" style="color:var(--primary);font-weight:600;text-decoration:underline;text-underline-offset:3px">(520) 650-6366</a>.</p>
+
+<p class="method" style="margin-top:22px">Assumptions: close rate is jobs out of all answered calls (spam included) and applies to missed calls at the same rate. Plan pricing: Starter $347/mo up to 300 calls, Growth $497/mo to 800, $0.25/min overage after. Job values are Arizona inbound-service-call averages, not big-ticket installs.</p>
 
 <footer class="footer">
 <div class="footer-grid">
@@ -254,7 +325,7 @@ input[aria-invalid="true"]{border-color:#EF4444}
 </div>
 <div>
 <div class="footer-col-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>Phone</div>
-<a href="tel:+152****6366" class="footer-link">(520) 650-6366</a>
+<a href="tel:+15206506366" class="footer-link">(520) 650-6366</a>
 <div class="footer-subtext">Mon–Fri · 8a–6p MST</div>
 </div>
 <div>
@@ -286,13 +357,121 @@ const toggle=document.querySelector('.nav-toggle'),navLinks=document.querySelect
 toggle.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');toggle.setAttribute('aria-expanded',open)});
 navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');toggle.setAttribute('aria-expanded','false')}));
 
-function formatCurrency(n){return'$'+n.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0})}
-const benchmarks={'HVAC':{avgJob:650,closeRate:65},'Plumbing':{avgJob:850,closeRate:60},'Electrical':{avgJob:900,closeRate:55},'Roofing':{avgJob:1200,closeRate:50},'Landscaping':{avgJob:450,closeRate:70}};
-let calcData={};
-function calculate(){const missedCalls=parseFloat(document.getElementById('missedCalls').value);const jobValue=parseFloat(document.getElementById('jobValue').value);const closeRate=parseFloat(document.getElementById('closeRate').value)/100;if(!missedCalls||!jobValue||!closeRate)return;const jobsLostPerWeek=missedCalls*closeRate;const weeklyLost=jobsLostPerWeek*jobValue;const monthlyLost=weeklyLost*4.33;const annualLost=weeklyLost*52;const totalMissedCalls=missedCalls*52;const jobsPerYear=Math.round(jobsLostPerWeek*52);calcData={missedCalls,jobValue,closeRate,weeklyLost,monthlyLost,annualLost,jobsPerYear,totalMissedCalls};document.getElementById('resultAmount').textContent=formatCurrency(annualLost);let consText=`That's <strong>${jobsPerYear} jobs</strong> lost to whoever answered first. <span class="orange">Roughly one tech working half the year for nothing.</span>`;document.getElementById('consequence').innerHTML=consText;document.getElementById('breakdown').innerHTML=`<div class="breakdown-row"><span class="label">Missed calls/week</span><span class="value">${missedCalls}</span></div><div class="breakdown-row"><span class="label">Jobs lost/week</span><span class="value">${jobsLostPerWeek.toFixed(1)}</span></div><div class="breakdown-row"><span class="label">Revenue lost/month</span><span class="value">${formatCurrency(monthlyLost)}</span></div><div class="breakdown-row"><span class="label">Revenue lost/year</span><span class="value" style="color:var(--primary);font-weight:800">${formatCurrency(annualLost)}</span></div>`;document.getElementById('result').classList.add('active');document.getElementById('result').scrollIntoView({behavior:'smooth',block:'nearest'})}
-function showFullBreakdown(){const{missedCalls,jobValue,closeRate,weeklyLost,monthlyLost,annualLost,jobsPerYear,totalMissedCalls}=calcData;const year2=annualLost*1.05;const year3=year2*1.05;const monsoonMonthly=monthlyLost*1.4;const monsoonAnnual=monsoonMonthly*4;const monsoonExtra=monsoonAnnual-(monthlyLost*4);const recover50=annualLost*0.5;document.getElementById('statGrid').innerHTML=`<div class="stat-card"><div class="stat-label">Year 2 (5% growth)</div><div class="stat-value orange">${formatCurrency(year2)}</div><div class="stat-sub">lost if call volume grows</div></div><div class="stat-card"><div class="stat-label">Year 3 (5% growth)</div><div class="stat-value orange">${formatCurrency(year3)}</div><div class="stat-sub">lost if call volume grows</div></div><div class="stat-card"><div class="stat-label">Monsoon spike</div><div class="stat-value">${formatCurrency(monsoonMonthly)}<span style="font-size:14px;color:var(--muted-foreground)">/mo</span></div><div class="stat-sub">+40% during Jun–Sep</div></div><div class="stat-card"><div class="stat-label">Monsoon extra loss</div><div class="stat-value">${formatCurrency(monsoonExtra)}</div><div class="stat-sub">additional during storm season</div></div>`;document.getElementById('benchmarks').innerHTML=`<h4>Industry Benchmarks — Arizona Home Services</h4>${Object.entries(benchmarks).map(([trade,data])=>{const benchmarkAnnual=missedCalls*(data.closeRate/100)*data.avgJob*52;const highlight=data.avgJob===jobValue?' style="color:var(--primary)"':'';return`<div class="bm-row"${highlight===''?'':highlight}><span class="bm-label">${trade}${highlight?' ← your range':''}</span><span class="bm-value">${formatCurrency(data.avgJob)} avg job · ${formatCurrency(benchmarkAnnual)}/yr lost</span></div>`}).join('')}`;document.getElementById('recoveryCard').innerHTML=`<div class="recovery-label">If you recovered 50% of missed calls</div><div class="recovery-amount">${formatCurrency(recover50)}/yr</div><div class="recovery-sub">${Math.round(jobsPerYear*0.5)} additional jobs per year at your current close rate</div>`;document.getElementById('fullBreakdown').classList.add('active');document.getElementById('fullBreakdown').scrollIntoView({behavior:'smooth',block:'nearest'})}
-function captureEmail(){const email=document.getElementById('email').value;if(!email||!email.includes('@'))return;const btn=document.querySelector('.lead-capture button');btn.textContent='Sending...';btn.disabled=true;const missedCalls=parseFloat(document.getElementById('missedCalls').value);const jobValue=parseFloat(document.getElementById('jobValue').value);const closeRateNum=parseFloat(document.getElementById('closeRate').value);fetch('https://arizona-ai-calculator-api.vercel.app/api/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,missedCalls:missedCalls,jobValue:'$'+jobValue.toLocaleString('en-US'),closeRate:closeRateNum,annualLost:document.getElementById('resultAmount').textContent,jobsPerYear:Math.round(missedCalls*(closeRateNum/100)*52)})}).then(res=>{if(res.ok){btn.textContent='Sent ✓';btn.style.background='#22C55E';showFullBreakdown()}else{btn.textContent='Error — retry';btn.style.background='#EF4444';btn.disabled=false}}).catch(()=>{btn.textContent='Error — retry';btn.style.background='#EF4444';btn.disabled=false})}
-document.addEventListener('keydown',function(e){if(e.key==='Enter')calculate()});
+const fmt=n=>'$'+Math.round(n).toLocaleString('en-US');
+const clamp=(n,min,max)=>Math.min(max,Math.max(min,n));
+
+const els={
+  calls:document.getElementById('inCalls'),
+  miss:document.getElementById('missRate'),
+  close:document.getElementById('closeRate'),
+  job:document.getElementById('jobValue')
+};
+const out={
+  calls:document.getElementById('inCallsVal'),
+  miss:document.getElementById('missRateVal'),
+  close:document.getElementById('closeRateVal'),
+  job:document.getElementById('jobValueVal'),
+  missed:document.getElementById('tMissed'),
+  missedSub:document.getElementById('tMissedSub'),
+  jobs:document.getElementById('tJobs'),
+  lost:document.getElementById('tLost'),
+  lostSub:document.getElementById('tLostSub'),
+  net:document.getElementById('tNet'),
+  netSub:document.getElementById('tNetSub'),
+  payback:document.getElementById('paybackLine'),
+  marker:document.getElementById('tierMarker'),
+  planChip:document.getElementById('planChip'),
+  planOver:document.getElementById('planOver'),
+  tierBar:document.getElementById('tierBar')
+};
+
+function paintFill(input){
+  const pct=(input.value-input.min)/(input.max-input.min)*100;
+  input.style.setProperty('--fill',pct+'%');
+}
+
+function plan(calls){
+  // Starter: up to 300 calls/mo $347 · Growth: 301–800 $497 · 800+: talk to us
+  if(calls<=300)return{name:'Starter',fee:347};
+  if(calls<=800)return{name:'Growth',fee:497};
+  return{name:'Growth',fee:497,over:true};
+}
+
+function calc(){
+  const calls=+els.calls.value;
+  const miss=+els.miss.value/100;
+  const close=+els.close.value/100;
+  const job=+els.job.value;
+
+  out.calls.textContent=calls;
+  out.miss.textContent=els.miss.value+'%';
+  out.close.textContent=els.close.value+'%';
+  out.job.textContent=fmt(job);
+
+  [els.calls,els.miss,els.close,els.job].forEach(paintFill);
+
+  const missed=Math.round(calls*miss);
+  const jobs=missed*close;              // close rate = jobs per answered call (incl. junk pickups) — same rate, same mix, one discount
+  const lost=jobs*job;
+  const p=plan(calls);
+  const net=lost-p.fee;
+
+  out.missed.textContent=missed;
+  out.missedSub.textContent='of '+calls+' inbound';
+  out.jobs.textContent=Math.round(jobs);
+  out.lost.textContent=fmt(lost);
+  out.lostSub.textContent='What walks out the door while the phone rings.';
+  document.getElementById('tLostAnnual').textContent=fmt(lost*12);
+  out.net.textContent=(net>=0?'+':'')+fmt(net);
+  out.netSub.textContent=p.name+' · '+fmt(p.fee)+'/mo';
+  out.payback.innerHTML='Casey pays for herself after <b>'+Math.max(1,Math.ceil(p.fee/Math.max(job,1)))+' booked job'+(Math.ceil(p.fee/Math.max(job,1))===1?'':'s')+'</b> a month.';
+
+  // tier bar: light the ACTIVE segment, dim the other; marker rides position
+  document.getElementById('segStarter').classList.toggle('lit',calls<=300);
+  document.getElementById('segGrowth').classList.toggle('lit',calls>300);
+  const mk=clamp(calls/800*100,1.5,98.5);
+  out.marker.style.left=mk+'%';
+
+  if(calls<=300){
+    out.planChip.innerHTML='<b>Starter</b> · $347/mo';
+    out.planChip.classList.remove('growth');
+  }else{
+    out.planChip.innerHTML='<b>Growth</b> · $497/mo';
+    out.planChip.classList.add('growth');
+  }
+  out.planOver.classList.toggle('show',calls>800);
+}
+
+['input','change'].forEach(ev=>{
+  els.calls.addEventListener(ev,calc);
+  els.miss.addEventListener(ev,calc);
+  els.close.addEventListener(ev,calc);
+  els.job.addEventListener(ev,calc);
+});
+
+// Job-value slider: moving it always selects Custom (unless the value
+// exactly equals a trade chip's price — then that chip re-activates).
+const TRADE_CHIPS=[...document.querySelectorAll('.trade-chip')];
+function syncChipToValue(v){
+  const match=TRADE_CHIPS.find(c=>c.dataset.value && +c.dataset.value===v);
+  TRADE_CHIPS.forEach(c=>c.classList.remove('active'));
+  if(match){match.classList.add('active');}
+  else{const custom=TRADE_CHIPS.find(c=>!c.dataset.value);if(custom)custom.classList.add('active');}
+}
+els.job.addEventListener('input',()=>syncChipToValue(+els.job.value));
+
+TRADE_CHIPS.forEach(chip=>{
+  chip.addEventListener('click',()=>{
+    TRADE_CHIPS.forEach(c=>c.classList.remove('active'));
+    chip.classList.add('active');
+    if(chip.dataset.value){
+      els.job.value=chip.dataset.value;
+      calc();
+    }
+  });
+});
+
+calc();
 </script>
 </body>
 </html>
