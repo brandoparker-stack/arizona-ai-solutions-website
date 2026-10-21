@@ -355,62 +355,61 @@ section[id]{scroll-margin-top:84px}
   .hiw-pipeline{row-gap:38px}
 }
 
-/* ===== One-call fanout section ===== */
-/* ============ One-call fanout (mock-only additions) ============ */
-.ocf{max-width:1100px;margin:0 auto}
-.ocf-call{position:relative;max-width:480px;margin:0 auto;text-align:center;border-radius:12px;border:1px solid var(--hairline);background:var(--card);padding:16px 24px;display:grid;transition:border-color .5s ease}
-.ocf-call>div{grid-area:1/1;transition:opacity .45s ease}
-.ocf-call .ocf-time{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted-foreground)}
-.ocf-call-top{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
-.ocf-badge{display:inline-flex;align-items:center;font-size:10px;font-weight:600;padding:2px 8px;border-radius:6px;letter-spacing:0.02em;text-transform:none}
-.badge-ah{color:#A78BFA;background:rgba(167,139,250,.14);box-shadow:inset 0 0 0 1px rgba(167,139,250,.35)}
-.badge-em{color:#F87171;background:rgba(239,68,68,.13);box-shadow:inset 0 0 0 1px rgba(239,68,68,.4)}
-.ocf-call h3{margin-top:6px;font-size:15.5px;font-weight:500;line-height:1.45}
-.ocf.scene-b .ocf-call{border-color:rgba(249,115,22,0.55)}
-.ocf-call .c-b{opacity:0;visibility:hidden}
-.ocf.scene-b .c-a{opacity:0;visibility:hidden}
-.ocf.scene-b .c-b{opacity:1;visibility:visible}
-.ocf-agent{max-width:460px;margin:0 auto;text-align:center;border-radius:12px;border:1px solid rgba(249,115,22,0.45);background:linear-gradient(180deg,rgba(249,115,22,0.07),rgba(20,30,51,0.6));padding:20px 24px;transition:box-shadow .5s ease,border-color .5s ease;display:grid}
-.ocf-agent h3{grid-area:1/1;font-size:17px;font-weight:600}
-.ocf-agent h3 .ocf-accent{color:var(--primary)}
-.ocf-agent .a-sub{grid-area:2/1;margin-top:6px;font-size:13px;color:var(--muted-foreground);transition:opacity .45s ease,visibility .45s ease}
-.ocf-agent .a-sub-b{opacity:0;visibility:hidden}
-.ocf.scene-b .a-sub-a{opacity:0;visibility:hidden}
-.ocf.scene-b .a-sub-b{opacity:1;visibility:visible}
-.ocf-agent.is-lit{border-color:rgba(249,115,22,0.8);box-shadow:0 0 0 1px rgba(249,115,22,.35),0 12px 40px rgba(249,115,22,.12)}
-.ocf-fan{position:relative;height:120px;margin:0 auto}
-.ocf-fan svg{position:absolute;inset:0;width:100%;height:100%}
-.ocf-path{stroke:var(--border-strong);stroke-width:1.5;fill:none;opacity:.9}
-.ocf-path-energy{stroke:var(--primary);stroke-width:1.5;fill:none;opacity:.35;stroke-dasharray:5 9;animation:ocf-dash 1.1s linear infinite}
-@keyframes ocf-dash{to{stroke-dashoffset:-14}}
-.ocf-bead{fill:var(--primary);filter:drop-shadow(0 0 6px rgba(249,115,22,.9))}
-.ocf-bead-urgent{fill:#FDBA74;filter:drop-shadow(0 0 8px rgba(253,186,116,.95))}
-.ocf-chips{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
-.ocf-chip{border-radius:10px;border:1px solid var(--hairline);background:var(--card);padding:14px 10px;text-align:center;font-size:13px;font-weight:500;color:var(--muted-foreground);transition:border-color .45s ease,color .45s ease,box-shadow .45s ease}
-.ocf-chip .ocf-chip-sub{display:block;margin-top:4px;font-size:11px;color:var(--muted-foreground);opacity:.75;font-weight:400}
-.ocf-chip.is-lit{border-color:rgba(249,115,22,.55);color:var(--foreground);box-shadow:0 0 0 1px rgba(249,115,22,.3),0 10px 32px rgba(249,115,22,.10)}
-.ocf-chip.is-urgent{border-color:rgba(253,186,116,.85);color:#FDBA74;animation:ocfUrgent 1.15s ease-in-out infinite}
-.ocf-chip::before{content:attr(data-num);display:none;position:absolute}
-@keyframes ocfUrgent{0%,100%{box-shadow:0 0 0 1px rgba(253,186,116,.5),0 0 18px rgba(249,115,22,.28)}50%{box-shadow:0 0 0 2px rgba(253,186,116,.8),0 0 34px rgba(249,115,22,.5)}}
-.ocf-caption{position:relative;margin-top:26px;height:44px;text-align:center;font-size:14px;color:var(--muted-foreground)}
-.ocf-caption>p{position:absolute;left:0;right:0;top:0;transition:opacity .45s ease}
-.ocf-caption .ocf-caption-accent{color:var(--foreground);font-weight:600}
-.ocf-caption .cap-b{opacity:0;visibility:hidden}
-.ocf.scene-b .cap-a{opacity:0;visibility:hidden}
-.ocf.scene-b .cap-b{opacity:1;visibility:visible}
-/* mobile — connected compact fan (same mechanism as desktop, smaller) */
-@media(max-width:899px){
-  .ocf-fan{height:54px}
-  .ocf-fan svg{overflow:visible}
-  .ocf-chips{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;position:relative}
-  .ocf-chip{grid-column:span 2;position:relative;z-index:1;text-align:center;padding:10px 6px 12px;font-size:12.5px}
-  .ocf-chip:nth-child(4){grid-column:2 / span 2}
-  .ocf-chip:nth-child(5){grid-column:4 / span 2}
-  .ocf-chip .ocf-chip-sub{margin-top:3px;font-size:10.5px}
-  .ocf-chip::before{position:static;display:flex;align-items:center;justify-content:center;width:22px;height:22px;margin:0 auto 7px;border-radius:9999px;border:1px solid var(--hairline);background:var(--card);font-size:11.5px;font-weight:600;color:var(--muted-foreground)}
-  .ocf-chip.is-lit::before{border-color:rgba(249,115,22,.55);color:var(--primary);background:rgba(249,115,22,.10)}
-  .ocf-chip.is-urgent::before{border-color:rgba(253,186,116,.85);color:#FDBA74;background:rgba(253,186,116,.10)}
-}
+/* ===== Watch one call (Oct 2026 — replaces the one-call fanout) ===== */
+.wc-headbox{max-width:720px;margin:0 auto;text-align:center}
+.wc-stage{max-width:1040px;margin:32px auto 0;display:grid;grid-template-columns:1.1fr 1fr;gap:16px;align-items:start}
+@media(max-width:860px){.wc-stage{grid-template-columns:1fr}}
+.wc-call{background:var(--card);border:1px solid var(--hairline);border-radius:14px;overflow:hidden}
+.wc-bar{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--hairline);font-size:14px;color:var(--muted-foreground)}
+.wc-bar b{color:var(--foreground);font-weight:600}
+.wc-clock{font-variant-numeric:tabular-nums;color:var(--primary);font-weight:600}
+.wc-log{height:340px;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px;scroll-behavior:smooth}
+.wc-sim[data-motion=reduced] .wc-log{scroll-behavior:auto}
+.wc-l{max-width:80%;padding:9px 12px;border-radius:14px;font-size:14.5px;line-height:1.45;animation:wcIn .25s ease}
+.wc-l small{display:block;color:var(--muted-foreground);font-size:12px;margin-bottom:2px}
+.wc-A{background:rgba(249,115,22,0.19);border:1px solid rgba(249,115,22,0.38);border-bottom-left-radius:4px;align-self:flex-start}
+.wc-C{background:rgba(148,163,184,0.17);border:1px solid rgba(148,163,184,0.32);border-bottom-right-radius:4px;align-self:flex-end}
+.wc-N{align-self:center;color:var(--muted-foreground);font-size:13px;border:1px dashed var(--hairline);border-radius:999px;padding:5px 12px}
+@keyframes wcIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.wc-sim[data-motion=reduced] .wc-l{animation:none}
+.wc-ctl{display:flex;gap:10px;align-items:center;padding:12px 16px;border-top:1px solid var(--hairline)}
+.wc-ctl .btn-primary{border:0;cursor:pointer;font:600 14px Inter,system-ui,sans-serif;padding:9px 16px;border-radius:8px}
+.wc-ctl span{font-size:13px;color:var(--muted-foreground)}
+.wc-outwrap{display:flex;flex-direction:column;gap:12px}
+.wc-outlabel{font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--primary);margin:0 0 2px}
+.wc-c{background:var(--card);border:1px solid var(--hairline);border-left:3px solid var(--primary);border-radius:10px;padding:9px 12px;opacity:.38;transition:opacity .4s,border-color .4s}
+.wc-c.on{opacity:1}
+.wc-c.q{opacity:.6;font-style:italic}
+.wc-k{font-size:13px;color:var(--muted-foreground);margin-bottom:3px}
+.wc-v{font-size:14px;line-height:1.5;color:var(--muted-foreground)}
+.wc-v b,.wc-v strong{color:var(--foreground)}
+.wc-mail{background:var(--card-elevated);border:1px solid var(--hairline);border-radius:8px;padding:10px 12px}
+.wc-mail b{color:var(--foreground)}
+.wc-slot{background:rgba(52,211,153,0.12);color:#34D399;border-radius:6px;padding:7px 10px;font-weight:600;font-size:14px}
+.wc-sms{background:rgba(95,180,255,0.10);border:1px solid rgba(95,180,255,0.22);border-radius:14px 14px 14px 4px;padding:9px 12px;font-size:14px;color:var(--foreground)}
+.wc-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:14px;color:var(--muted-foreground)}
+.wc-row b{color:var(--foreground)}
+.wc-badge{border-radius:6px;padding:2px 8px;font-size:12px;font-weight:600;background:rgba(52,211,153,0.12);color:#34D399}
+.wc-badge.m{background:rgba(95,180,255,0.12);color:#5FB4FF}
+.wc-badge.u{background:rgba(249,115,22,0.14);color:var(--primary)}
+.wc-t{font-size:12px;color:var(--muted-foreground);margin:8px 0 3px}
+.wc-t:first-child{margin-top:0}
+.wc-controls{max-width:1040px;margin:20px auto 0;text-align:center}
+.wc-tabs,.wc-segwrap{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.wc-tabs button,.wc-segwrap button{font:500 14px Inter,system-ui,sans-serif;color:var(--muted-foreground);background:transparent;border:1px solid var(--hairline);cursor:pointer;border-radius:999px;padding:9px 16px}
+.wc-rowline{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:center}
+[aria-pressed=true]{color:#FDBA74!important;border-color:var(--primary)!important;background:rgba(249,115,22,0.14)!important}
+.wc-segwrap button{border-radius:8px}
+.wc-segwrap button:first-child{border-radius:8px 0 0 8px}
+.wc-segwrap button:last-child{border-radius:0 8px 8px 0;border-left:0}
+.wc-segwrap button:focus-visible,.wc-tabs button:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.wc-pn{color:var(--muted-foreground);font-size:14px;margin:14px auto 0;max-width:70ch;min-height:22px}
+.wc-sum{margin:20px auto 0;max-width:1040px;display:flex;gap:28px;flex-wrap:wrap;justify-content:center;opacity:0;transition:opacity .5s}
+.wc-sum.on{opacity:1}
+.wc-sum div{font-size:14px;color:var(--muted-foreground);text-align:center}
+.wc-sum strong{display:block;font:400 28px/1.1 "Instrument Serif",Georgia,serif;color:var(--foreground)}
+.wc-sim[data-motion=reduced] .wc-c,.wc-sim[data-motion=reduced] .wc-sum{transition:none}
+.wc-note{margin-top:26px;text-align:center;font-size:13px;color:var(--muted-foreground)}
 </style>
 </head>
 <body>
@@ -530,61 +529,129 @@ AI receptionist for Arizona home services
 </div>
 </section>
 
-<section class="section" id="one-call">
+<section class="section" id="one-call" aria-label="Watch one call">
 <div class="container">
-<div style="max-width:672px;margin:0 auto;text-align:center">
-<div class="section-label">What happens on one call</div>
-<h2 class="section-title">One call. Five jobs.</h2>
-<p class="section-subtitle">A homeowner calls after hours. Here's everything that happens without you picking up.</p>
+<div class="wc-headbox">
+<div class="section-label">Watch one call</div>
+<h2 class="section-title">The whole call, start to finish.</h2>
+<p class="section-subtitle">Everything that happens without you picking up. Pick a call, pick a plan.</p>
 </div>
 
-<div class="ocf" id="ocf" style="margin-top:56px">
-  <div class="ocf-call">
-    <div class="c-a">
-      <div class="ocf-call-top"><span class="ocf-time">Incoming call · 7:04 PM</span><span class="ocf-badge badge-ah">🌙 After Hours</span></div>
-      <h3>"Hi — my AC went out. Can someone come take a look tomorrow?"</h3>
-    </div>
-    <div class="c-b">
-      <div class="ocf-call-top"><span class="ocf-time">Incoming call · 10:47 PM</span><span class="ocf-badge badge-ah">🌙 After Hours</span><span class="ocf-badge badge-em">🚨 Emergency</span></div>
-      <h3>"Hi — my water heater is leaking, there's water everywhere!"</h3>
-    </div>
+<div class="wc-sim" id="wcSim">
+<div class="wc-controls">
+  <div class="wc-rowline">
+    <div class="wc-tabs" id="wcTabs" role="group" aria-label="Choose a call"></div>
+    <div class="wc-segwrap" id="wcPlans" role="group" aria-label="Choose a plan"></div>
   </div>
-
-  <div class="ocf-fan" aria-hidden="true">
-    <svg id="ocfSvg">
-      <g id="ocfPaths"></g>
-      <g id="ocfBeads"></g>
-    </svg>
-  </div>
-
-  <div class="ocf-agent" id="ocfAgent" style="margin-top:18px">
-    <h3><span class="ocf-accent">Arizona AI</span> Receptionist</h3>
-    <p class="a-sub a-sub-a">Answers on the first ring and decides what the call needs.</p>
-    <p class="a-sub a-sub-b">Detects the emergency — alerts you first, then books, texts, and logs.</p>
-  </div>
-
-  <div class="ocf-fan ocf-fan-lower" aria-hidden="true">
-    <svg id="ocfSvg2">
-      <g id="ocfPaths2"></g>
-      <g id="ocfBeads2"></g>
-    </svg>
-  </div>
-
-  <div class="ocf-chips" style="margin-top:18px">
-    <div class="ocf-chip" data-num="1" data-label="Qualifies the job">Qualifies the job<span class="ocf-chip-sub">real job, not a solicitor</span></div>
-    <div class="ocf-chip" data-num="2" data-label="Routes emergencies">Routes emergencies<span class="ocf-chip-sub">straight to your phone</span></div>
-    <div class="ocf-chip" data-num="3" data-label="Books the appointment">Books the appointment<span class="ocf-chip-sub">straight to your calendar</span></div>
-    <div class="ocf-chip" data-num="4" data-label="Sends the confirmation text">Sends the confirmation text<span class="ocf-chip-sub">SMS, with caller consent</span></div>
-    <div class="ocf-chip" data-num="5" data-label="Logs the call">Logs everything<span class="ocf-chip-sub">full call log on your dashboard</span></div>
-  </div>
-
-  <div class="ocf-caption">
-    <p class="cap-a"><span class="ocf-caption-accent">A routine job, handled end to end.</span> You never picked up.</p>
-    <p class="cap-b"><span class="ocf-caption-accent">Emergencies get everything — and your phone buzzes first.</span></p>
-  </div>
+  <p class="wc-pn" id="wcPn"></p>
+</div>
+<div class="wc-stage">
+  <section class="wc-call" aria-label="Call transcript">
+    <div class="wc-bar"><span class="wc-who" id="wcWho"></span><span class="wc-clock" id="wcClock">0:00</span></div>
+    <div class="wc-log" id="wcLog" aria-live="polite"></div>
+    <div class="wc-ctl"><button id="wcPlay" class="btn-primary">Play the call</button><span>Sunline Heating and Cooling — a made-up shop</span></div>
+  </section>
+  <section class="wc-outwrap" aria-label="What the owner sees">
+    <div class="wc-outlabel">What lands on your side</div>
+    <div class="wc-c" id="wcPhone"></div>
+    <div class="wc-c" id="wcCal"></div>
+    <div class="wc-c" id="wcSms"></div>
+    <div class="wc-c" id="wcRec"></div>
+    <div class="wc-c" id="wcLater"></div>
+  </section>
+</div>
+<div class="wc-sum" id="wcSum"></div>
+<p class="wc-note">Example call with a fictional shop and callers. Open times depend on each shop's calendar. Features vary by plan.</p>
 </div>
 </div>
+
+<script>
+(function(){
+  var REDUCED = new URLSearchParams(location.search).get('motion') === 'reduced';
+  var sim = document.getElementById('wcSim');
+  sim.setAttribute('data-motion', REDUCED ? 'reduced' : 'full');
+  var G="Hi, thanks for calling Sunline Heating and Cooling. This is Casey. How can I help?",END="Okay, thanks for calling Sunline Heating and Cooling. Have a good day!";
+  var em=(s,b)=>'<div class="wc-t">Email</div><div class="wc-mail"><b>'+s+'</b><br>'+b+'</div>';
+  var tx=s=>'<div class="wc-t">Text to your phone</div><div class="wc-sms">'+s+'</div>';
+  var nt=s=>'<div class="wc-t">'+s+'</div>';
+  var E1=em("[Sunline] URGENT booked: AC not cooling, Maria Lopez, tonight 11:30 PM","Booked tonight 11:30 PM<br>412 Mesquite Lane, Tucson, AZ 85719<br>Call: Maria Lopez, 520-555-0148<br>Called Tue 10:47 PM · after hours<br>Ref AZ-1016-0007"),
+  E2=em("[Sunline] Booked: maintenance visit, Dan Whitfield, Thu 9:00 AM","Booked Thu 9:00 AM<br>92 Palo Verde Dr, Tucson, AZ 85710<br>Call: Dan Whitfield, 520-555-0192<br>Called Mon 2:15 PM<br>Ref AZ-1015-0004"),
+  E3=em("[Sunline] Message: Priya, kitchen sink backing up (plumbing)","Kitchen sink backing up (plumbing)<br>Call: Priya, 520-555-0173<br>Called Tue 4:40 PM");
+  var D=[
+  {tab:"After-hours emergency",who:"Incoming call, Tuesday 10:47 PM",
+   l:[["A",G,"10:47:02"],["C","My AC just died and it\u2019s already ninety-eight in here.","10:47:08"],
+   ["A","That\u2019s rough in this heat. Can I get a name for the visit?","10:47:14"],["C","Maria Lopez.","10:47:20"],
+   ["N","Number and address read back and confirmed: 412 Mesquite Lane, Tucson, AZ 85719","10:48:05"],
+   ["A","One moment. I\u2019ll get you the soonest time we have. I can have someone there tonight at 11:30, or tomorrow at 7 a.m. Which works?","10:48:20"],
+   ["C","Tonight, please.","10:48:31"],
+   ["A","You\u2019re all set for the AC not cooling visit at 412 Mesquite Lane, tonight at 11:30 PM. Your confirmation number is AZ-1016-0007. Anything else I can help with?","10:48:38"],
+   ["C","How much is it going to cost?","10:48:44"],
+   ["A","Pricing is what the tech finds on site, quoted before work starts. Anything else I can help with?","10:48:50"],
+   ["C","That\u2019s all, thanks.","10:48:56"],["A","Okay, thanks for calling Sunline Heating and Cooling. Have a good one!","10:49:14"]],
+   gins:{at:7,drop:1,rows:[["A","You\u2019re all set for the AC not cooling visit at 412 Mesquite Lane, tonight at 11:30 PM. Your confirmation number is AZ-1016-0007. Would you like me to text you the booking confirmation?","10:48:38"],["C","Yes, please.","10:48:41"],["A","Okay. Anything else I can help with?","10:48:43"]]},
+   c:{phone:{s:["Your email, 10:48 PM",E1,7],g:["Your email and your phone, 10:48 PM",E1+tx("Sunline URGENT: Maria Lopez, AC not cooling. Tonight 11:30 PM, 412 Mesquite Ln. Call 520-555-0148."),9]},
+    cal:["Your calendar",'<div class="wc-slot">Tonight 11:30 PM, Maria Lopez, AC not cooling</div>',7],
+    sms:{s:["Maria\u2019s phone","No text on Starter. She heard the day, time, address and confirmation number on the call.",-1],
+     g:["Maria\u2019s phone, Growth",'<div class="wc-sms">Sunline: you\u2019re confirmed for tonight at 11:30 PM. Confirmation AZ-1016-0007. Reply STOP to opt out.</div>',9]},
+    later:{s:["Before the visit","No reminders on Starter.",-1],g:["Before the visit, Growth","No reminders needed: the visit is under 2 hours away, so the confirmation text is all she needs.",-1]},
+    rec:["Your call log",'<div class="wc-row"><span>10:47 PM</span><b>Maria Lopez</b><span>AC not cooling</span><span class="wc-badge u">Urgent</span><span class="wc-badge">Booked</span></div>',11]},
+   sum:[["Call length","2 min"],["Outcome","Booked"],["Calls you answered","0"]]},
+  {tab:"Routine booking",who:"Incoming call, Monday 2:15 PM",
+   l:[["A",G,"2:15:04"],["C","I need a tune-up and a filter change.","2:15:10"],
+   ["A","Got it, a tune-up with a filter change. Can I get a name for the visit?","2:15:16"],
+   ["C","Dan Whitfield.","2:15:21"],["N","Number and address read back and confirmed","2:16:02"],
+   ["A","One moment. I have Thursday at 9 a.m. or 1 p.m. Which works?","2:16:12"],["C","Thursday at 9.","2:16:19"],
+   ["A","You\u2019re all set for the maintenance visit, Thursday at 9:00 AM. Your confirmation number is AZ-1015-0004. Anything else I can help with?","2:16:25"],["C","Nope.","2:16:30"],
+   ["A",END,"2:16:36"]],
+   gins:{at:7,drop:1,rows:[["A","You\u2019re all set for the maintenance visit, Thursday at 9:00 AM. Your confirmation number is AZ-1015-0004. Would you like me to text you the booking confirmation? We can also send reminders the day before and a couple hours out.","2:16:25"],["C","Yes, please.","2:16:27"],["A","Okay. Anything else I can help with?","2:16:29"]]},
+   c:{phone:{s:["Your email, 2:16 PM",E2,7],g:["Your email, 2:16 PM",E2+nt("No text for you: a visit three days out doesn\u2019t need one."),7]},
+    cal:["Your calendar",'<div class="wc-slot">Thu 9:00 AM, Dan Whitfield, tune-up and filter</div>',7],
+    sms:{s:["Dan\u2019s phone","No text on Starter. He heard the day, time and confirmation number on the call.",-1],
+     g:["Dan\u2019s phone, Growth",'<div class="wc-sms">Sunline: you\u2019re confirmed for Thursday at 9:00 AM. Confirmation AZ-1015-0004. Reply STOP to opt out.</div>',9]},
+    later:{s:["Before the visit","No reminders on Starter.",-1],g:["Dan\u2019s phone, later",'<div class="wc-t">Wednesday 9:00 AM — 24 hours before</div><div class="wc-sms">Sunline: reminder, your maintenance visit is tomorrow at 9:00 AM. Need to change it? Call the shop.</div><div class="wc-t">Thursday 7:00 AM — 2 hours before</div><div class="wc-sms">Sunline: reminder, your maintenance visit is today at 9:00 AM.</div>',11]},
+    rec:["Your call log",'<div class="wc-row"><span>2:15 PM</span><b>Dan Whitfield</b><span>Maintenance visit</span><span class="wc-badge">Booked</span></div>',9]},
+   sum:[["Call length","1 min"],["Outcome","Booked"],["Your daytime interrupted","0"]]},
+  {tab:"Not your trade",who:"Incoming call, Tuesday 4:40 PM",
+   l:[["A",G,"4:40:03"],["C","My kitchen sink is backing up.","4:40:09"],
+   ["A","I\u2019m sorry, that\u2019s frustrating. I can\u2019t book plumbing, but I\u2019ll take a message so it isn\u2019t lost. What\u2019s the best number to reach you at?","4:40:15"],
+   ["C","520-555-0173.","4:40:24"],["A","520-555-0173. Is that right?","4:40:28"],["C","Yes.","4:40:31"],
+   ["A","And your name?","4:40:34"],["C","Priya.","4:40:37"],
+   ["A","Got it, Priya. I\u2019ll make sure they get this. Anything else I can help with?","4:40:42"],["C","No thanks.","4:40:47"],
+   ["A",END,"4:40:51"]],
+   c:{phone:{s:["Your email, 4:40 PM",E3,8],g:["Your email, 4:40 PM",E3+nt("No text for you: not urgent."),8]},
+    cal:["Your calendar","Nothing booked, nothing to clean up.",-1],
+    sms:["Priya\u2019s phone","No text sent, because no visit was made.",-1],
+    later:["Before the visit","Nothing to remind, because no visit was booked.",-1],
+    rec:["Your call log",'<div class="wc-row"><span>4:40 PM</span><b>Priya</b><span>Kitchen sink, plumbing</span><span class="wc-badge m">Message</span></div>',10]},
+   sum:[["Call length","1 min"],["Outcome","Message taken"],["Caller lost","0"]]}
+  ];
+  var PN={s:"Starter: every booking, change and message goes to you by email as it happens. The caller hears their confirmation right on the call.",g:"Growth: email stays the default. Urgent calls can also text your phone, and every customer gets a confirmation text plus reminders 24 hours and 2 hours out."};
+  var $=id=>document.getElementById(id),keys=["phone","cal","sms","rec","later"],cur=0,i=0,tm,seen=false,pl="s";
+  var $c=k=>document.getElementById("wc"+k.charAt(0).toUpperCase()+k.slice(1));
+  var cd=k=>{var c=D[cur].c[k];return Array.isArray(c)?c:c[pl]};
+  function reset(){clearTimeout(tm);i=0;$("wcLog").innerHTML="";$("wcClock").textContent="0:00";$("wcSum").className="wc-sum";$("wcSum").innerHTML="";
+   keys.forEach(k=>{var e=$c(k);e.className="wc-c";e.innerHTML='<div class="wc-k">'+cd(k)[0]+'</div><div class="wc-v">Waiting for the call\u2026</div>'})}
+  function fill(k,q){var e=$c(k),c=cd(k);e.className="wc-c "+(q?"q":"on");e.innerHTML='<div class="wc-k">'+c[0]+'</div><div class="wc-v">'+c[1]+'</div>'}
+  function rows(){var sc=D[cur];return (pl==="g"&&sc.gins)?sc.l.slice(0,sc.gins.at).concat(sc.gins.rows,sc.l.slice(sc.gins.at+sc.gins.drop)):sc.l}
+  function step(){var sc=D[cur],rl=rows();
+   if(i>=rl.length){keys.forEach(k=>{if(cd(k)[2]<0)fill(k,1)});
+    $("wcSum").innerHTML=sc.sum.map(x=>"<div>"+x[0]+"<strong>"+x[1]+"</strong></div>").join("");$("wcSum").className="wc-sum on";$("wcPlay").textContent="Replay";return}
+   var w=rl[i][0],t=rl[i][1],ts=rl[i][2],d=document.createElement("div");d.className="wc-l wc-"+w;
+   d.innerHTML=(w==="N"?"":'<small>'+(w==="A"?"Casey":"Caller")+'</small>')+t;$("wcLog").appendChild(d);$("wcLog").scrollTop=1e5;$("wcClock").textContent=ts;
+   keys.forEach(k=>{if(cd(k)[2]===i)fill(k)});i++;tm=setTimeout(step,REDUCED?0:900+t.length*20)}
+  function play(){reset();$("wcPlay").textContent="Playing\u2026";step()}
+  function pick(n){cur=n;[...$("wcTabs").children].forEach((b,j)=>b.setAttribute("aria-pressed",j===n?String(j===0):String(j===n)));$("wcWho").innerHTML="<b>"+D[n].who+"</b>";play()}
+  function tabsMark(){[...$("wcTabs").children].forEach((b,j)=>b.setAttribute("aria-pressed",String(j===cur)))}
+  function setPlan(p){pl=p;[...$("wcPlans").children].forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.p===p)));$("wcPn").textContent=PN[p];play()}
+  D.forEach((d,n)=>{var b=document.createElement("button");b.textContent=d.tab;b.onclick=()=>{cur=n;tabsMark();$("wcWho").innerHTML="<b>"+D[n].who+"</b>";play()};$("wcTabs").appendChild(b)});
+  [["s","Starter"],["g","Growth"]].forEach(x=>{var b=document.createElement("button");b.textContent=x[1];b.dataset.p=x[0];b.onclick=()=>setPlan(x[0]);$("wcPlans").appendChild(b)});
+  $("wcPlay").onclick=play;
+  new IntersectionObserver(e=>{if(e[0].isIntersecting&&!seen){seen=true;tabsMark();$("wcWho").innerHTML="<b>"+D[0].who+"</b>";play()}},{threshold:.35}).observe($("wcLog"));
+  tabsMark();$("wcWho").innerHTML="<b>"+D[0].who+"</b>";reset();$("wcPn").textContent=PN.s;$("wcPlans").firstElementChild.setAttribute("aria-pressed","true");
+})();
+</script>
 </section>
+
 
 <!-- What you get -->
 <section id="benefits" class="section">
@@ -1050,176 +1117,6 @@ function toggleFaq(btn){const item=btn.parentElement;const answer=item.querySele
   }
 })();
 </script>
-<script>
-(function(){
-  var CYCLE = 11000, SCENE_B = 5500;
-  var T_DROP0 = 600, DROP_A = 700, DROP_B = 480;   // bead: call -> agent
-  var T_FAN0 = 1500, FAN_DUR = 1050, STAGGER = 95; // beads: agent -> chips
-  var T_FADE_A = 5350, T_FADE_B = 10850;           // bead fade before scene switch/reset
-  var svgTop = document.getElementById('ocfSvg');
-  var svgBot = document.getElementById('ocfSvg2');
-  var gPathsTop = document.getElementById('ocfPaths');
-  var gBeadsTop = document.getElementById('ocfBeads');
-  var gPathsBot = document.getElementById('ocfPaths2');
-  var gBeadsBot = document.getElementById('ocfBeads2');
-  var agent = document.getElementById('ocfAgent');
-  var root = document.getElementById('ocf');
-  var chips = Array.prototype.slice.call(document.querySelectorAll('.ocf-chip'));
-  var fanUpper = document.querySelector('.ocf-fan');
-  var fanLower = document.querySelector('.ocf-fan-lower');
-  var isReduced = new URLSearchParams(location.search).get('motion') === 'reduced';
 
-  // chip indexes: 0 qualify, 1 emergency, 2 book, 3 sms, 4 log
-  // client-line flow: qualify (triage) -> routes (ALONE beat: the owner's phone buzzes) -> books/sms/log cascade
-  var SCENES = [
-    { beads: [0, 2, 3, 4],    urgent: -1, delays: [0, 95, 190, 285] },              // routine: qualify -> book -> sms -> log
-    { beads: [0, 1, 2, 3, 4], urgent: 1,  delays: [0, 1100, 1800, 1895, 1990] }     // emergency: qualify -> routes alone -> cascade
-  ];
-
-  var vBead = null, curveBeads = [];
-
-  function mk(d, parent, cls){
-    var p = document.createElementNS('http://www.w3.org/2000/svg','path');
-    p.setAttribute('d', d); p.setAttribute('class', cls);
-    parent.appendChild(p); return p;
-  }
-  function mkCircle(parent, cls){
-    var c = document.createElementNS('http://www.w3.org/2000/svg','circle');
-    c.setAttribute('r','4.5'); c.setAttribute('class', cls);
-    parent.appendChild(c); return c;
-  }
-
-  function build(){
-    gPathsTop.innerHTML=''; gBeadsTop.innerHTML=''; gPathsBot.innerHTML=''; gBeadsBot.innerHTML='';
-    curveBeads = [];
-    var fanUR = fanUpper.getBoundingClientRect(), fanLR = fanLower.getBoundingClientRect();
-    var callR = document.querySelector('.ocf-call').getBoundingClientRect();
-    var agentR = agent.getBoundingClientRect();
-    var chipRs = chips.map(function(c){ return c.getBoundingClientRect(); });
-
-    // vertical connector: call bottom-center -> agent top-center
-    var x0 = callR.left+callR.width/2 - fanUR.left, y0 = callR.bottom - fanUR.top;
-    var x1 = agentR.left+agentR.width/2 - fanUR.left, y1 = agentR.top - fanUR.top;
-    svgTop.setAttribute('viewBox','0 0 '+fanUR.width+' '+fanUR.height);
-    svgTop.setAttribute('preserveAspectRatio','none');
-    var vd = 'M '+x0+' '+y0+' L '+x1+' '+y1;
-    mk(vd, gPathsTop, 'ocf-path'); mk(vd, gPathsTop, 'ocf-path-energy');
-    vBead = { el: mkCircle(gBeadsTop, 'ocf-bead'),
-              drop: { x0:x0, y0:y0, x1:x1, y1:y1 } };
-
-    // curves: agent bottom-center -> each chip top-center
-    svgBot.setAttribute('viewBox','0 0 '+fanLR.width+' '+fanLR.height);
-    svgBot.setAttribute('preserveAspectRatio','none');
-    var ax = agentR.left+agentR.width/2 - fanLR.left, ay = agentR.bottom - fanLR.top;
-    curveBeads = chips.map(function(c, i){
-      var tx = chipRs[i].left + chipRs[i].width/2 - fanLR.left;
-      var ty = chipRs[i].top - fanLR.top;
-      var d = 'M '+ax+' '+ay+' C '+ax+' '+(ay+(ty-ay)*0.5)+', '+tx+' '+(ty-(ty-ay)*0.55)+', '+tx+' '+ty;
-      mk(d, gPathsBot, 'ocf-path'); mk(d, gPathsBot, 'ocf-path-energy');
-      return { el: mkCircle(gBeadsBot, 'ocf-bead'), chip: chips[i], i: i,
-               path: mk(d, gPathsBot, 'ocf-path'), ax:ax, ay:ay, tx:tx, ty:ty };
-    });
-    curveBeads.forEach(function(b){ b.len = b.path.getTotalLength(); });
-  }
-
-  function clearChips(){
-    chips.forEach(function(c){ c.classList.remove('is-lit','is-urgent'); });
-    agent.classList.remove('is-lit');
-  }
-
-  function ease(x){ return x*x*(3-2*x); }
-  function lerp(a,b,f){ return a+(b-a)*f; }
-  var t0 = null, lastScene = -1;
-  function frame(ts){
-    if(t0 === null) t0 = ts;
-    var t = (ts - t0) % CYCLE;
-    var scene = t < SCENE_B ? 0 : 1;
-    if(scene !== lastScene){
-      clearChips();
-      if(scene === 1) root.classList.add('scene-b'); else root.classList.remove('scene-b');
-      lastScene = scene;
-    }
-    var S = SCENES[scene];
-    var d0 = T_DROP0 + scene*SCENE_B;
-    var ddur = scene === 0 ? DROP_A : DROP_B;
-    var fadeAt = scene === 0 ? T_FADE_A : T_FADE_B;
-
-    // vertical bead: call card -> agent
-    var vf = (t - d0) / ddur;
-    var vOn = vf >= 0 && vf <= 1 && t < fadeAt;
-    if(vOn){
-      var f = ease(Math.min(Math.max(vf,0),1));
-      var vx = lerp(vBead.drop.x0, vBead.drop.x1, f);
-      var vy = lerp(vBead.drop.y0, vBead.drop.y1, f);
-      var vCls = scene === 1 ? 'ocf-bead-urgent' : 'ocf-bead';
-      if(vBead.el.getAttribute('class') !== vCls) vBead.el.setAttribute('class', vCls);
-      vBead.el.setAttribute('cx', vx);
-      vBead.el.setAttribute('cy', vy);
-      vBead.el.setAttribute('opacity', (vf > 0 && vf < 1) ? '1' : '0');
-    } else {
-      vBead.el.setAttribute('opacity','0');
-    }
-    if(vf >= 1) agent.classList.add('is-lit');
-
-    // fan beads: agent -> scene-specific chips
-    for(var i=0;i<curveBeads.length;i++){
-      var b = curveBeads[i];
-      var listIdx = S.beads.indexOf(b.i);
-      var active = listIdx !== -1 && t < fadeAt;
-      if(active){
-        var s0 = T_FAN0 + scene*SCENE_B + S.delays[listIdx];
-        var f2 = (t - s0) / FAN_DUR;
-        if(f2 > 1) f2 = 1;
-        if(f2 > 0){
-          var cls = (b.i === S.urgent) ? 'ocf-bead-urgent' : 'ocf-bead';
-          if(b.el.getAttribute('class') !== cls) b.el.setAttribute('class', cls);
-          var pt = b.path.getPointAtLength(ease(f2) * b.len);
-          b.el.setAttribute('cx', pt.x);
-          b.el.setAttribute('cy', pt.y);
-          b.el.setAttribute('opacity', f2 < 1 ? '1' : '0');
-          if(f2 >= 1) b.chip.classList.add(b.i === S.urgent ? 'is-urgent' : 'is-lit');
-        } else {
-          b.el.setAttribute('opacity','0');
-        }
-      } else {
-        b.el.setAttribute('opacity','0');
-      }
-    }
-    requestAnimationFrame(frame);
-  }
-
-  function start(){
-    try { build(); } catch(e) { console.warn('ocf geometry', e); }
-    if(isReduced){
-      document.querySelectorAll('.ocf-fan').forEach(function(f){ f.style.display='none'; });
-      agent.classList.add('is-lit');
-      [0,2,3,4].forEach(function(i){ chips[i].classList.add('is-lit'); });
-      return;
-    }
-    requestAnimationFrame(frame);
-  }
-  var rt = null;
-  window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(function(){ try { build(); } catch(e) {} }, 120); });
-  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(function(){ try { build(); } catch(e) {} }); }
-  // same scroll-gate as the pipeline: don't run the 11s loop until the fanout is actually on screen,
-  // so the visitor always sees beat one (call -> agent -> chips) instead of arriving mid-cycle
-  var fanoutStarted = false;
-  function startFanoutOnce(){
-    if(fanoutStarted) return;
-    fanoutStarted = true;
-    start();
-  }
-  if('IntersectionObserver' in window){
-    var fanoutIO = new IntersectionObserver(function(entries){
-      for(var i=0;i<entries.length;i++){
-        if(entries[i].isIntersecting){ startFanoutOnce(); fanoutIO.disconnect(); break; }
-      }
-    }, { threshold: 0.3 });
-    fanoutIO.observe(root);
-  } else {
-    startFanoutOnce();
-  }
-})();
-</script>
 </body>
 </html>
