@@ -168,11 +168,12 @@ section[id]{scroll-margin-top:84px}
 @media(min-width:768px){.pricing-tiers{grid-template-columns:1fr 1fr}}
 
 .tier-card{border-radius:16px;border:1px solid var(--border-strong);background:linear-gradient(to bottom,var(--card-elevated),var(--card));box-shadow:var(--shadow-card);overflow:hidden;position:relative;display:flex;flex-direction:column}.tier-header{flex:1}
-.tier-card.featured{border-color:rgba(249,115,22,0.5);box-shadow:var(--shadow-card-hover)}
+.tier-card.featured{border-width:2px;border-color:rgba(249,115,22,0.68);box-shadow:var(--shadow-card-hover)}
+.tier-reco{position:absolute;top:36px;right:24px;padding:5px 11px;border-radius:999px;border:0;background:var(--primary);font-size:12px;font-weight:600;line-height:1.4;color:var(--primary-foreground)}
 .tier-glow{position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(249,115,22,0.6),transparent)}
 
 .tier-header{padding:36px 32px 24px}
-.tier-badge{display:inline-flex;align-items:center;border-radius:9999px;background:rgba(249,115,22,0.15);padding:4px 10px;font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--primary);box-shadow:inset 0 0 0 1px rgba(249,115,22,0.3)}
+.tier-badge{display:inline-block;font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--primary)}
 .tier-badge.popular{background:rgba(249,115,22,0.25);color:var(--primary)}
 .tier-amount{margin-top:20px;display:flex;align-items:baseline;gap:6px}
 .tier-amount .price{font-family:var(--font-display);font-size:3.25rem;font-weight:400;letter-spacing:-0.02em;line-height:1}
@@ -189,6 +190,17 @@ section[id]{scroll-margin-top:84px}
 .tier-launch .label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--primary)}
 .tier-launch p{margin-top:4px;font-size:12.5px;line-height:1.5;color:var(--muted-foreground)}
 .tier-launch .highlight{color:var(--foreground)}
+.tier-allow{margin-top:12px;border-radius:10px;border:1px solid var(--hairline);background:var(--surface-elevated);padding:11px 14px;text-align:left}
+.tier-allow-main{font-size:14px;color:var(--foreground)}
+.tier-allow-sub{margin-top:3px;font-size:12px;line-height:1.45;color:var(--muted-foreground)}
+.inc-item{display:flex;gap:10px;align-items:flex-start;margin-top:10px;font-size:13.5px;line-height:1.5;color:var(--muted-foreground)}
+.inc-item svg{width:16px;height:16px;min-width:16px;margin-top:1px;color:var(--primary)}
+.plus-kicker{margin-top:2px;font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--primary)}
+.tier-found{margin-top:16px;border-radius:10px;border:1px solid rgba(249,115,22,0.35);background:rgba(249,115,22,0.09);padding:12px 14px;text-align:left}
+.tier-found b{display:block;font-size:13px;color:var(--primary)}
+.tier-found>span{display:block;margin-top:2px;font-size:12.5px;color:var(--foreground)}
+.tier-found p{margin-top:8px;padding-top:8px;border-top:1px solid rgba(249,115,22,0.25);font-size:12.5px;line-height:1.5;color:var(--muted-foreground)}
+
 
 .tier-features{padding:32px;border-top:1px solid var(--hairline)}
 .tier-features .checklist-label{font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.16em;color:var(--primary)}
@@ -640,17 +652,16 @@ AI receptionist for Arizona home services
 <!-- Pricing -->
 <section id="pricing" class="section">
 <div class="container">
-<div style="max-width:672px;margin:0 auto;text-align:center">
+<div style="max-width:720px;margin:0 auto;text-align:center">
 <div class="section-label">Pricing</div>
 <h2 class="section-title">Two plans. Pick your volume.</h2>
 <p class="section-subtitle">No long-term contract. Month-to-month. Cancel anytime. One emergency call pays for the month.</p>
-<p class="section-subtitle" style="margin-top:12px;color:var(--foreground);opacity:0.85">A full-time receptionist costs $3,500+/mo. DIY apps make you build it yourself. We set it up, manage it, and optimize it — you get a number and a dashboard.</p>
+<p class="section-subtitle" style="margin-top:12px;color:var(--foreground);opacity:0.85">A full-time receptionist costs $3,500+/mo. DIY apps make you build it yourself. We set it up, manage it, and optimize it — every call answered, qualified, and booked, with an alert when it matters.</p>
 </div>
 <div class="pricing-tiers">
 
 <!-- Starter -->
 <div class="tier-card">
-<div class="tier-glow"></div>
 <div class="tier-header">
 <div class="tier-badge">Starter</div>
 <div class="tier-amount">
@@ -658,14 +669,17 @@ AI receptionist for Arizona home services
 <span class="per">/mo</span>
 </div>
 <div class="sub-line" style="margin-top:6px">+ $297 one-time setup</div>
-<div style="margin-top:10px;font-size:13px;color:var(--foreground)">Less than a part-time office person, and it answers at 9pm.</div>
+<div class="tier-allow">
+<div class="tier-allow-main"><strong>300 calls/mo included</strong></div>
+<div class="tier-allow-sub">Extra calls about $0.45 each ($0.15/min, typical call is 3 minutes)</div>
+</div>
+<div style="margin-top:12px;font-size:13px;color:var(--foreground)">Less than a part-time office person, and it answers at 9pm.</div>
 <p class="tier-desc">For most 1–5 truck shops — the owner answering between jobs, or an office that leaves at 5.</p>
 <div class="tier-includes">
-<div class="main-line"><strong>Every call answered</strong> — 24/7, first ring</div>
-<div class="main-line" style="margin-top:6px"><strong>Books straight to your calendar</strong></div>
-<div class="main-line" style="margin-top:6px"><strong>Messages taken, owner alerted</strong></div>
-<div class="sub-line" style="margin-top:8px">300 calls/mo included</div>
-<div class="sub-line">Extra calls about $0.45 each — $0.15/min, typical call is 3 minutes</div>
+<div class="inc-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><div><strong>Every call answered</strong> — 24/7, first ring</div></div>
+<div class="inc-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><div><strong>Books straight to your calendar</strong></div></div>
+<div class="inc-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><div><strong>Messages taken</strong></div></div>
+<div class="inc-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><div><strong>Owner alerts by email</strong> — every booking, change, and message</div></div>
 </div>
 <div class="tier-launch">
 <div class="label">7-Day Pilot</div>
@@ -682,20 +696,28 @@ AI receptionist for Arizona home services
 <div class="tier-glow"></div>
 <div class="tier-header">
 <div class="tier-badge">Growth</div>
+<div class="tier-reco">Recommended</div>
 <div class="tier-amount">
 <span class="price">$497</span>
 <span class="per">/mo</span>
 </div>
 <div class="sub-line" style="margin-top:6px">+ $297 one-time setup</div>
-<div style="margin-top:10px;font-size:13px;color:var(--foreground)">One no-show avoided at $350 more than covers the extra $150.</div>
+<div class="tier-allow">
+<div class="tier-allow-main"><strong>800 calls/mo included</strong></div>
+<div class="tier-allow-sub">Extra calls about $0.45 each ($0.15/min, typical call is 3 minutes)</div>
+</div>
+<div style="margin-top:12px;font-size:13px;color:var(--foreground)">One no-show avoided at $350 more than covers the extra $150.</div>
 <p class="tier-desc">For shops already missing jobs, who want the customer texted so they actually show up.</p>
 <div class="tier-includes">
-<div class="main-line"><strong>Everything in Starter</strong>, plus</div>
-<div class="main-line" style="margin-top:6px"><strong>Confirmation text to every customer</strong></div>
-<div class="main-line" style="margin-top:6px"><strong>24h and 2h text reminders to every customer</strong></div>
-<div class="sub-line" style="margin-top:8px">800 calls/mo included</div>
-<div class="sub-line">Extra calls about $0.45 each — $0.15/min, typical call is 3 minutes</div>
-<div class="sub-line" style="margin-top:8px;padding-top:8px;border-top:1px solid var(--hairline)">Already on Starter? Upgrade anytime. No second setup fee.</div>
+<div class="plus-kicker">Everything in Starter, plus</div>
+<div class="inc-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><div><strong>Confirmation text to every customer</strong></div></div>
+<div class="inc-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><div><strong>24h and 2h text reminders to every customer</strong></div></div>
+<div class="inc-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><div><strong>Urgent calls texted to your phone</strong></div></div>
+</div>
+<div class="tier-found">
+<b>Founding rate — 3 spots left</b>
+<span>Setup goes from $297 to $497.</span>
+<p>Already on Starter? Upgrade free while the founding spots last — $200 after that.</p>
 </div>
 </div>
 <div class="tier-cta">
@@ -704,8 +726,6 @@ AI receptionist for Arizona home services
 </div>
 
 </div>
-
-<!-- Shared features -->
 <div class="pricing-shared">
 <div class="checklist-label">Included on every plan</div>
 <div class="shared-grid">
@@ -715,15 +735,14 @@ AI receptionist for Arizona home services
 <div class="shared-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Dedicated local phone number</span></div>
 <div class="shared-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Urgent calls flagged and booked first</span></div>
 <div class="shared-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Full call log — if you want the details</span></div>
-<div class="shared-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Intelligent call qualification — real leads, not solicitors</span></div>
+<div class="shared-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Intelligent call qualification — real customers, not solicitors</span></div>
 <div class="shared-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>No contract — cancel anytime</span></div>
 </div>
 </div>
 
 </div>
-</section>
 
-<!-- FAQ -->
+</section><!-- FAQ -->
 <section id="faq" class="section">
 <div class="container">
 <div style="max-width:672px;margin:0 auto;text-align:center">
