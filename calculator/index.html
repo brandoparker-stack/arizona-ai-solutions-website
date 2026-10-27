@@ -113,18 +113,6 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .plan-over{display:none;margin-top:8px;font-size:12px;color:var(--muted-foreground)}
 .plan-over.show{display:block}
 
-/* Trade chips */
-.trades{margin-top:20px;padding-top:18px;border-top:1px solid var(--hairline)}
-.trades-label{font-size:11.5px;font-weight:700;color:var(--muted-foreground);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
-.trade-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.trade-chips{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.trade-chip{padding:10px 14px;border-radius:8px;border:1px solid var(--border-strong);background:var(--background);font-size:13px;font-weight:600;color:var(--muted-foreground);cursor:pointer;text-align:left;transition:all .15s;display:flex;justify-content:space-between;align-items:center;gap:6px}
-.trade-chip:hover{border-color:var(--primary);color:var(--foreground)}
-.trade-chip .tv{font-weight:800;color:var(--foreground);font-variant-numeric:tabular-nums}
-.trade-chip.active{border-color:var(--primary);background:rgba(249,115,22,0.10);color:var(--foreground)}
-.trade-chip.active .tv{color:var(--primary)}
-.trade-chip.active .tname{color:var(--primary)}
-
 /* Result tiles */
 .tiles{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
 @media(max-width:620px){.tiles{grid-template-columns:1fr 1fr}}
@@ -251,15 +239,6 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 <div class="ctl-scale"><span>$150</span><span>$2,000</span></div>
 </div>
 
-<div class="trades" style="padding-top:18px;margin-top:14px">
-<p class="trades-label">Common job values</p>
-<div class="trade-chips" id="tradeChips">
-<button type="button" class="trade-chip active" data-value="450" data-name="HVAC"><span class="tname">HVAC</span><span class="tv">· $450</span></button>
-<button type="button" class="trade-chip" data-value="350" data-name="Plumbing"><span class="tname">Plumbing</span><span class="tv">· $350</span></button>
-<button type="button" class="trade-chip" data-value="350" data-name="Electrical"><span class="tname">Electrical</span><span class="tv">· $350</span></button>
-<button type="button" class="trade-chip" data-name="Custom"><span class="tname">Custom</span><span class="tv">· your price</span></button>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -313,7 +292,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 
 <p class="method" style="text-align:center;margin-top:6px">See a number you like? <a href="https://calendly.com/arizona-ai-solutions/15-min-discovery-call" style="color:var(--primary);font-weight:600;text-decoration:underline;text-underline-offset:3px">Book a 15-min call</a> &nbsp;or&nbsp; call the live agent — <a href="tel:+15206506366" style="color:var(--primary);font-weight:600;text-decoration:underline;text-underline-offset:3px">(520) 650-6366</a>.</p>
 
-<p class="method" style="margin-top:22px">Assumptions: close rate is jobs out of all answered calls (spam included) and applies to missed calls at the same rate. Plan pricing: Starter $347/mo up to 300 calls, Growth $497/mo to 800, $0.15/min overage after. Job values are Arizona inbound-service-call averages, not big-ticket installs.</p>
+<p class="method" style="margin-top:22px">Assumptions: close rate is jobs out of all answered calls (spam included) and applies to missed calls at the same rate. Plan pricing: Starter $347/mo up to 300 calls, Growth $497/mo to 800, $0.15/min overage after.</p>
 
 <footer class="footer">
 <div class="footer-grid">
@@ -447,28 +426,6 @@ function calc(){
   els.miss.addEventListener(ev,calc);
   els.close.addEventListener(ev,calc);
   els.job.addEventListener(ev,calc);
-});
-
-// Job-value slider: moving it always selects Custom (unless the value
-// exactly equals a trade chip's price — then that chip re-activates).
-const TRADE_CHIPS=[...document.querySelectorAll('.trade-chip')];
-function syncChipToValue(v){
-  const match=TRADE_CHIPS.find(c=>c.dataset.value && +c.dataset.value===v);
-  TRADE_CHIPS.forEach(c=>c.classList.remove('active'));
-  if(match){match.classList.add('active');}
-  else{const custom=TRADE_CHIPS.find(c=>!c.dataset.value);if(custom)custom.classList.add('active');}
-}
-els.job.addEventListener('input',()=>syncChipToValue(+els.job.value));
-
-TRADE_CHIPS.forEach(chip=>{
-  chip.addEventListener('click',()=>{
-    TRADE_CHIPS.forEach(c=>c.classList.remove('active'));
-    chip.classList.add('active');
-    if(chip.dataset.value){
-      els.job.value=chip.dataset.value;
-      calc();
-    }
-  });
 });
 
 calc();
